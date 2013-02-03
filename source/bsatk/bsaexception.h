@@ -1,5 +1,5 @@
 /*
-Mod Organizer shared UI functionality
+Mod Organizer BSA handling
 
 Copyright (C) 2012 Sebastian Herbord. All rights reserved.
 
@@ -18,4 +18,40 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "diagnosisreport.h"
+#ifndef BSAEXCEPTION_H
+#define BSAEXCEPTION_H
+
+
+#include <string>
+
+
+/**
+ * construct a string from a printf-style format
+ * @param format printf-style format to create the string from
+ * @param ... variable parameter list
+ * @return the constructed string
+ */
+std::string makeString(const char *format, ...);
+
+
+/**
+ * custom exception to be thrown when invalid data is encountered
+ */
+class data_invalid_exception : public std::exception {
+
+public:
+
+  explicit data_invalid_exception(const std::string &message);
+
+  virtual ~data_invalid_exception() throw() {}
+
+  virtual const char *what() const throw() { return m_Message.c_str(); }
+
+private:
+
+  std::string m_Message;
+
+};
+
+#endif // BSAEXCEPTION_H
+

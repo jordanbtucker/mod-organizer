@@ -1,5 +1,5 @@
 /*
-Mod Organizer shared UI functionality
+Mod Organizer BSA handling
 
 Copyright (C) 2012 Sebastian Herbord. All rights reserved.
 
@@ -18,4 +18,23 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "diagnosisreport.h"
+
+#include "bsaexception.h"
+#include <cstdarg>
+#include <stdio.h>
+
+
+std::string makeString(const char *format, ...)
+{
+  va_list argList;
+  va_start(argList, format);
+  char buffer[1024];
+  vsnprintf(buffer, 1024, format, argList);
+  return std::string(buffer);
+}
+
+
+data_invalid_exception::data_invalid_exception(const std::string &message)
+  : m_Message(message)
+{
+}

@@ -1,5 +1,5 @@
 /*
-Mod Organizer shared UI functionality
+Mod Organizer BSA handling
 
 Copyright (C) 2012 Sebastian Herbord. All rights reserved.
 
@@ -18,4 +18,17 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "diagnosisreport.h"
+
+#ifndef FILEHASH_H
+#define FILEHASH_H
+
+
+#include <string>
+#include "bsatypes.h"
+
+
+BSAHash calculateBSAHash(const std::string &fileName);
+
+
+#endif // FILEHASH_H
+

@@ -1,5 +1,5 @@
 /*
-Mod Organizer shared UI functionality
+Mod Organizer BSA handling
 
 Copyright (C) 2012 Sebastian Herbord. All rights reserved.
 
@@ -18,4 +18,26 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "diagnosisreport.h"
+
+#ifndef ERRORCODES_H
+#define ERRORCODES_H
+
+
+namespace BSA {
+
+
+enum EErrorCode {
+  ERROR_NONE,
+  ERROR_INVALIDHASHES,
+  ERROR_FILENOTFOUND,
+  ERROR_INVALIDDATA,
+  ERROR_ACCESSFAILED,
+  ERROR_ZLIBINITFAILED,
+  ERROR_SOURCEFILEMISSING,
+  ERROR_CANCELED
+};
+
+};
+
+#endif // ERRORCODES_H
+

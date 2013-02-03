@@ -10,7 +10,7 @@ CONFIG(debug, debug|release) {
 	DSTDIR = $$PWD/../../output
 	LIBS += -L$$OUT_PWD/../../uibase/release
 }
-message($$LIBS)
+
 SRCDIR ~= s,/,$$QMAKE_DIR_SEP,g
 DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 
