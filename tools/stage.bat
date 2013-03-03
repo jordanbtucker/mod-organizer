@@ -12,9 +12,6 @@ xcopy /y /I ..\output\helper.exe ..\staging\ModOrganizer\
 xcopy /y /I ..\output\uibase.dll ..\staging\ModOrganizer\
 xcopy /y /I ..\output\hook.dll ..\staging\ModOrganizer\
 xcopy /y /I ..\output\proxy.dll ..\staging\ModOrganizer\
-xcopy /y /I ..\output\msvcp100.dll ..\staging\ModOrganizer\
-xcopy /y /I ..\output\msvcr100.dll ..\staging\ModOrganizer\
-xcopy /y /I ..\output\proxy.dll ..\staging\ModOrganizer\
 xcopy /y /s /I ..\output\stylesheets ..\staging\ModOrganizer\stylesheets
 xcopy /y /s /I ..\output\tutorials ..\staging\ModOrganizer\tutorials
 xcopy /y /s /I ..\output\translations ..\staging\ModOrganizer\translations
