@@ -56,6 +56,8 @@ namespace Ui {
 }
 
 class QToolButton;
+class ModListSortProxy;
+class ModListGroupCategoriesProxy;
 
 class MainWindow : public QMainWindow, public MOBase::IOrganizer
 {
@@ -199,6 +201,8 @@ private:
 
   bool extractProgress(QProgressDialog &extractProgress, int percentage, std::string fileName);
 
+  void checkBSAList();
+
   bool checkForProblems(QString &problemDescription);
 
   int getBinaryExecuteInfo(const QFileInfo &targetInfo, QFileInfo &binaryInfo, QString &arguments);
@@ -239,6 +243,8 @@ private:
 
   ModList m_ModList;
   ModListSortProxy *m_ModListSortProxy;
+  QAbstractProxyModel *m_ModListGroupProxy;
+
   PluginList m_PluginList;
   PluginListSortProxy *m_PluginListSortProxy;
 
@@ -428,7 +434,7 @@ private slots: // ui slots
 
   void on_espList_customContextMenuRequested(const QPoint &pos);
   void on_displayCategoriesBtn_toggled(bool checked);
-
+  void on_groupCombo_currentIndexChanged(int index);
 };
 
 #endif // MAINWINDOW_H
