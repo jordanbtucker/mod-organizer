@@ -152,7 +152,8 @@ IPluginInstaller::EInstallResult InstallerNCC::install(GuessedValue<QString> &mo
 
   // NCC assumes the installation directory is the game directory and may try to access the binary to determine version information
   QString binaryDestination = modInterface->absolutePath() + "/" + m_MOInfo->gameInfo().binaryName();
-  QFile::copy(m_MOInfo->gameInfo().path() + "/" + m_MOInfo->gameInfo().binaryName(), binaryDestination);
+  shellCopy(m_MOInfo->gameInfo().path() + "/" + m_MOInfo->gameInfo().binaryName(), binaryDestination);
+  //QFile::copy(m_MOInfo->gameInfo().path() + "/" + m_MOInfo->gameInfo().binaryName(), binaryDestination);
   ON_BLOCK_EXIT([&binaryDestination] { QFile::remove(binaryDestination); } );
 
   SHELLEXECUTEINFOW execInfo = {0};
@@ -241,7 +242,7 @@ IPluginInstaller::EInstallResult InstallerNCC::install(GuessedValue<QString> &mo
     }
 
     QString dataDir = modInterface->absolutePath() + "/Data";
-    if (!removeDir(dataDir)) {
+    if (!shellDelete(QStringList(dataDir), parentWidget())) {
       qCritical("failed to remove data directory from %s", qPrintable(dataDir));
       errorOccured = true;
     }
