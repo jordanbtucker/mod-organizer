@@ -1,0 +1,57 @@
+[list]
+[*] Mods are kept completely isolated from each other -> no more messy data directory (1)
+[*] Profiles (2)
+[*] Drag&Drop load order AND installation order management
+[*] full control over the priority of BSA files (3)
+[*] Nexus integration for easy download, installation and update of mods
+[*] GUI support for manual installers
+[*] partial compatibility with BAIN installers
+[*] Savegame viewer
+[*] active required mods from save game
+[*] Archive Invalidation
+[*] Categorize mods for better overview (customizable)
+[*] easy overview of file conflicts
+[*] complete help system
+[*] Supports Oblivion, Fallout 3, Fallout NV and Skyrim
+[*] no installation, no dependencies. Just unpack and go
+[*] localization (currently: german, spanish, french and chinese)
+[*] automatic self-updates
+[*] BSA unpacking
+[/list]
+
+
+Mod Isolation (1):
+------------------
+
+What mod isolation means is that each mod is installed into its own directory outside the actual data directory.
+Through some magic MO then shows the game (and any other 3rd party tool that works on the data directory) a "virtual" data directory that is a merger of the actual data directory and all the mod directories.
+This way no file ever get overwritten when you install a mod and your data directory can remain in a vanilla state.
+You can simply change the "installation order" of mods from the gui and deinstall or temporarily deactivate one without breaking other mods.
+
+Profiles (2):
+-------------
+
+With MO, you can have different mods active in different playthroughs. You can consider the installed mods as a pool of mods and for each profile you can have a different set of them active. Disabled mods will not be visible to the game, as far as the game is concerned, they are not there at all.
+As an additional gimmick, you can set up a save game filter for each profile so that when started with that profile, only save games of the specified character are displayed in-game.
+NOTE: this save game filter is experimental. It may cause the game to create save-games with save-numbers that have already been used, but as far as I can see, that has no negative impact.
+
+BSA Priority (3):
+-----------------
+
+BSA files are archives that contain assets like textures, meshes, sounds, scripts, ...
+All vanilla data resides in BSAs and by default, the Skyrim Creation Kit packages assets for mods in BSAs. Traditionally you can not control priority between BSAs and "loose" files (that is: assets that came as individual files), BSAs are always overwridden. Therefore, if you wanted to use files from a BSA over files from a mod that came as "loose" files, you'd have to figure out and delete the correct files manually.
+
+MO fixes this problems and afaik it is the only tool available to do so. In the UI, check all BSAs you want loaded and you're ready to go. Files from BSAs have priority according to their installation order (left pane) -> They overwrite files from mods with lower priorities and don't overwrite files with higher priority. The limit of enables BSAs is approx 8000)
+
+Load Mechanism:
+---------------
+
+To work its magic, a part of MO needs to be active while the game is running. To achieve this, you can start the game from the MO User Interface.
+The GUI also offers the option to create shortcuts that will activate MO and immediately run the game (or related tools).
+
+HOWEVER, this mechanism may not work in all setups, particularly the Steam version of Oblivion. MO offers two alternative methods:
+- Script Extender: If you have a Script Extender installed for the game (obse for Oblivion, fose for Fallout 3, nvse for New Vegas or skse for Skyrim), you can have that activate Mod Organizer.
+- Proxy DLL: In this mode, Mod Organizer replaces a dll that is part of the game by one that loads the original dll and activates MO. Currently I use the steam_api.dll for this. Please note that I have only tested this with Skyrim and New Vegas.
+If you use this last method, please deactivate it from the MO Interface before uninstalling MO.
+
+If you load MO through either Script Extender or the proxy dll, you can still run the game through the User Interface but you don't have to.
