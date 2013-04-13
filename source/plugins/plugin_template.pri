@@ -1,6 +1,5 @@
 INCLUDEPATH += ../../uibase
 
-
 CONFIG(debug, debug|release) {
 	SRCDIR = $$OUT_PWD/debug
 	DSTDIR = $$PWD/../../outputd
