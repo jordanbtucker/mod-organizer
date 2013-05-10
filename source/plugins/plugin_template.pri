@@ -16,5 +16,3 @@ DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 LIBS += -luibase -lshell32 -luser32
 
 QMAKE_POST_LINK += xcopy /y /s /i $$quote($$SRCDIR\\$${TARGET}*.dll) $$quote($$DSTDIR)\\plugins $$escape_expand(\\n)
-
-
