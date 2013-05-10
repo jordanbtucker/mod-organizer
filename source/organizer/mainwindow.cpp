@@ -90,6 +90,7 @@ along with Mod Organizer.  If not, see <http://www.gnu.org/licenses/>.
 #include <QIdentityProxyModel>
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
+#include <boost/assign.hpp>
 #include <Psapi.h>
 #include <shlobj.h>
 #include <TlHelp32.h>
@@ -2371,7 +2372,6 @@ void MainWindow::refreshFilters()
   QString previousFilter = currentItem != NULL ? currentItem->text(0) : tr("<All>");
 
   ui->categoriesList->clear();
-  addFilterItem(NULL, tr("<All>"), CategoryFactory::CATEGORY_NONE);
   addFilterItem(NULL, tr("<Checked>"), CategoryFactory::CATEGORY_SPECIAL_CHECKED);
   addFilterItem(NULL, tr("<Unchecked>"), CategoryFactory::CATEGORY_SPECIAL_UNCHECKED);
   addFilterItem(NULL, tr("<Update>"), CategoryFactory::CATEGORY_SPECIAL_UPDATEAVAILABLE);
@@ -3134,14 +3134,28 @@ void MainWindow::on_modList_customContextMenuRequested(const QPoint &pos)
 }
 
 
-void MainWindow::on_categoriesList_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *)
+void MainWindow::on_categoriesList_itemSelectionChanged()
 {
-  if (current != NULL) {
-    int filter = current->data(0, Qt::UserRole).toInt();
-    m_ModListSortProxy->setCategoryFilter(filter);
-    ui->currentCategoryLabel->setText(QString("(%1)").arg(current->text(0)));
-    ui->modList->reset();
+//    int filter = current->data(0, Qt::UserRole).toInt();
+  QModelIndexList indices = ui->categoriesList->selectionModel()->selectedRows();
+  std::vector<int> categories;
+  foreach (const QModelIndex &index, indices) {
+    int categoryId = index.data(Qt::UserRole).toInt();
+    if (categoryId != CategoryFactory::CATEGORY_NONE) {
+      categories.push_back(categoryId);
+    }
   }
+
+  m_ModListSortProxy->setCategoryFilter(categories);
+//  ui->currentCategoryLabel->setText(QString("(%1)").arg(current->text(0)));
+  if (indices.count() == 0) {
+    ui->currentCategoryLabel->setText(QString("(%1)").arg(tr("<All>")));
+  } else if (indices.count() > 1) {
+    ui->currentCategoryLabel->setText(QString("(%1)").arg(tr("<Multiple>")));
+  } else {
+    ui->currentCategoryLabel->setText(QString("(%1)").arg(indices.first().data().toString()));
+  }
+  ui->modList->reset();
 }
 
 
@@ -3844,7 +3858,7 @@ void MainWindow::modDetailsUpdated(bool)
   --m_ModsToUpdate;
   if (m_ModsToUpdate == 0) {
     statusBar()->hide();
-    m_ModListSortProxy->setCategoryFilter(CategoryFactory::CATEGORY_SPECIAL_UPDATEAVAILABLE);
+    m_ModListSortProxy->setCategoryFilter(boost::assign::list_of(CategoryFactory::CATEGORY_SPECIAL_UPDATEAVAILABLE));
     for (int i = 0; i < ui->categoriesList->topLevelItemCount(); ++i) {
       if (ui->categoriesList->topLevelItem(i)->data(0, Qt::UserRole) == CategoryFactory::CATEGORY_SPECIAL_UPDATEAVAILABLE) {
         ui->categoriesList->setCurrentItem(ui->categoriesList->topLevelItem(i));
@@ -3883,7 +3897,7 @@ void MainWindow::nxmUpdatesAvailable(const std::vector<int> &modIDs, QVariant us
 
   if (m_ModsToUpdate <= 0) {
     statusBar()->hide();
-    m_ModListSortProxy->setCategoryFilter(CategoryFactory::CATEGORY_SPECIAL_UPDATEAVAILABLE);
+    m_ModListSortProxy->setCategoryFilter(boost::assign::list_of(CategoryFactory::CATEGORY_SPECIAL_UPDATEAVAILABLE));
     for (int i = 0; i < ui->categoriesList->topLevelItemCount(); ++i) {
       if (ui->categoriesList->topLevelItem(i)->data(0, Qt::UserRole) == CategoryFactory::CATEGORY_SPECIAL_UPDATEAVAILABLE) {
         ui->categoriesList->setCurrentItem(ui->categoriesList->topLevelItem(i));
