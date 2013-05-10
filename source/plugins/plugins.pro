@@ -9,5 +9,7 @@ SUBDIRS += \
 		installerFomod \
 		installerQuick \
 		installerBundle \
-    proxyPython \
-    diagnoseBasic
+		proxyPython \
+    diagnoseBasic \
+		pyniEdit \
+    installerBatch
