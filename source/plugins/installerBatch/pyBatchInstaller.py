@@ -1,7 +1,35 @@
 import csv
 import time
 import sys
+import os
 from PyQt4 import QtCore, QtGui
+
+
+class DownloadSelectionDialog(QtGui.QDialog):
+    def __init__(self, parent = None):
+        super(DownloadSelectionDialog, self).__init__(parent)
+
+        from downloadselection import Ui_DownloadSelectionDialog
+        self.__ui = Ui_DownloadSelectionDialog()
+        self.__ui.setupUi(self)
+        self.setWindowFlags(self.windowFlags() & ~QtCore.Qt.WindowContextHelpButtonHint)
+        self.__ui.choicesList.currentItemChanged.connect(self.itemSelected)
+        self.__ui.choicesList.item(0).setData(QtCore.Qt.UserRole, -1)
+
+    def setOldName(self, name):
+        self.__ui.oldNameLabel.setText(name)
+
+    def itemSelected(self, newItem, oldItem):
+        self.__ui.descriptionLabel.setText(newItem.data(QtCore.Qt.UserRole + 1).toString())
+
+    def addRepositoryInfo(self, name, fileID, description):
+        item = QtGui.QListWidgetItem(name)
+        item.setData(QtCore.Qt.UserRole, fileID)
+        item.setData(QtCore.Qt.UserRole + 1, description)
+        self.__ui.choicesList.addItem(item)
+
+    def selectedFileID(self):
+        return self.__ui.choicesList.currentItem().data(QtCore.Qt.UserRole).toInt()[0]
 
 
 class ModSelectionDialog(QtGui.QDialog):
@@ -27,23 +55,50 @@ class ModSelectionDialog(QtGui.QDialog):
                 result.append(self.__ui.modList.item(i).data(QtCore.Qt.UserRole))
         return result
 
+
 class InstallerBatch(mobase.IPluginInstallerCustom):
     def init(self, organizer):
         self.__organizer = organizer
-        self.__nexusBridge = self.__organizer.createNexusBridge()
+        self.__nexusBridge = mobase.ModRepositoryBridge()
         self.__parentWidget = None
         self.__remaining = 0
+        self.__requestedFiles = {}
+        self.__downloadedFiles = []
         self.__fail = False
+        self.__nexusBridge.onFilesAvailable(self.onFilesAvailable)
+        self.__nexusBridge.onRequestFailed(self.onRequestFailed)
 
-        if not QtCore.QObject.connect(mobase.toPyQt(self.__nexusBridge),
-                QtCore.SIGNAL('filesAvailable(int, QVariant, PyQt_PyObject)'),  self.nxmFilesAvailable) or \
-           not QtCore.QObject.connect(mobase.toPyQt(self.__nexusBridge),
-                QtCore.SIGNAL('requestFailed(int, QVariant, int, QString)'), self.nxmFilesAvailable) or \
-           not QtCore.QObject.connect(mobase.toPyQt(self.__nexusBridge),
-                QtCore.SIGNAL('bla(QString)'), self.blaSlot):
-            print("failed to connect signals")
+        temp = self.__organizer.downloadManager()
+        if not QtCore.QObject.connect(mobase.toPyQt(temp),  QtCore.SIGNAL("downloadComplete(int)"),  self.onDownloadComplete):
+            print("failed to connect to signal")
             return False
         return True
+
+    def onFilesAvailable(self,  modID,  userData,  resultData):
+        fileID = -1
+        for file in resultData:
+            if file["uri"] == userData:
+                fileID = file["fileID"]
+
+        if fileID == -1:
+            selDialog = DownloadSelectionDialog(self.__parentWidget)
+            selDialog.setOldName(userData)
+            for file in resultData:
+                selDialog.addRepositoryInfo(file["name"], int(file["fileID"]), file["description"])
+            selDialog.exec_()
+            fileID = selDialog.selectedFileID()
+
+        downloadID = self.__organizer.downloadManager().startDownloadNexusFile(modID,  fileID)
+        self.__requestedFiles[downloadID] = userData
+        self.__remaining -= 1
+
+    def onRequestFailed(self,  modID,  userData,  errorMessage):
+        QtGui.QMessageBox.critical(self.__parentWidget,  'Error',  errorMessage)
+        self.__remaining -= 1
+
+    def onDownloadComplete(self,  downloadID):
+        self.__organizer.installMod(self.__organizer.downloadsPath() + "/" + self.__requestedFiles[downloadID])
+        del self.__requestedFiles[downloadID]
 
     def name(self):
         return "Batch Installer"
@@ -64,7 +119,6 @@ class InstallerBatch(mobase.IPluginInstallerCustom):
         return []
 
     def setParentWidget(self, widget):
-        print("have parent widget")
         self.__parentWidget = widget
 
     def priority(self):
@@ -79,25 +133,14 @@ class InstallerBatch(mobase.IPluginInstallerCustom):
     def supportedExtensions(self):
         return [ "csv" ]
 
-    def nxmFilesAvailable(self,  modID, userData, resultData):
-        QtGui.QMessageBox.information(self.__parentWidget, 'Files', 'files available: ' + str(userData.toString()))
+    def cancelProgress(self):
+        self.__remaining = 0
 
-        QtGui.QMessageBox.information(self.__parentWidget, 'Files', 'res data: ' + str(resultData))
+    def install(self,  modNameGuessed,  archiveName):        
+        self.__remaining = 0
+        self.__requestedFiles = {}
+        self.__downloadedFiles = []
 
-#        for var in resultData.toList():
-#            fileInfo = var.toMap()
-#            QtGui.QMessageBox.information(self.__parentWidget, 'Files', fileInfo["uri"].toString())
-
-        self.__remaining -= 1
-
-    def nxmRequestFailed(self,  modID, userData,  requestID,  errorMessage):
-        QtGui.QMessageBox.warning(None,  'Error',  'Failed to retrieve file information')
-
-    def blaSlot(self,  var):
-        QtGui.QMessageBox.warning(None,  'Bla',  'bla')
-
-    def install(self,  modNameGuessed,  archiveName):
-        app = QtGui.QApplication(sys.argv)
         with open(archiveName, 'rb') as csvfile:
             selDialog = ModSelectionDialog(self.__parentWidget)
 
@@ -109,16 +152,39 @@ class InstallerBatch(mobase.IPluginInstallerCustom):
             if selDialog.exec_() == QtGui.QDialog.Accepted:
                 # row data was wrapped in a tuple
                 choices = [ sel.toPyObject()[0] for sel in selDialog.choices() ]
-                for sel in choices:
-                    self.__nexusBridge.requestFiles(int(sel["mod_id"]),  QtCore.QString("blabla"))
-                    self.__remaining += 1
 
+                downloadsPath = self.__organizer.downloadsPath()
+
+                for sel in choices:
+                    if not os.path.exists(downloadsPath + "/" + sel["file_installed_name"]):
+                        print("start download " + sel["file_installed_name"])
+                        self.__nexusBridge.requestFiles(int(sel["mod_id"]),  sel["file_installed_name"])
+                        self.__remaining += 1
+                    else:
+                        print("file already downloaded: " + sel["file_installed_name"])
+                        self.__downloadedFiles.append(sel["file_installed_name"])
+
+        total = self.__remaining
+        progress = QtGui.QProgressDialog("Initiating download for missing files",  "Cancel",  0,  total,  self.__parentWidget)
+        progress.canceled.connect(self.cancelProgress)
+        progress.show()
         while self.__remaining > 0:
+            progress.setValue(total - self.__remaining)
+            QtCore.QCoreApplication.processEvents()
+            time.sleep(0.1)
+        progress.close()
+
+        for file in self.__downloadedFiles:
+            self.__organizer.installMod(self.__organizer.downloadsPath() + "\\" + file)
+
+#        while len(self.__requestedFiles) > 0:
+        while False:
             QtCore.QCoreApplication.processEvents()
             time.sleep(0.5)
 
+        print("done")
 
-        return mobase.InstallResult.canceled
+        return mobase.InstallResult.success
 
 def createPlugin():
         return InstallerBatch()
