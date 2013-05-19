@@ -8,4 +8,8 @@ SUBDIRS += \
 		installerBAIN \
 		installerFomod \
 		installerQuick \
-		installerBundle
+		installerBundle \
+		proxyPython \
+    diagnoseBasic \
+		pyniEdit \
+    installerBatch

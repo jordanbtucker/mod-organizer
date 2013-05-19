@@ -26,6 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "versioninfo.h"
 #include "imodinterface.h"
 #include "igameinfo.h"
+#include "imodrepositorybridge.h"
+#include "idownloadmanager.h"
 #include <QString>
 #include <QVariant>
 
@@ -48,12 +50,17 @@ public:
   virtual IGameInfo &gameInfo() const = 0;
 
   /**
-   * @return name of the active profile
+   * @return create a new nexus interface class
+   */
+  virtual IModRepositoryBridge *createNexusBridge() const = 0;
+
+  /**
+   * @return name of the active profile or an empty string if no profile is loaded (yet)
    */
   virtual QString profileName() const = 0;
 
   /**
-   * @return the (absolute) path to the active profile
+   * @return the (absolute) path to the active profile or an empty string if no profile is loaded (yet)
    */
   virtual QString profilePath() const = 0;
 
@@ -105,8 +112,23 @@ public:
    */
   virtual QVariant pluginSetting(const QString &pluginName, const QString &key) const = 0;
 
-};
+  /**
+   * @return path to a directory where plugin data should be stored.
+   */
+  virtual QString pluginDataPath() const = 0;
 
+  /**
+   * @brief install a mod archive at the specified location
+   * @param fileName absolute file name of the mod to install
+   */
+  virtual void installMod(const QString &fileName) = 0;
+
+  /**
+   * @return interface to the download manager
+   */
+  virtual MOBase::IDownloadManager *downloadManager() = 0;
+
+};
 
 } // namespace MOBase
 

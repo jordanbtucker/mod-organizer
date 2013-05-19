@@ -53,7 +53,7 @@ public:
    *        it creates a new modal dialog
    * @param widget the new parent widget
    */
-  void setParentWidget(QWidget *widget) { m_ParentWidget = widget; }
+  virtual void setParentWidget(QWidget *widget) { m_ParentWidget = widget; }
 
 public slots:
 
@@ -65,6 +65,10 @@ public slots:
 
 protected:
 
+  /**
+   * @brief getter for the parent widget
+   * @return parent widget
+   */
   QWidget *parentWidget() const { return m_ParentWidget; }
 
 private:

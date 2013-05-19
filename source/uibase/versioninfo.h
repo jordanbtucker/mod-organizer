@@ -47,7 +47,8 @@ public:
     RELEASE_ALPHA,
     RELEASE_BETA,
     RELEASE_CANDIDATE,
-    RELEASE_FINAL
+    RELEASE_FINAL,
+    RELEASE_DATE
   };
 
 public:
@@ -90,6 +91,11 @@ public:
    *         the version string was not parsable
    */
   bool isValid() const { return m_Valid; }
+
+  /**
+   * @return true if the version is a date
+   */
+  bool isVersionDate() const { return m_ReleaseType == RELEASE_DATE; }
 
 private:
 
