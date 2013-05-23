@@ -69,9 +69,10 @@ class InstallerBatch(mobase.IPluginInstallerCustom):
         self.__nexusBridge.onRequestFailed(self.onRequestFailed)
 
         temp = self.__organizer.downloadManager()
-        if not QtCore.QObject.connect(mobase.toPyQt(temp),  QtCore.SIGNAL("downloadComplete(int)"),  self.onDownloadComplete):
-            print("failed to connect to signal")
-            return False
+        if  not QtCore.QObject.connect(mobase.toPyQt(temp),  QtCore.SIGNAL("downloadComplete(int)"),  self.onDownloadComplete) or \
+            not QtCore.QObject.connect(mobase.toPyQt(temp),  QtCore.SIGNAL("downloadFailed(int)"),  self.onDownloadFailed):
+                print("failed to connect to signal")
+                return False
         return True
 
     def onFilesAvailable(self,  modID,  userData,  resultData):
@@ -99,6 +100,12 @@ class InstallerBatch(mobase.IPluginInstallerCustom):
     def onDownloadComplete(self,  downloadID):
         self.__organizer.installMod(self.__organizer.downloadsPath() + "/" + self.__requestedFiles[downloadID])
         del self.__requestedFiles[downloadID]
+        self.__remaining -= 1
+
+    def onDownloadFailed(self,  downloadID):
+        print("download " + downloadID + " failed")
+        del self.__requestedFiles[downloadID]
+        self.__remaining -= 1
 
     def name(self):
         return "Batch Installer"
@@ -172,17 +179,21 @@ class InstallerBatch(mobase.IPluginInstallerCustom):
             progress.setValue(total - self.__remaining)
             QtCore.QCoreApplication.processEvents()
             time.sleep(0.1)
-        progress.close()
 
+        progress.setValue(0)
+        self.__remaining = len(self.__downloadedFiles) + total
+        progress.setMaximum(self.__remaining)
         for file in self.__downloadedFiles:
             self.__organizer.installMod(self.__organizer.downloadsPath() + "\\" + file)
+            self.__remaining -= 1
+            progress.setValue(total - self.__remaining)
 
-#        while len(self.__requestedFiles) > 0:
-        while False:
+        while self.__remaining > 0:
             QtCore.QCoreApplication.processEvents()
+            progress.setValue(total - self.__remaining)
             time.sleep(0.5)
 
-        print("done")
+        progress.close()
 
         return mobase.InstallResult.success
 

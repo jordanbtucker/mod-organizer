@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:/Users/Tannin/Documents/Projects/modorganizer-sf/source/plugins/installerBatch/downloadselection.ui'
 #
-# Created: Fri May 17 20:32:53 2013
+# Created: Thu May 23 18:58:31 2013
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
