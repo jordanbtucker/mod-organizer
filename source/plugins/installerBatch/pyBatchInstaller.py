@@ -143,7 +143,7 @@ class InstallerBatch(mobase.IPluginInstallerCustom):
     def cancelProgress(self):
         self.__remaining = 0
 
-    def install(self,  modNameGuessed,  archiveName):        
+    def install(self,  modNameGuessed,  archiveName,  version,  modid):        
         self.__remaining = 0
         self.__requestedFiles = {}
         self.__downloadedFiles = []
