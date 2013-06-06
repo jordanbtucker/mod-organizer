@@ -132,7 +132,7 @@ class InstallerBatch(mobase.IPluginInstallerCustom):
         return 50
 
     def isManualInstaller(self):
-        return True
+        return False
 
     def isArchiveSupported(self,  name):
         return True
@@ -143,7 +143,7 @@ class InstallerBatch(mobase.IPluginInstallerCustom):
     def cancelProgress(self):
         self.__remaining = 0
 
-    def install(self,  modNameGuessed,  archiveName,  version,  modid):        
+    def install(self,  modNameGuessed,  archiveName,  version,  modid):
         self.__remaining = 0
         self.__requestedFiles = {}
         self.__downloadedFiles = []
