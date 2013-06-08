@@ -17,4 +17,5 @@ xcopy /y /s /I ..\output\tutorials ..\staging\ModOrganizer\tutorials
 xcopy /y /s /I ..\output\translations ..\staging\ModOrganizer\translations
 xcopy /y /s /I ..\output\dlls ..\staging\ModOrganizer\dlls
 xcopy /y /s /I ..\output\plugins ..\staging\ModOrganizer\plugins
+xcopy /y /s /I ..\output\NCC ..\staging\ModOrganizer\NCC
 xcopy /y /s /I static_data\* ..\staging\ModOrganizer
