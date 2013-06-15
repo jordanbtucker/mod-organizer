@@ -11,5 +11,4 @@ SUBDIRS += \
 		installerBundle \
 		proxyPython \
     diagnoseBasic \
-		pyniEdit \
-    installerBatch
+		pyniEdit

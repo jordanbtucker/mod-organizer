@@ -6,6 +6,7 @@ mkdir ..\staging\ModOrganizer
 for /F "tokens=1-3* delims=." %%a in ('cscript.exe //nologo filever.vbs ..\output\ModOrganizer.exe') do @set version=%%a_%%b_%%c
 
 copy /y ..\output\ModOrganizer.pdb ..\pdbs\ModOrganizer_%version%.pdb
+copy /y ..\output\hook.pdb ..\pdbs\hook_%version%.pdb
 
 xcopy /y /I ..\output\ModOrganizer.exe ..\staging\ModOrganizer\
 xcopy /y /I ..\output\helper.exe ..\staging\ModOrganizer\
