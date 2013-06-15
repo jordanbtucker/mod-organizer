@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using RGiesecke.DllExport;
-using System.Runtime.InteropServices;
 
 namespace BossDummy
 {
    internal static class UnmanagedExports
    {
-
        #region Error Handling Functions
 
-       [DllExport("GetLastErrorDetails", CallingConvention = CallingConvention.StdCall)]
-//       static UInt32 GetLastErrorDetailsDelegate([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(StringMarshaler), MarshalCookie = "UTF8")] out string details)
+       [DllExport("GetLastErrorDetails", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 GetLastErrorDetails(out string details)
        {
            details = "";
@@ -24,14 +21,14 @@ namespace BossDummy
        #region Lifecycle Management Functions
 
 
-       [DllExport("CreateBossDb", CallingConvention.StdCall)]
+       [DllExport("CreateBossDb", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 CreateBossDb(ref IntPtr db, UInt32 clientGame, string dataPath)
        {
            db = new IntPtr(1);
            return 0;
        }
 
-       [DllExport("DestroyBossDb", CallingConvention.StdCall)]
+       [DllExport("DestroyBossDb", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static void DestroyBossDb(IntPtr db)
        {
        }
@@ -40,13 +37,13 @@ namespace BossDummy
 
        #region Database Loading Functions
 
-       [DllExport("Load", CallingConvention.StdCall)]
+       [DllExport("Load", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 Load(IntPtr db, string masterlistPath, string userlistPath)
        {
            return 0;
        }
 
-       [DllExport("EvalConditionals", CallingConvention.StdCall)]
+       [DllExport("EvalConditionals", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 EvalConditionals(IntPtr db)
        {
            return 0;
@@ -56,7 +53,7 @@ namespace BossDummy
 
        #region Masterlist Updating
 
-       [DllExport("UpdateMasterlist", CallingConvention.StdCall)]
+       [DllExport("UpdateMasterlist", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 UpdateMasterlist(IntPtr db, string masterlistPath)
        {
            return 0;
@@ -66,7 +63,7 @@ namespace BossDummy
 
        #region Plugin Sorting Functions
 
-       [DllExport("SortMods", CallingConvention.StdCall)]
+       [DllExport("SortMods", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 SortMods(IntPtr db, bool trialOnly, out IntPtr sortedPlugins, out UInt32 listLength, out UInt32 lastRecPos)
        {
            sortedPlugins = new IntPtr(0);
@@ -75,7 +72,7 @@ namespace BossDummy
            return 0;
        }
 
-       [DllExport("GetLoadOrder", CallingConvention.StdCall)]
+       [DllExport("GetLoadOrder", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 GetLoadOrder(IntPtr db, out IntPtr plugins, out UInt32 numPlugins)
        {
            plugins = new IntPtr(0);
@@ -83,13 +80,13 @@ namespace BossDummy
            return 0;
        }
 
-       [DllExport("SetLoadOrder", CallingConvention.StdCall)]
+       [DllExport("SetLoadOrder", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 SetLoadOrder(IntPtr db, IntPtr plugins, UInt32 numPlugins)
        {
            return 0;
        }
 
-       [DllExport("GetActivePlugins", CallingConvention.StdCall)]
+       [DllExport("GetActivePlugins", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 GetActivePlugins(IntPtr db, out IntPtr plugins, out UInt32 numPlugins)
        {
            plugins = new IntPtr(0);
@@ -97,39 +94,39 @@ namespace BossDummy
            return 0;
        }
 
-       [DllExport("SetActivePlugins", CallingConvention.StdCall)]
+       [DllExport("SetActivePlugins", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 SetActivePlugins(IntPtr db, IntPtr plugins, UInt32 numPlugins)
        {
            return 0;
        }
 
-       [DllExport("GetPluginLoadOrder", CallingConvention.StdCall)]
+       [DllExport("GetPluginLoadOrder", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 GetPluginLoadOrder(IntPtr db, string plugin, out UInt32 index)
        {
            index = 0;
            return 0;
        }
 
-       [DllExport("SetPluginLoadOrder", CallingConvention.StdCall)]
+       [DllExport("SetPluginLoadOrder", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 SetPluginLoadOrder(IntPtr db, string plugin, UInt32 index)
        {
            return 0;
        }
 
-       [DllExport("GetIndexedPlugin", CallingConvention.StdCall)]
+       [DllExport("GetIndexedPlugin", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 GetIndexedPlugin(IntPtr db, UInt32 index, out string plugin)
        {
            plugin = "";
            return 0;
        }
 
-       [DllExport("SetPluginActive", CallingConvention.StdCall)]
+       [DllExport("SetPluginActive", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 SetPluginActive(IntPtr db, string plugin, bool active)
        {
            return 0;
        }
 
-       [DllExport("IsPluginActive", CallingConvention.StdCall)]
+       [DllExport("IsPluginActive", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 IsPluginActive(IntPtr db, string plugin, out bool isActive)
        {
            isActive = false;
@@ -140,7 +137,7 @@ namespace BossDummy
 
        #region Utility Methods
 
-       [DllExport("IsPluginMaster", CallingConvention.StdCall)]
+       [DllExport("IsPluginMaster", CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]
        static UInt32 IsPluginMaster(IntPtr db, string plugin, out bool isMaster)
        {
            isMaster = false;
