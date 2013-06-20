@@ -18,7 +18,7 @@ along with Mod Organizer.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "nxmurl.h"
-#include <utility.h>
+#include "utility.h"
 #include <QRegExp>
 #include <QStringList>
 
@@ -29,6 +29,7 @@ NXMUrl::NXMUrl(const QString &url)
   if (exp.captureCount() != 3) {
     throw MOBase::MyException(tr("invalid nxm-link: %1").arg(url));
   }
+  m_Game = exp.cap(1);
   m_ModId = exp.cap(2).toInt();
   m_FileId = exp.cap(3).toInt();
 }
