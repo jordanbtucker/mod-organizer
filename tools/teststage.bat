@@ -1,3 +1,3 @@
 @echo off
 
-depends /c /oc:test.txt /d:dllpaths.dwp ..\staging\ModOrganizer\ModOrganizer.exe
+depends /c /oc:dependencies.csv /d:dllpaths.dwp /pb ..\output\ModOrganizer.exe
