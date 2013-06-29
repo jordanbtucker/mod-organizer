@@ -10,6 +10,7 @@ copy /y ..\output\hook.pdb ..\pdbs\hook_%version%.pdb
 
 xcopy /y /I ..\output\ModOrganizer.exe ..\staging\ModOrganizer\
 xcopy /y /I ..\output\helper.exe ..\staging\ModOrganizer\
+xcopy /y /I ..\output\nxmhandler.exe ..\staging\ModOrganizer\
 xcopy /y /I ..\output\uibase.dll ..\staging\ModOrganizer\
 xcopy /y /I ..\output\hook.dll ..\staging\ModOrganizer\
 xcopy /y /I ..\output\proxy.dll ..\staging\ModOrganizer\

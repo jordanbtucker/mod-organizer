@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
     <assemblyIdentity type="win32" name="dlls" version="1.0.0.0" processorArchitecture="x86"/>
-    <file name="icuin49.dll"/>
-    <file name="icuuc49.dll"/>
-    <file name="icudt49.dll"/>
-    <file name="Qt5Cored.dll"/>
-    <file name="Qt5Declaratived.dll"/>
-    <file name="Qt5Guid.dll"/>
-    <file name="Qt5Networkd.dll"/>
-    <file name="Qt5Scriptd.dll"/>
-    <file name="Qt5Sqld.dll"/>
-    <file name="Qt5Widgetsd.dll"/>
-    <file name="Qt5XmlPatternsd.dll"/>
+    <file name="QtCore4d.dll"/>
+    <file name="QtDeclarative4d.dll"/>
+    <file name="QtGui4d.dll"/>
+    <file name="QtNetwork4d.dll"/>
+    <file name="QtScript4d.dll"/>
+    <file name="QtSql4d.dll"/>
+    <file name="QtXmlPatterns4d.dll"/>
 </assembly>
