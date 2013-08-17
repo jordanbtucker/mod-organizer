@@ -1,0 +1,15 @@
+syntax: glob
+ModOrganizer-build-desktop*
+outputd/*
+output/*
+build-ModOrganizer-*
+source/NCC/*/bin
+source/NCC/*/obj
+source/NCC/bin
+*.orig
+source/plugins/proxyPython/build
+staging/*
+source - Copy/*
+ModOrganizer-build-*
+pdbs/*
+source/NCC/BossDummy.x/*
