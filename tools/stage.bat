@@ -23,6 +23,6 @@ xcopy /y /s /I ..\output\translations ..\staging\ModOrganizer\translations
 xcopy /y /s /I ..\output\dlls ..\staging\ModOrganizer\dlls
 xcopy /y /I ..\output\plugins\*.dll ..\staging\ModOrganizer\plugins\
 xcopy /y /I ..\output\plugins\*.py ..\staging\ModOrganizer\plugins\
-xcopy /y /s /I ..\output\plugins\data ..\staging\ModOrganizer\plugins\data
+xcopy /y /s /I /EXCLUDE:exclude.txt ..\output\plugins\data ..\staging\ModOrganizer\plugins\data
 xcopy /y /s /I ..\output\NCC ..\staging\ModOrganizer\NCC
 xcopy /y /s /I static_data\* ..\staging\ModOrganizer
