@@ -7,12 +7,14 @@ popd
 
 
 for /F "tokens=1-3* delims=." %%a in ('cscript.exe //nologo filever.vbs %STAGE_PATH%\ModOrganizer.exe') do (
-	@set REFERENCE_VERSION=%%a.%%b.6
 	@set VERSION=%%a.%%b.%%c
 )
 
+echo Current Version: %VERSION%
+set /p REFERENCE_VERSION=Reference Version: 
 
 rmdir /s /q ..\staging\ModOrganizer_patch
+del ..\staging\ModOrganizer_v%REFERENCE_VERSION%_update.7z
 mkdir ..\staging\ModOrganizer_patch
 
 for /F "delims=" %%a in ('cscript //nologo strlen.vbs "%STAGE_PATH%"') do @set LENGTH=%%a
