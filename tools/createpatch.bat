@@ -14,7 +14,7 @@ echo Current Version: %VERSION%
 set /p REFERENCE_VERSION=Reference Version: 
 
 rmdir /s /q ..\staging\ModOrganizer_patch
-del ..\staging\ModOrganizer_v%REFERENCE_VERSION%_update.7z
+del ..\staging\ModOrganizer_v%VERSION%_update.7z
 mkdir ..\staging\ModOrganizer_patch
 
 for /F "delims=" %%a in ('cscript //nologo strlen.vbs "%STAGE_PATH%"') do @set LENGTH=%%a
