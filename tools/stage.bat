@@ -20,7 +20,6 @@ xcopy /y /I ..\output\proxy.dll ..\staging\ModOrganizer\
 xcopy /y /s /I ..\output\stylesheets ..\staging\ModOrganizer\stylesheets
 xcopy /y /s /I ..\output\tutorials ..\staging\ModOrganizer\tutorials
 xcopy /y /s /I ..\output\translations ..\staging\ModOrganizer\translations
-xcopy /y /s /I ..\output\dlls ..\staging\ModOrganizer\dlls
 xcopy /y /I ..\output\plugins\*.dll ..\staging\ModOrganizer\plugins\
 xcopy /y /I ..\output\plugins\*.py ..\staging\ModOrganizer\plugins\
 xcopy /y /s /I /EXCLUDE:exclude.txt ..\output\plugins\data ..\staging\ModOrganizer\plugins\data
