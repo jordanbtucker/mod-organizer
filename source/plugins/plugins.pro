@@ -11,4 +11,5 @@ SUBDIRS += \
 		installerBundle \
 		proxyPython \
     diagnoseBasic \
-		pyniEdit
+		pyniEdit \
+    installerBCF
