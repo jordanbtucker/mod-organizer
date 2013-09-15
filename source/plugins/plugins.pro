@@ -12,4 +12,5 @@ SUBDIRS += \
 		proxyPython \
     diagnoseBasic \
 		pyniEdit \
-    installerBCF
+    installerBCF \
+    pageTESAlliance
