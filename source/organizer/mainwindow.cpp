@@ -2468,6 +2468,8 @@ void MainWindow::refresher_progress(int percent)
 
 void MainWindow::directory_refreshed()
 {
+  statusBar()->hide();
+
   DirectoryEntry *newStructure = m_DirectoryRefresher.getDirectoryStructure();
   if (newStructure != NULL) {
     DirectoryEntry *oldStructure = m_DirectoryStructure;
@@ -2485,7 +2487,6 @@ void MainWindow::directory_refreshed()
     refreshLists();
   }
 //  m_RefreshProgress->setVisible(false);
-  statusBar()->hide();
 
   // some problem-reports may rely on the virtual directory tree so they need to be updated
   // now
@@ -3371,8 +3372,8 @@ void MainWindow::checkModsForUpdates()
 
 void MainWindow::changeVersioningScheme() {
   if (QMessageBox::question(this, tr("Continue?"),
-        tr("This will try to change the versioning scheme so that the newest version is interpreted as an update to "
-           "the installed version."),
+        tr("The versioning scheme decides which version is considered newer than another.\n"
+           "This function will guess the versioning scheme under the assumption that the installed version is outdated."),
         QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes) {
 
     ModInfo::Ptr info = ModInfo::getByIndex(m_ContextRow);
@@ -3570,10 +3571,12 @@ void MainWindow::on_modList_customContextMenuRequested(const QPoint &pos)
         if (info->downgradeAvailable()) {
           menu.addAction(tr("Change versioning scheme"), this, SLOT(changeVersioningScheme()));
         }
-        if (info->updateIgnored()) {
-          menu.addAction(tr("Un-ignore update"), this, SLOT(unignoreUpdate()));
-        } else {
-          menu.addAction(tr("Ignore update"), this, SLOT(ignoreUpdate()));
+        if (info->updateAvailable() || info->downgradeAvailable()) {
+          if (info->updateIgnored()) {
+            menu.addAction(tr("Un-ignore update"), this, SLOT(unignoreUpdate()));
+          } else {
+            menu.addAction(tr("Ignore update"), this, SLOT(ignoreUpdate()));
+          }
         }
         menu.addSeparator();
 
@@ -4304,6 +4307,7 @@ void MainWindow::on_actionUpdate_triggered()
       (m_AskForNexusPW && queryLogin(username, password)))) {
     NexusInterface::instance()->getAccessManager()->login(username, password);
     m_LoginAttempted = true;
+    m_PostLoginTasks.push_back([&](MainWindow*) { m_Updater.startUpdate(); });
   } else {
     m_Updater.startUpdate();
   }
@@ -4340,6 +4344,7 @@ void MainWindow::updateDownloadListDelegate()
   connect(ui->downloadView->itemDelegate(), SIGNAL(installDownload(int)), this, SLOT(installDownload(int)));
   connect(ui->downloadView->itemDelegate(), SIGNAL(queryInfo(int)), &m_DownloadManager, SLOT(queryInfo(int)));
   connect(ui->downloadView->itemDelegate(), SIGNAL(removeDownload(int, bool)), &m_DownloadManager, SLOT(removeDownload(int, bool)));
+  connect(ui->downloadView->itemDelegate(), SIGNAL(restoreDownload(int)), &m_DownloadManager, SLOT(restoreDownload(int)));
   connect(ui->downloadView->itemDelegate(), SIGNAL(cancelDownload(int)), &m_DownloadManager, SLOT(cancelDownload(int)));
   connect(ui->downloadView->itemDelegate(), SIGNAL(pauseDownload(int)), &m_DownloadManager, SLOT(pauseDownload(int)));
   connect(ui->downloadView->itemDelegate(), SIGNAL(resumeDownload(int)), &m_DownloadManager, SLOT(resumeDownload(int)));
@@ -4809,4 +4814,9 @@ void MainWindow::on_linkButton_pressed()
   ui->linkButton->menu()->actions().at(0)->setIcon(selectedExecutable.m_Toolbar ? removeIcon : addIcon);
   ui->linkButton->menu()->actions().at(1)->setIcon(linkDesktopFile.exists() ? removeIcon : addIcon);
   ui->linkButton->menu()->actions().at(2)->setIcon(linkMenuFile.exists() ? removeIcon : addIcon);
+}
+
+void MainWindow::on_showHiddenBox_toggled(bool checked)
+{
+  m_DownloadManager.setShowHidden(checked);
 }
