@@ -1,0 +1,35 @@
+Q: Which load mechanism should I use?
+A: Please use the default unless you have a problem with it. If you have a Script Extender installed and don't want to use the MO UI, you can use the "Script Extender" load mechanism but be aware that Script Extender Plugins installed through MO will not work, you have to manually install them to the data directory. Also, whenever the game is updated, SE will stop working and with it MO.
+Use "Proxy DLL" only as a last resort. Also, keep in mind that when using "proxy DLL" you have to start MO at least once after every game update!
+
+Q: I installed a mod and it's not working!
+A: How do you know it's not working? The only reliable indicator is the game! The skyrim launcher does not show mods installed through MO.
+The data directory does not contain new files. After installing a mod, start the game and see if the mod did what it said. If you did and the mod is really not working, please verify that the directory structure is correct. Many mods are not packaged for easy installation so you may have to shift files around (either during installation or after).
+
+Q: What is the performance impact of using Mod Organizer?
+A: There are no additional disk accesses and CPU impact is barely measurable. Unless there is a bug I'm not aware of MO itself does not have a notable influence on performance. Before you report performance issues when using MO, please ensure it's not the installed mods causing it!
+
+Q: How do I find out if MO is working?
+A: Install a mod with a visible impact! Also, check that modorganizer.log get created
+
+Q: I'm using the proxy-dll loading mechanism and now MO/Skyrim doesn't work anymore.
+A: I don't know how this happens but it's easy to fix. Follow the following steps closely:
+- First, deactivate proxy-dll loading in MO then close it.
+- See what size the steam_api.dll in your skyrim-folder has. If it's around 116 kb, delete steam_api_orig.dll
+- If steam_api.dll is ~11kb, you delete steam_api.dll instead. Then you rename steam_api_orig.dll to steam_api.dll
+- In both cases you end up with a steam_api.dll that is around 116 kb and no other file called steam_api
+- Now start MO again and re-activate "proxy-dll"
+
+Q: I want to uninstall MO, what do I do?
+A: First, inside MO, go to settings and select "Mod Organizer" for the load mechanism. Close MO and then just stop using it.
+You can delete the ModOrganizer directory if you're sure you need nothing from it anymore (like mod archives). Beyond that, no uninstallation is necessary. MO does not write to the registry or into any directory besides its own.
+
+Q: Some mods are shown as having an available update but there is none (or vice versa)
+A: The most likely reason is that the mod author didn't version his mod (or the files of a mod) in a consistent, parsable, way. I can not and will not attempt to work around that. If a mod is versioned in a non-sensical way, please tell its author. If he doesn't care, I certainly won't.
+If however you think a mod IS versioned correctly and MO is treating it incorrectly, do let me know, but always include the mod name and please be aware that in many cases fixing version interpretation for one mod may break it for another.
+
+Q: I want to report a bug!
+A: Please post bugs and feature requests to my [url=http://issue.tannin.eu/tbg]issue tracker[/url]. Keep in mind that I use MO constantly and unless your bug is very new, I did not encounter it yet, so you'll have to help me reproduce your situation.
+
+Q: How can I contact you?
+A: If you want to contact me to report a bug or feature request, please use the [url=http://issue.tannin.eu/tbg]issue tracker[/url]. Otherwise please send an eMail to sherb at gmx.net
