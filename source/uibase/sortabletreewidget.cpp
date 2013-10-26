@@ -1,9 +1,38 @@
+/*
+Mod Organizer shared UI functionality
+
+Copyright (C) 2013 Sebastian Herbord. All rights reserved.
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+
+
 #include "sortabletreewidget.h"
 #include <QDropEvent>
+
+
+namespace MOBase {
 
 SortableTreeWidget::SortableTreeWidget(QWidget *parent)
   : QTreeWidget(parent)
 {
+}
+
+void SortableTreeWidget::setLocalMoveOnly(bool localOnly)
+{
+  m_LocalMoveOnly = localOnly;
 }
 
 void SortableTreeWidget::dropEvent(QDropEvent *event)
@@ -34,6 +63,7 @@ bool SortableTreeWidget::moveSelection(QTreeWidgetItem *parent, int index)
   std::vector<QPersistentModelIndex> persistentIndices;
   Q_FOREACH(const QModelIndex &index, selectedIndexes()) {
     if (index == parentIndex) return false;
+    if (m_LocalMoveOnly && (parentIndex != index.parent())) return false;
     if (index.column() != 0) continue;
     persistentIndices.push_back(index);
   }
@@ -77,5 +107,8 @@ bool SortableTreeWidget::moveSelection(QTreeWidgetItem *parent, int index)
       insertTopLevelItems(std::min<int>(targetRow, topLevelItemCount()), temp);
     }
   }
+  emit itemsMoved();
   return true;
+}
+
 }
