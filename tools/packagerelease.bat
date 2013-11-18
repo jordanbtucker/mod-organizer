@@ -15,16 +15,18 @@ cd ..\tools
 
 echo "creating installer"
 
-cd ..\staging\ModOrganizer
+rem cd ..\staging\ModOrganizer
 
-e:\7-zip\7z.exe a -mx9 -r ..\temp.7z *
+rem e:\7-zip\7z.exe a -mx9 -r ..\temp.7z *
 
-cd ..
+rem cd ..
 
-copy /B E:\7-zip\7zsd.sfx + ..\tools\config.txt + temp.7z ..\staging\ModOrganizer_v%version%_setup.exe
+rem copy /B E:\7-zip\7zsd.sfx + ..\tools\config.txt + temp.7z ..\staging\ModOrganizer_v%version%_setup.exe
 
-del temp.7z
+rem del temp.7z
 
-cd ..\tools
+rem cd ..\tools
+
+e:\nsis\makensis.exe installer.nsi
 
 echo "TODO: create patch"
