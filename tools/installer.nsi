@@ -16,9 +16,9 @@ InstallDir "$PROGRAMFILES\Mod Organizer"
 ;InstallDirRegKey HKLM "Software\${APPNAME}" ""
 OutFile "..\staging\ModOrganizer-${Version}.exe"
 RequestExecutionLevel user
-;SetCompress auto
-;SetCompressionLevel 9
-;SetCompressor /SOLID lzma
+SetCompress auto
+SetCompressionLevel 9
+SetCompressor /SOLID lzma
 
 
 ; Modern interface settings

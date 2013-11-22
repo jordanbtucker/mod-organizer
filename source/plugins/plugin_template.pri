@@ -12,6 +12,16 @@ CONFIG(debug, debug|release) {
   QMAKE_LFLAGS += /DEBUG
 }
 
+TRANSLATIONS = $${TARGET}_en.ts \
+               $${TARGET}_de.ts \
+               $${TARGET}_es.ts \
+               $${TARGET}_fr.ts \
+               $${TARGET}_zh_TW.ts \
+               $${TARGET}_zh_CN.ts \
+               $${TARGET}_cs.ts \
+               $${TARGET}_tr.ts \
+               $${TARGET}_ru.ts
+
 SRCDIR ~= s,/,$$QMAKE_DIR_SEP,g
 DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 

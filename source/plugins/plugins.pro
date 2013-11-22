@@ -14,3 +14,4 @@ SUBDIRS += \
 		pyniEdit \
     installerBCF \
     checkFNIS
+
