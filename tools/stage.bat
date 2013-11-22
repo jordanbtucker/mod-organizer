@@ -1,5 +1,9 @@
 echo "Compiling everything"
 
+set /p REBUILD="Rebuild? (y/n)" %=%
+
+if /i {%REBUILD%}=={n} (goto :skipbuild)
+
 set OLDDIR=%CD%
 rmdir /s /q ..\staging_prepare
 mkdir ..\staging_prepare
@@ -14,6 +18,7 @@ qmake.exe ..\source\ModOrganizer.pro -r -spec win32-msvc2010
 jom.exe
 chdir /d %OLDDIR%
 
+:skipbuild
 
 rmdir /s /q ..\staging\ModOrganizer
 mkdir ..\staging\ModOrganizer

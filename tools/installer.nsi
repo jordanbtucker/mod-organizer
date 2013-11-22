@@ -126,7 +126,7 @@ SectionGroup "Plugins" PluginsGroup
 		SetOutPath "$INSTDIR\plugins\"
 		File "..\staging\ModOrganizer\plugins\checkFNIS.dll"
 	SectionEnd
-	Section "FNIS Checker" PluginNMMImport
+	Section "NMM Import" PluginNMMImport
 		SetOutPath "$INSTDIR\plugins\"
 		File "..\staging\ModOrganizer\plugins\NMMImport.dll"
 	SectionEnd
@@ -302,6 +302,7 @@ Section Uninstall
 	RMDir "$INSTDIR\stylesheets\"
 	RMDir "$INSTDIR\mods\"
 	RMDir "$INSTDIR\overwrite\"
+	RMDir "$INSTDIR\plugins\data\"
 	RMDir "$INSTDIR\plugins\"
 	RMDir "$INSTDIR\profiles\"
 	RMDir "$INSTDIR\imageformats\"
