@@ -117,6 +117,10 @@ SectionGroup "Plugins" PluginsGroup
 	Section "Python Support" PluginPython
 		SetOutPath "$INSTDIR\plugins\"
 		File "..\staging\ModOrganizer\plugins\proxyPython.dll"
+		SetOutPath "$INSTDIR\plugins\data\"
+		File "..\staging\ModOrganizer\plugins\data\sip.pyd"
+		SetOutPath "$INSTDIR\plugins\data\PyQt4\"
+		File "..\staging\ModOrganizer\plugins\data\PyQt4\*"
 	SectionEnd
 	Section "Legacy ini editor"
 		SetOutPath "$INSTDIR\plugins\"
@@ -258,9 +262,10 @@ Section Uninstall
 	RMDir /r "$INSTDIR\NCC\"
 	
 	; Clean up plugin options
+	Delete "$INSTDIR\plugins\data\PyQt4\*"
+	Delete "$INSTDIR\plugins\data\*"
 	Delete "$INSTDIR\plugins\*.dll"
 	Delete "$INSTDIR\plugins\*.py"
-	Delete "$INSTDIR\plugins\data\*"
 	
 	; Clean up tutorials option
 	Delete "$INSTDIR\tutorials\*.js"
@@ -302,6 +307,7 @@ Section Uninstall
 	RMDir "$INSTDIR\stylesheets\"
 	RMDir "$INSTDIR\mods\"
 	RMDir "$INSTDIR\overwrite\"
+	RMDir "$INSTDIR\plugins\data\PyQt4\"
 	RMDir "$INSTDIR\plugins\data\"
 	RMDir "$INSTDIR\plugins\"
 	RMDir "$INSTDIR\profiles\"

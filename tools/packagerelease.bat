@@ -8,6 +8,8 @@ echo "creating archive"
 
 cd ..\staging
 
+del ModOrganizer_v%version%.7z
+
 e:\7-zip\7z.exe a -mx9 -r ModOrganizer_v%version%.7z ModOrganizer\*
 
 cd ..\tools
