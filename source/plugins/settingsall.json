@@ -1,0 +1,6296 @@
+{
+ "VATS": [
+  {
+   "default": false, 
+   "key": "bVATSAllowNoKill"
+  }, 
+  {
+   "default": false, 
+   "key": "bVATSDisable"
+  }, 
+  {
+   "default": false, 
+   "key": "bVATSForceRanged"
+  }, 
+  {
+   "default": false, 
+   "key": "bVATSIgnoreProjectileTest"
+  }, 
+  {
+   "default": false, 
+   "key": "bVATSMultipleCombatants"
+  }, 
+  {
+   "default": false, 
+   "key": "bVATSRangedSelective"
+  }, 
+  {
+   "default": false, 
+   "key": "bVATSSmartCameraCheckDebug"
+  }, 
+  {
+   "default": false, 
+   "key": "bVatsDebug"
+  }, 
+  {
+   "default": 1.2, 
+   "key": "fVATSCastingAfterKillDelay"
+  }, 
+  {
+   "default": 3.2000000000000002, 
+   "key": "fVATSFocus"
+  }, 
+  {
+   "default": 4.0, 
+   "key": "fVATSKillMoveEnd"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fVATSLightAngle"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fVATSLightDistance"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fVATSLightElevation"
+  }, 
+  {
+   "default": 40.0, 
+   "key": "fVATSLightLevelMax"
+  }, 
+  {
+   "default": 20.0, 
+   "key": "fVATSLightLevelMin"
+  }, 
+  {
+   "default": 2500.0, 
+   "key": "fVATSRangedLongDistance"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fVATSRangedLowHealthPercent"
+  }, 
+  {
+   "default": 50.0, 
+   "key": "fVATSRangedPercentMin"
+  }, 
+  {
+   "default": 20.0, 
+   "key": "fVATSRangedPercentSneakKill"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fVATSRangedPercentTargetNoThreat"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fVATSRangedTargetLowLevelMult"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fVatsLightColorB"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fVatsLightColorG"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fVatsLightColorR"
+  }
+ ], 
+ "Havok": [
+  {
+   "default": false,
+   "key": "bWONameSync"
+  },
+  {
+   "default": 1.3500000000000001, 
+   "key": "fInAirFallingCharGravityMult"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fTrapHitEventDelayMS"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fTriggerEventDelayMS"
+  },
+  {
+   "default": false,
+   "key": "bAddBipedWhenKeyframed"
+  }, 
+  {
+   "default": false,
+   "key": "bAllowCharacterBumper"
+  }, 
+  {
+   "default": false,
+   "key": "bAllowDeactivationWhileWarmStarting"
+  }, 
+  {
+   "default": false,
+   "key": "bDebugMultithreaded"
+  }, 
+  {
+   "default": false,
+   "key": "bDisablePlayerCollision"
+  }, 
+  {
+   "default": false,
+   "key": "bFindContactPointsOnAdd"
+  }, 
+  {
+   "default": false,
+   "key": "bForceJumpingFromGraph"
+  }, 
+  {
+   "default": false,
+   "key": "bHavokDebug"
+  }, 
+  {
+   "default": false,
+   "key": "bPreventHavokAddAll"
+  }, 
+  {
+   "default": false, 
+   "key": "bPreventHavokAddClutter"
+  }, 
+  {
+   "default": false, 
+   "key": "bRegisterAllVDBViewers"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseCharRBExtrapolation"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseCharacterRB"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseConstraintProjector"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseUnsupportedCast"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWorldLock"
+  }, 
+  {
+   "default": 45.0, 
+   "key": "fCameraCasterFadeSittingRadius"
+  }, 
+  {
+   "default": 6000000.0, 
+   "key": "fCharControllerWarpDistSqr"
+  }, 
+  {
+   "default": 6.0, 
+   "key": "fDefaultWaterfallCurrentVelocity"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fGoodPosCastCheckDepth"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fGoodPosCheckDepth"
+  }, 
+  {
+   "default": 0.75, 
+   "key": "fJumpAnimDelay"
+  }, 
+  {
+   "default": 0.0030000000000000001, 
+   "key": "fMaxPickTime"
+  }, 
+  {
+   "default": 0.059999999999999998, 
+   "key": "fMaxPickTimeDebug"
+  }, 
+  {
+   "default": 0.59999999999999998, 
+   "key": "fMaxPickTimeDebugVATS"
+  }, 
+  {
+   "default": 0.029999999999999999, 
+   "key": "fMaxPickTimeVATS"
+  }, 
+  {
+   "default": 0.016667000000000001, 
+   "key": "fMaxTime"
+  }, 
+  {
+   "default": 0.033333000000000002, 
+   "key": "fMaxTimeComplex"
+  }, 
+  {
+   "default": 95.0, 
+   "key": "fMoveLimitMass"
+  }, 
+  {
+   "default": 0.90000000000000002, 
+   "key": "fOD"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fQuadrupedPitchMult"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fRF"
+  }, 
+  {
+   "default": 0.97999999999999998, 
+   "key": "fSD"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fSE"
+  }, 
+  {
+   "default": 0.0080000000000000002, 
+   "key": "fTimePerSubStep"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fUnsupportCastLength"
+  }, 
+  {
+   "default": 4.0, 
+   "key": "fUnsupportedGravMult"
+  }, 
+  {
+   "default": 4.0, 
+   "key": "fWarmStartMaxTime"
+  }, 
+  {
+   "default": false, 
+   "key": "iEntityBatchRemoveRate"
+  }, 
+  {
+   "default": false, 
+   "key": "iMinNumSubSteps"
+  }, 
+  {
+   "default": false, 
+   "key": "iNumThreads"
+  }, 
+  {
+   "default": false, 
+   "key": "iSimType"
+  }, 
+  {
+   "default": false, 
+   "key": "uMaxNumPhysicsStepsPerUpdate"
+  }, 
+  {
+   "default": false, 
+   "key": "uMaxNumPhysicsStepsPerUpdateComplex"
+  }
+ ], 
+ "Menu": [
+  {
+   "default": false, 
+   "key": "iConsoleHistoryCharBufferSize"
+  }, 
+  {
+   "default": false, 
+   "key": "iConsoleSizeScreenPercent"
+  }, 
+  {
+   "default": false, 
+   "key": "iConsoleTextSize"
+  }, 
+  {
+   "default": "", 
+   "key": "rConsoleHistoryTextColor"
+  }, 
+  {
+   "default": "", 
+   "key": "rConsoleTextColor"
+  }, 
+  {
+   "default": "", 
+   "key": "rDebugTextColor"
+  }
+ ], 
+ "CopyProtectionStrings": [
+  {
+   "default": "Unable to find a CD-ROM/DVD drive on this computer.", 
+   "key": "sCopyProtectionMessage"
+  }, 
+  {
+   "default": "Insert the Skyrim Disc.", 
+   "key": "sCopyProtectionMessage2"
+  }, 
+  {
+   "default": "CD-ROM Drive Not Found", 
+   "key": "sCopyProtectionTitle"
+  }, 
+  {
+   "default": "Skyrim Disc Not Found", 
+   "key": "sCopyProtectionTitle2"
+  }
+ ], 
+ "Actor": [
+  {
+   "default": false, 
+   "key": "bUseNavMeshForMovement"
+  }, 
+  {
+   "default": 2048.0, 
+   "key": "fNotVisibleNavmeshMoveDist"
+  }, 
+  {
+   "default": 4096.0, 
+   "key": "fVisibleNavmeshMoveDist"
+  }
+ ], 
+ "Kinect": [
+  {
+   "default": 60000.0, 
+   "key": "fKinectMaxAllyTradeDistance"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fKinectMinConfidence"
+  }, 
+  {
+   "default": 0.01, 
+   "key": "fKinectMinReportConfidence"
+  }, 
+  {
+   "default": 0.0050000000000000001, 
+   "key": "fKinectMinReportShoutConfidence"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "fKinectMinRuleConfidence"
+  }, 
+  {
+   "default": 0.0074999999999999997, 
+   "key": "fKinectMinShoutConfidence"
+  }
+ ], 
+ "Verlet": [
+  {
+   "default": false, 
+   "key": "bUseConstantStepDelta"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseRotationBasedTransformUpdate"
+  }, 
+  {
+   "default": -1500.0, 
+   "key": "fGravity"
+  }, 
+  {
+   "default": 50.0, 
+   "key": "fVerticalCapsuleOffset"
+  }, 
+  {
+   "default": false, 
+   "key": "uCapeClothNumPin"
+  }, 
+  {
+   "default": false, 
+   "key": "uiNumIter"
+  }
+ ], 
+ "Camera": [
+  {
+   "default": false, 
+   "key": "bDisableAutoVanityMode"
+  }, 
+  {
+   "default": false, 
+   "key": "bDragonCameraTargetPlayer"
+  }, 
+  {
+   "default": false, 
+   "key": "bReturnTo1stPersonFromVanity"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "f1st3rdSwitchDelay"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "f1stPitchOffsetMouseFollowSpeed"
+  }, 
+  {
+   "default": 4.0, 
+   "key": "f1stPitchOffsetMouseMaxLag"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "f1stPitchOffsetMultOffAccel"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "f1stPitchOffsetMultOffMaxSpeed"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "f1stPitchOffsetMultOnAccel"
+  }, 
+  {
+   "default": 0.59999999999999998, 
+   "key": "f1stPitchOffsetMultOnMaxSpeed"
+  }, 
+  {
+   "default": 0.75, 
+   "key": "f1stPitchOffsetTarget"
+  }, 
+  {
+   "default": 30.0, 
+   "key": "fActorFadeOutLimit"
+  }, 
+  {
+   "default": 0.01, 
+   "key": "fAutoVanityIncrement"
+  }, 
+  {
+   "default": 120.0, 
+   "key": "fAutoVanityModeDelay"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fCameraCasterBleedOutSize"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fCameraCasterSize"
+  }, 
+  {
+   "default": 20.0, 
+   "key": "fCameraCasterTargetSize"
+  }, 
+  {
+   "default": 124.0, 
+   "key": "fCharControllerCheckHeightOffset"
+  }, 
+  {
+   "default": 30.0, 
+   "key": "fChaseCameraMaxAngle"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fChaseCameraSpeed"
+  }, 
+  {
+   "default": 4000.0, 
+   "key": "fCollisionRecoveryMinDist"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fCollisionRecoverySpeed"
+  }, 
+  {
+   "default": 300.0, 
+   "key": "fDefaultAutoVanityZoom"
+  }, 
+  {
+   "default": 0.75, 
+   "key": "fDragonCameraDollyTime"
+  }, 
+  {
+   "default": 90.0, 
+   "key": "fDragonMaxAngleBeforeTurn"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fFirstPersonDisablePOVLerpDPS"
+  }, 
+  {
+   "default": 1.5707960000000001, 
+   "key": "fFirstPersonSittingAngleLimit"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fFirstPersonSittingRotationSpeed"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fFreeCameraRotationSpeed"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fFreeCameraRunSpeed"
+  }, 
+  {
+   "default": 20.0, 
+   "key": "fFreeCameraTranslationSpeed"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fFreeCameraTriggerDeadzone"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fFreeRotationSpeed"
+  }, 
+  {
+   "default": 0.39269900000000002, 
+   "key": "fFurnitureCameraAngle"
+  }, 
+  {
+   "default": 250.0, 
+   "key": "fFurnitureCameraZoom"
+  }, 
+  {
+   "default": 0.32000000000000001, 
+   "key": "fHorseDismountYawCorrection"
+  }, 
+  {
+   "default": 90.0, 
+   "key": "fHorseMaxAngleBeforeTurn"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fLookingSpeed"
+  }, 
+  {
+   "default": -0.20000000000000001, 
+   "key": "fMinCurrentZoom"
+  }, 
+  {
+   "default": 0.074999999999999997, 
+   "key": "fMouseWheelZoomIncrement"
+  }, 
+  {
+   "default": 0.0050000000000000001, 
+   "key": "fMouseWheelZoomMinDelta"
+  }, 
+  {
+   "default": 0.80000000000000004, 
+   "key": "fMouseWheelZoomSpeed"
+  }, 
+  {
+   "default": -100.0, 
+   "key": "fOverShoulderCombatAddY"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fOverShoulderCombatPosX"
+  }, 
+  {
+   "default": 20.0, 
+   "key": "fOverShoulderCombatPosZ"
+  }, 
+  {
+   "default": -600.0, 
+   "key": "fOverShoulderDragonAddY"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fOverShoulderDragonPosX"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fOverShoulderDragonPosZ"
+  }, 
+  {
+   "default": -300.0, 
+   "key": "fOverShoulderHorseAddY"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fOverShoulderHorsePosX"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fOverShoulderHorsePosZ"
+  }, 
+  {
+   "default": 30.0, 
+   "key": "fOverShoulderPosX"
+  }, 
+  {
+   "default": -10.0, 
+   "key": "fOverShoulderPosZ"
+  }, 
+  {
+   "default": 0.75, 
+   "key": "fPitchZeroBlendTime"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fPitchZoomOutMaxDist"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fShoulderDollySpeed"
+  }, 
+  {
+   "default": 0.050000000000000003, 
+   "key": "fThumbstickZoomSpeed"
+  }, 
+  {
+   "default": 0.050000000000000003, 
+   "key": "fTweenCamRotAngle"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fTweenCamRotClosingSpeed"
+  }, 
+  {
+   "default": 4.0, 
+   "key": "fTweenCamRotSpeed"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fTweenCamZoomFOVMod"
+  }, 
+  {
+   "default": 25.0, 
+   "key": "fTweenCamZoomSpeed"
+  }, 
+  {
+   "default": 600.0, 
+   "key": "fVanityModeMaxDist"
+  }, 
+  {
+   "default": 4.0, 
+   "key": "fVanityModeMaxDistFlyMult"
+  }, 
+  {
+   "default": 155.0, 
+   "key": "fVanityModeMinDist"
+  }, 
+  {
+   "default": 1200.0, 
+   "key": "fVanityModeMinDistFly"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fWorkbenchCameraPitch"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fWorkbenchCameraTranslateX"
+  }, 
+  {
+   "default": 50.0, 
+   "key": "fWorkbenchCameraTranslateY"
+  }, 
+  {
+   "default": -50.0, 
+   "key": "fWorkbenchCameraTranslateZ"
+  }, 
+  {
+   "default": -1.0, 
+   "key": "fWorkbenchCameraYaw"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fWorkbenchCameraZoom"
+  }, 
+  {
+   "default": false, 
+   "key": "iAnimatedTransitionMillis"
+  }, 
+  {
+   "default": false, 
+   "key": "iBleedoutTransitionMillis"
+  }, 
+  {
+   "default": false, 
+   "key": "iHorseTransitionMillis"
+  }
+ ], 
+ "LookIK": [
+  {
+   "default": false, 
+   "key": "bAdditiveHeadAnim"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fAngleMax"
+  }, 
+  {
+   "default": 90.0, 
+   "key": "fAngleMaxEase"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fEaseAngleShutOff"
+  }, 
+  {
+   "default": 2.5, 
+   "key": "fEyeIKDistanceMax"
+  }, 
+  {
+   "default": 5000.0, 
+   "key": "fMaxTrackingDist"
+  }, 
+  {
+   "default": 12.0, 
+   "key": "fMinTrackingDist"
+  }
+ ], 
+ "TerrainManager": [
+  {
+   "default": false, 
+   "key": "bDisplayCloudLOD"
+  }, 
+  {
+   "default": false, 
+   "key": "bKeepLowDetailTerrain"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowLODInEditor"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseNewTerrainSystem"
+  }, 
+  {
+   "default": 20480.0, 
+   "key": "fBlockLevel0Distance"
+  }, 
+  {
+   "default": 32768.0, 
+   "key": "fBlockLevel1Distance"
+  }, 
+  {
+   "default": 100000.0, 
+   "key": "fBlockMaximumDistance"
+  }, 
+  {
+   "default": 2048.0, 
+   "key": "fCameraAboveMaxHeightThreshold"
+  }, 
+  {
+   "default": 0.75, 
+   "key": "fSplitDistanceMult"
+  }, 
+  {
+   "default": 25000.0, 
+   "key": "fTreeLoadDistance"
+  }, 
+  {
+   "default": false, 
+   "key": "uDistantTreeBlockCacheSizePerCell"
+  }
+ ], 
+ "BudgetCaps": [
+  {
+   "default": 28.0, 
+   "key": "fMaxMsUsagePerFrame"
+  }, 
+  {
+   "default": 0.050000000000000003, 
+   "key": "fMsActiveRefCount"
+  }, 
+  {
+   "default": 0.245, 
+   "key": "fMsActorRefCount"
+  }, 
+  {
+   "default": 0.050000000000000003, 
+   "key": "fMsAnimatedObjectsCount"
+  }, 
+  {
+   "default": 0.001, 
+   "key": "fMsDecalCount"
+  }, 
+  {
+   "default": 0.01, 
+   "key": "fMsEmittersCount"
+  }, 
+  {
+   "default": 0.01, 
+   "key": "fMsGeometryCount"
+  }, 
+  {
+   "default": 0.001, 
+   "key": "fMsHavokTriCount"
+  }, 
+  {
+   "default": 0.01, 
+   "key": "fMsLightCount"
+  }, 
+  {
+   "default": 0.01, 
+   "key": "fMsLightExcessGeometry"
+  }, 
+  {
+   "default": 0.001, 
+   "key": "fMsParticlesCount"
+  }, 
+  {
+   "default": 0.021000000000000001, 
+   "key": "fMsRefCount"
+  }, 
+  {
+   "default": 0.0001, 
+   "key": "fMsTriangleCount"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fMsWaterCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uActiveRefCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uActiveRefCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uActorMemoryBudgetCap"
+  }, 
+  {
+   "default": false, 
+   "key": "uActorRefCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uActorRefCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uAnimatedObjectsCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uAnimatedObjectsCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uCityLODBudgetAdjustment"
+  }, 
+  {
+   "default": false, 
+   "key": "uDecalCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uDecalCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uEmittersCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uEmittersCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uGeometryCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uGeometryCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uGeometryMemory"
+  }, 
+  {
+   "default": false, 
+   "key": "uGeometryMemoryInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uHavokTriCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uHavokTriCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uLightCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uLightCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uLightExcessGeometry"
+  }, 
+  {
+   "default": false, 
+   "key": "uLightExcessGeometryInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uLoadedAreaNonActorMemoryBudgetCap"
+  }, 
+  {
+   "default": false, 
+   "key": "uParticlesCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uParticlesCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uRefCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uRefCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uTextureMemory"
+  }, 
+  {
+   "default": false, 
+   "key": "uTextureMemoryInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uTriangleCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uTriangleCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uWastelandLODBudgetAdjustment"
+  }, 
+  {
+   "default": false, 
+   "key": "uWaterCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uWaterCountInterior"
+  }, 
+  {
+   "default": false, 
+   "key": "uWaterMemory"
+  }, 
+  {
+   "default": false, 
+   "key": "uWaterMemoryInterior"
+  }
+ ], 
+ "Pathfinding": [
+  {
+   "default": false, 
+   "key": "bAvoidBoxTriggersFailure"
+  }, 
+  {
+   "default": false, 
+   "key": "bBackgroundNavmeshUpdate"
+  }, 
+  {
+   "default": false, 
+   "key": "bBackgroundPathing"
+  }, 
+  {
+   "default": false, 
+   "key": "bCreateDebugInfo"
+  }, 
+  {
+   "default": false, 
+   "key": "bCutDoors"
+  }, 
+  {
+   "default": false, 
+   "key": "bDisableUnloadedPaths"
+  }, 
+  {
+   "default": false, 
+   "key": "bFacePathVector"
+  }, 
+  {
+   "default": false, 
+   "key": "bFixNavmeshInfosOnLoad"
+  }, 
+  {
+   "default": false, 
+   "key": "bIgnoreThresholds"
+  }, 
+  {
+   "default": false, 
+   "key": "bRebuildPathIfSmootherFailed"
+  }, 
+  {
+   "default": false, 
+   "key": "bSlowDownForActorAvoidance"
+  }, 
+  {
+   "default": false, 
+   "key": "bStaticAvoidanceTriggerMovementBlocked"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseActorAvoidBox"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseActorAvoidance"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseAlternateSmoothingForPrime"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseOldPathSmoothing"
+  }, 
+  {
+   "default": false, 
+   "key": "bUsePathSmoothing"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseRayCasts"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseStraightLineCheckFirst"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseTangentSmoothing"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseTaskletsToRecomputeBounds"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseTweenedAnimations"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseVelocityObstacles"
+  }, 
+  {
+   "default": false, 
+   "key": "bWarnIfHighLevelSearchFails"
+  }, 
+  {
+   "default": false, 
+   "key": "bWarpOnConsecutiveFailures"
+  }, 
+  {
+   "default": 2.5, 
+   "key": "fAICombatTurnSpeedScale"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fAITurnSpeedScale"
+  }, 
+  {
+   "default": 0.90000000000000002, 
+   "key": "fAcceptableErrorRatio"
+  }, 
+  {
+   "default": 24.0, 
+   "key": "fAvoidNodeCost"
+  }, 
+  {
+   "default": 11.0, 
+   "key": "fAvoidNodeRadiusAdd"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fAvoidPreferredTriangleCrossingMultiplier"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fAvoidPreferredTriangleMultiplier"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fAvoidanceDistanceRadiusMult"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fAvoidanceTimeDelta"
+  }, 
+  {
+   "default": 160.0, 
+   "key": "fBackPedalAngle"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fBadTriangleMultiplier"
+  }, 
+  {
+   "default": 32.0, 
+   "key": "fDefaultAvoidBoxAvoidNodeRadius"
+  }, 
+  {
+   "default": 32.0, 
+   "key": "fDefaultAvoidNodeCost"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fDefaultPreferredFactor"
+  }, 
+  {
+   "default": 32.0, 
+   "key": "fDefaultStaticAvoidNodeRadius"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fDefaultTangentSmoothingFactor"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fDistFromPathForFollowingRadiusMult"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fFindMaxSpeedMinParamIncrementPercent"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fFollowerTeleportOffsetFudge"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fHeadingToPathTangentMaxAngle"
+  }, 
+  {
+   "default": 16.0, 
+   "key": "fLedgeJumpHeightBuffer"
+  }, 
+  {
+   "default": 512.0, 
+   "key": "fMaxAvoidanceRadius"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fMaxCollisionTime"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fMaxDistFromPathRadiusMult"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "fMaxDistanceFromNavmeshMult"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fMaxDistanceMoved"
+  }, 
+  {
+   "default": 512.0, 
+   "key": "fMaxEdgeLength"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fMaxFitnessMultiplier"
+  }, 
+  {
+   "default": 128.0, 
+   "key": "fMaxHeightFromNavmeshToObstacleBoxBottom"
+  }, 
+  {
+   "default": -16.0, 
+   "key": "fMaxHeightFromObstacleBoxToToNavmesh"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fMaxTimeBlockedByActors"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fMaxTimeSizeAvoidNode"
+  }, 
+  {
+   "default": 256.0, 
+   "key": "fMinAvoidanceRadius"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "fMinCollisionTime"
+  }, 
+  {
+   "default": 50.0, 
+   "key": "fMinDist"
+  }, 
+  {
+   "default": 50.0, 
+   "key": "fMinFailureDistance"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fMinFrictionSpeed"
+  }, 
+  {
+   "default": 0.75, 
+   "key": "fMinNormalizedSpeedForSlowdown"
+  }, 
+  {
+   "default": 80.0, 
+   "key": "fMinStairSpeed"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fMinTimeToNextPoint"
+  }, 
+  {
+   "default": 409600.0, 
+   "key": "fMinimalUsePathingCost"
+  }, 
+  {
+   "default": 0.02, 
+   "key": "fMovementBlockedTimer"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fNavmeshBoundsActorRadiusMultiplier"
+  }, 
+  {
+   "default": 0.033300000000000003, 
+   "key": "fNavmeshBoundsMinTimeOfImpact"
+  }, 
+  {
+   "default": 25.0, 
+   "key": "fNodeDistanceThreshold"
+  }, 
+  {
+   "default": 48.0, 
+   "key": "fObstacleManagerMinHeight"
+  }, 
+  {
+   "default": 16.0, 
+   "key": "fObstacleManagerMinWidth"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fObstacleUpdateDeltaWhenMoving"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fObstacleUpdateDeltaWhenUnknown"
+  }, 
+  {
+   "default": 7.0, 
+   "key": "fPOVSmootherAvoidNodeCost"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fPathManagerDebugInfoWindow"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fPathToAnimLengthMaxMultiplier"
+  }, 
+  {
+   "default": 80.0, 
+   "key": "fPathingLargeActorRadius"
+  }, 
+  {
+   "default": 0.01, 
+   "key": "fPreferredTriangleMultiplier"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fRotateTowardsPathThreshold"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fShortPathRadiusMult"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fSlowDownMultiplier"
+  }, 
+  {
+   "default": 25.0, 
+   "key": "fSmoothingStepHeight"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fSprintAccelerationMult"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fSprintAngleToPathThreshold"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fSprintDistToPathThresholdRadiusMult"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fStaticPathTangentSmoothingFactor"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fTeleportNodeAngleTolerance"
+  }, 
+  {
+   "default": 0.66000000000000003, 
+   "key": "fTotalDisplacementThresholdRadiusMult"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fTotalTimePadding"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fTotalTimeThreshold"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fTweenerAnimDurationOffset"
+  }, 
+  {
+   "default": 0.20000000000000001, 
+   "key": "fTweeningMaxPercentSpeedDelta"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fWarpMaxTime"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fWarpPathOffset"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fWarpRequestActorRadius"
+  }, 
+  {
+   "default": 4.0, 
+   "key": "fWaterTriangleCostMultiplier"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fWaterTriangleCrossingCostMultiplier"
+  }, 
+  {
+   "default": false, 
+   "key": "iDefaultRetryCount"
+  }, 
+  {
+   "default": false, 
+   "key": "iFindMaxSpeedMinIterationCount"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxActorsToAvoid"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxAvoidBoxCheckPerFrame"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxHavokRequestsPerFrame"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxObstacleBuildPerFrame"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxPathRequestsPerFrameTracked"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxQueuedPathingRequests"
+  }, 
+  {
+   "default": false, 
+   "key": "iPathRequestsAllowedPerFrame"
+  }, 
+  {
+   "default": false, 
+   "key": "iWarpMaxPathFailureCount"
+  }, 
+  {
+   "default": false, 
+   "key": "uiSmallNavmeshInfoPathSC"
+  }
+ ], 
+ "RagdollAnim": [
+  {
+   "default": false, 
+   "key": "bFootIK"
+  }, 
+  {
+   "default": false, 
+   "key": "bGrabIK"
+  }, 
+  {
+   "default": false, 
+   "key": "bLookIK"
+  }, 
+  {
+   "default": false, 
+   "key": "bPoseMatching"
+  }, 
+  {
+   "default": false, 
+   "key": "bRagdollAnim"
+  }, 
+  {
+   "default": false, 
+   "key": "bRagdollFeedback"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fAccelerationGain"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fCameraDist"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fDesiredVel"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fDetectionUpdateTimeSec"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fFeedbackImpulseMult"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fFeedbackOnOffGain"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fFeedbackOnOffGainTimeMS"
+  }, 
+  {
+   "default": 10000.0, 
+   "key": "fFeedbackTimeMS"
+  }, 
+  {
+   "default": 0.17000000000000001, 
+   "key": "fHierarchyGain"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fImpulseLimit"
+  }, 
+  {
+   "default": 0.050000000000000003, 
+   "key": "fPositionGain"
+  }, 
+  {
+   "default": 18.0, 
+   "key": "fPositionMaxAngularVelocity"
+  }, 
+  {
+   "default": 14.0, 
+   "key": "fPositionMaxLinearVelocity"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fSnapGain"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fSnapMaxAngularDistance"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fSnapMaxAngularVelocity"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fSnapMaxLinearDistance"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fSnapMaxLinearVelocity"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fVelocityDamping"
+  }, 
+  {
+   "default": 0.59999999999999998, 
+   "key": "fVelocityGain"
+  }
+ ], 
+ "Dialogue": [
+  {
+   "default": 0.17000000000000001, 
+   "key": "fDialogueRotationPitchOffset"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fDialogueRotationSecs"
+  }
+ ], 
+ "Grass": [
+  {
+   "default": false, 
+   "key": "b30GrassVS"
+  }, 
+  {
+   "default": false, 
+   "key": "bAllowCreateGrass"
+  }, 
+  {
+   "default": false, 
+   "key": "bAllowLoadGrass"
+  }, 
+  {
+   "default": false, 
+   "key": "bDrawShaderGrass"
+  }, 
+  {
+   "default": false, 
+   "key": "bGenerateGrassDataFiles"
+  }, 
+  {
+   "default": false, 
+   "key": "bGrassPointLighting"
+  }, 
+  {
+   "default": 3500.0, 
+   "key": "fGrassDefaultStartFadeDistance"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fGrassFadeRange"
+  }, 
+  {
+   "default": 7000.0, 
+   "key": "fGrassMaxStartFadeDistance"
+  }, 
+  {
+   "default": 400.0, 
+   "key": "fGrassMinStartFadeDistance"
+  }, 
+  {
+   "default": 3500.0, 
+   "key": "fGrassStartFadeDistance"
+  }, 
+  {
+   "default": 125.0, 
+   "key": "fGrassWindMagnitudeMax"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fGrassWindMagnitudeMin"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fTexturePctThreshold"
+  }, 
+  {
+   "default": 1.75, 
+   "key": "fWaveOffsetRange"
+  }, 
+  {
+   "default": false, 
+   "key": "iGrassCellRadius"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxGrassTypesPerTexure"
+  }, 
+  {
+   "default": false, 
+   "key": "iMinGrassSize"
+  }
+ ], 
+ "Combat": [
+  {
+   "default": false, 
+   "key": "bAimSights"
+  }, 
+  {
+   "default": false, 
+   "key": "bChainExplosionDebug"
+  }, 
+  {
+   "default": false, 
+   "key": "bCombatPathSmoothing"
+  }, 
+  {
+   "default": false, 
+   "key": "bCombatPathSprinting"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombat"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatAimLocations"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatArea"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatAttackRange"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatCoverReservations"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatDetection"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatGroups"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatGroups2"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatProjectileLOS"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatSearch"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatTargetLocations"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatTargets"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatTextColorDark"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatThreats"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugCombatUnreachableLocations"
+  }, 
+  {
+   "default": false, 
+   "key": "bDisableCombatDialogue"
+  }, 
+  {
+   "default": false, 
+   "key": "bDisableNPCAttacks"
+  }, 
+  {
+   "default": false, 
+   "key": "bDismemberOneLimb"
+  }, 
+  {
+   "default": false, 
+   "key": "bEncounterZoneTargetRestrict"
+  }, 
+  {
+   "default": false, 
+   "key": "bForceNPCsUseAmmo"
+  }, 
+  {
+   "default": false, 
+   "key": "bHazardDebug"
+  }, 
+  {
+   "default": false, 
+   "key": "bIronSightsZoomEnable"
+  }, 
+  {
+   "default": false, 
+   "key": "bLaserSights"
+  }, 
+  {
+   "default": false, 
+   "key": "bMagicDebug"
+  }, 
+  {
+   "default": false, 
+   "key": "bPlayHitLocationIdles"
+  }, 
+  {
+   "default": false, 
+   "key": "bPlayStaggers"
+  }, 
+  {
+   "default": false, 
+   "key": "bPlayerAlwaysStaggered"
+  }, 
+  {
+   "default": false, 
+   "key": "bProjectileDebug"
+  }, 
+  {
+   "default": false, 
+   "key": "bVATSProjectileDebug"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "f1PArrowTiltUpAngle"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "f1PBoltTiltUpAngle"
+  }, 
+  {
+   "default": 2.5, 
+   "key": "f3PArrowTiltUpAngle"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fAimChaseLookingMult"
+  }, 
+  {
+   "default": 90.0, 
+   "key": "fAimDownDegrees"
+  }, 
+  {
+   "default": 90.0, 
+   "key": "fAimUpDegrees"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fDeathForceCleared"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fDebugCombatProjectileLOSTime"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fDebugCombatTextSize"
+  }, 
+  {
+   "default": 250.0, 
+   "key": "fDecapInitialSpeed"
+  }, 
+  {
+   "default": 0.040000000000000001, 
+   "key": "fHitEffectThresholdMod"
+  }, 
+  {
+   "default": 0.042999999999999997, 
+   "key": "fHitEffectThresholdSevere"
+  }, 
+  {
+   "default": 0.40000000000000002, 
+   "key": "fHitVectorDelay"
+  }, 
+  {
+   "default": 50.0, 
+   "key": "fIronSightsZoomDefault"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fMagnetismHeadingMult"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fMagnetismLookingMult"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fMagnetismLookingMult"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fMagnetismObjHeadingMult"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fMagnetismObjLookingMult"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fMagnetismObjStrafeHeadingMult"
+  }, 
+  {
+   "default": 350.0, 
+   "key": "fMagnetismStrafeBaseSpeed"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fMagnetismStrafeHeadingMult"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fMagnetismStrafeHeadingMult"
+  }, 
+  {
+   "default": 750.0, 
+   "key": "fMagnetismStrafeMaxDistance"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fMinBloodDamage"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fMostCommonProjectileCollisionRadius1"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fMostCommonProjectileCollisionRadius2"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fMostCommonProjectileCollisionRadius3"
+  }, 
+  {
+   "default": 135.0, 
+   "key": "fMountedAttackRange"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fProjectileDebugDuration"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxHiPerfCombatCount"
+  }, 
+  {
+   "default": false, 
+   "key": "iShowHitVector"
+  }
+ ], 
+ ":Controls": [
+  {
+   "default": 0.29999999999999999, 
+   "key": "fKeyboardRepeatDelay"
+  }, 
+  {
+   "default": 0.050000000000000003, 
+   "key": "fKeyboardRepeatRate"
+  }
+ ], 
+ "FaceGen": [
+  {
+   "default": false, 
+   "key": "bUseCustomizationMorphs"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseRaceMorph"
+  }, 
+  {
+   "default": false, 
+   "key": "uiNumActorsAllowedToMorph"
+  }
+ ], 
+ "Cart": [
+  {
+   "default": 0.75, 
+   "key": "fCartLimitMax"
+  }, 
+  {
+   "default": -0.75, 
+   "key": "fCartLimitMin"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fCartPivotX"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fCartPivotY"
+  }, 
+  {
+   "default": 0.69999999999999996, 
+   "key": "fCartPivotZ"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fCartRot1"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fCartRot2"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fFriction"
+  }, 
+  {
+   "default": 3.5, 
+   "key": "fGravMult"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fHorseOffsetX"
+  }, 
+  {
+   "default": 200.0, 
+   "key": "fHorseOffsetY"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fHorseOffsetZ"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fHorsePivotX"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fHorsePivotY"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fHorsePivotZ"
+  }, 
+  {
+   "default": 130.0, 
+   "key": "fMass"
+  }, 
+  {
+   "default": -20.0, 
+   "key": "fPoleZOffset"
+  }, 
+  {
+   "default": 50.0, 
+   "key": "fTetherOffsetX"
+  }, 
+  {
+   "default": 163.0, 
+   "key": "fTetherOffsetY"
+  }, 
+  {
+   "default": 13.0, 
+   "key": "fTetherOffsetZ"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fTipImpulse"
+  }, 
+  {
+   "default": 0.01, 
+   "key": "fWheelAngDamp"
+  }, 
+  {
+   "default": "FrontHorseCarriage01", 
+   "key": "sHarnessBoneCart"
+  }, 
+  {
+   "default": "HarnessLeftBone", 
+   "key": "sHarnessBoneLeft"
+  }, 
+  {
+   "default": "HarnessRightBone", 
+   "key": "sHarnessBoneRight"
+  }, 
+  {
+   "default": "HorseSpine2", 
+   "key": "sHorseConnect"
+  }
+ ],
+ "Water": [
+  {
+   "default": false, 
+   "key": "bAutoWaterSilhouetteReflections"
+  }, 
+  {
+   "default": false, 
+   "key": "bForceHighDetailReflections"
+  }, 
+  {
+   "default": false, 
+   "key": "bForceLowDetailReflections"
+  }, 
+  {
+   "default": false, 
+   "key": "bForceLowDetailWater"
+  }, 
+  {
+   "default": false, 
+   "key": "bReflectExplosions"
+  }, 
+  {
+   "default": false, 
+   "key": "bReflectLODLand"
+  }, 
+  {
+   "default": false, 
+   "key": "bReflectLODObjects"
+  }, 
+  {
+   "default": false, 
+   "key": "bReflectLODTrees"
+  }, 
+  {
+   "default": false, 
+   "key": "bReflectSky"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseBulletWaterDisplacements"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseCubeMapReflections"
+  }, 
+  {
+   "default": false, 
+   "key": "bUsePerWorldSpaceWaterNoise"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWater"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWaterDepth"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWaterDisplacements"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWaterHiRes"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWaterLOD"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWaterReflectionBlur"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWaterReflections"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWaterRefractions"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWaterShader"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fCubeMapRefreshRate"
+  }, 
+  {
+   "default": 300.0, 
+   "key": "fExteriorWaterReflectionThreshold"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fInteriorWaterReflectionThreshold"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fRefractionWaterPlaneBias"
+  }, 
+  {
+   "default": 2048.0, 
+   "key": "fSurfaceTileSize"
+  }, 
+  {
+   "default": 4.75, 
+   "key": "fTileTextureDivisor"
+  }, 
+  {
+   "default": 2048.0, 
+   "key": "fWadingWaterQuadSize"
+  }, 
+  {
+   "default": 512.0, 
+   "key": "fWadingWaterTextureRes"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fWaterGroupHeightRange"
+  }, 
+  {
+   "default": false, 
+   "key": "iWaterBlurAmount"
+  }, 
+  {
+   "default": false, 
+   "key": "iWaterNoiseResolution"
+  }, 
+  {
+   "default": false, 
+   "key": "iWaterReflectHeight"
+  }, 
+  {
+   "default": false, 
+   "key": "iWaterReflectWidth"
+  }, 
+  {
+   "default": "water", 
+   "key": "sSurfaceTexture"
+  }, 
+  {
+   "default": false, 
+   "key": "uMaxExteriorWaterReflections"
+  }, 
+  {
+   "default": false, 
+   "key": "uMaxInteriorWaterReflections"
+  }, 
+  {
+   "default": false, 
+   "key": "uSurfaceFPS"
+  }
+ ], 
+ "CameraPath": [
+  {
+   "default": false, 
+   "key": "bRecord"
+  }, 
+  {
+   "default": false, 
+   "key": "bStart"
+  }, 
+  {
+   "default": false, 
+   "key": "iFPS"
+  }, 
+  {
+   "default": false, 
+   "key": "iTake"
+  }, 
+  {
+   "default": "TestCameraPath", 
+   "key": "sDirectoryName"
+  }, 
+  {
+   "default": "Cameras\\CameraTest.nif", 
+   "key": "sNif"
+  }, 
+  {
+   "default": "", 
+   "key": "sOffsetID"
+  }
+ ], 
+ "ScreenSplatter": [
+  {
+   "default": false, 
+   "key": "bBloodSplatterEnabled"
+  }
+ ], 
+ "SpeedTree": [
+  {
+   "default": -0.75, 
+   "key": "fLODTreeMipMapLODBias"
+  }, 
+  {
+   "default": -0.25, 
+   "key": "fLocalTreeMipMapLODBias"
+  }
+ ], 
+ "Interface": [
+  {
+   "default": false, 
+   "key": "bDialogueSubtitles"
+  }, 
+  {
+   "default": false, 
+   "key": "bGeneralSubtitles"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowCompass"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowCrosshair"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowHUDMessages"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowInventory3D"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowSubtitleSpeakerName"
+  }, 
+  {
+   "default": true,
+   "key": "bShowTutorials",
+   "description": "Uncheck to disable tutorial messages"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseAllNonDefaultLoadScreensFirst"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseFuzzyPicking"
+  }, 
+  {
+   "default": false, 
+   "key": "bUserClosesLoadingMenu"
+  }, 
+  {
+   "default": false, 
+   "key": "bWriteTranslationFile"
+  }, 
+  {
+   "default": 180.0, 
+   "key": "fActivatePickLength"
+  }, 
+  {
+   "default": 16.0, 
+   "key": "fActivatePickRadius"
+  }, 
+  {
+   "default": 110.0, 
+   "key": "fBookDistance"
+  }, 
+  {
+   "default": 0.82999999999999996, 
+   "key": "fBookLight2DiffuseColorB"
+  }, 
+  {
+   "default": 0.94999999999999996, 
+   "key": "fBookLight2DiffuseColorG"
+  }, 
+  {
+   "default": 0.97999999999999998, 
+   "key": "fBookLight2DiffuseColorR"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fBookLight2DimmerValue"
+  }, 
+  {
+   "default": 400.0, 
+   "key": "fBookLight2Radius"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fBookLight2X"
+  }, 
+  {
+   "default": -75.0, 
+   "key": "fBookLight2Y"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fBookLight2Z"
+  }, 
+  {
+   "default": 0.82999999999999996, 
+   "key": "fBookLightDiffuseColorB"
+  }, 
+  {
+   "default": 0.94999999999999996, 
+   "key": "fBookLightDiffuseColorG"
+  }, 
+  {
+   "default": 0.97999999999999998, 
+   "key": "fBookLightDiffuseColorR"
+  }, 
+  {
+   "default": 1.75, 
+   "key": "fBookLightDimmerValue"
+  }, 
+  {
+   "default": 400.0, 
+   "key": "fBookLightRadius"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fBookLightX"
+  }, 
+  {
+   "default": -350.0, 
+   "key": "fBookLightY"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fBookLightZ"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fBookOpenTime"
+  }, 
+  {
+   "default": 0.44500000000000001, 
+   "key": "fBookPosHeightPercentage"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fBookPosWidthPercentage"
+  }, 
+  {
+   "default": -25.0, 
+   "key": "fBookXRotation"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fCrafting3DItemPosX"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fCrafting3DItemPosXWide"
+  }, 
+  {
+   "default": -500.0, 
+   "key": "fCrafting3DItemPosY"
+  }, 
+  {
+   "default": -500.0, 
+   "key": "fCrafting3DItemPosYWide"
+  }, 
+  {
+   "default": 16.0, 
+   "key": "fCrafting3DItemPosZ"
+  }, 
+  {
+   "default": 12.0, 
+   "key": "fCrafting3DItemPosZWide"
+  }, 
+  {
+   "default": 1.8700000000000001, 
+   "key": "fCrafting3DItemScale"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fCrafting3DItemScaleWide"
+  }, 
+  {
+   "default": 13.0, 
+   "key": "fDebugFontSize"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fFadeToBlackFadeSeconds"
+  }, 
+  {
+   "default": 11.0, 
+   "key": "fGamepadCursorSpeed"
+  }, 
+  {
+   "default": 0.88239999999999996, 
+   "key": "fInterfaceTintB"
+  }, 
+  {
+   "default": 0.98429999999999995, 
+   "key": "fInterfaceTintG"
+  }, 
+  {
+   "default": 0.63139999999999996, 
+   "key": "fInterfaceTintR"
+  }, 
+  {
+   "default": 12.5, 
+   "key": "fInventory3DBoundRadiusScale"
+  }, 
+  {
+   "default": 1.8700000000000001, 
+   "key": "fInventory3DItemPosScale"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fInventory3DItemPosScaleWide"
+  }, 
+  {
+   "default": -29.0, 
+   "key": "fInventory3DItemPosX"
+  }, 
+  {
+   "default": -22.0, 
+   "key": "fInventory3DItemPosXWide"
+  }, 
+  {
+   "default": -500.0, 
+   "key": "fInventory3DItemPosY"
+  }, 
+  {
+   "default": -500.0, 
+   "key": "fInventory3DItemPosYWide"
+  }, 
+  {
+   "default": 16.0, 
+   "key": "fInventory3DItemPosZ"
+  }, 
+  {
+   "default": 12.0, 
+   "key": "fInventory3DItemPosZWide"
+  }, 
+  {
+   "default": 50.0, 
+   "key": "fInventory3DItemRotMouseSpeed"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fInventory3DItemRotSpeed"
+  }, 
+  {
+   "default": 2.25, 
+   "key": "fInventory3DItemZoomScale"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fInventory3DItemZoomSpeed"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fInventory3DItemZoomX"
+  }, 
+  {
+   "default": -500.0, 
+   "key": "fInventory3DItemZoomY"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fInventory3DItemZoomZ"
+  }, 
+  {
+   "default": 0.82999999999999996, 
+   "key": "fInventoryLight2DiffuseColorB"
+  }, 
+  {
+   "default": 0.94999999999999996, 
+   "key": "fInventoryLight2DiffuseColorG"
+  }, 
+  {
+   "default": 0.97999999999999998, 
+   "key": "fInventoryLight2DiffuseColorR"
+  }, 
+  {
+   "default": 1.75, 
+   "key": "fInventoryLight2DimmerValue"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fInventoryLight2Radius"
+  }, 
+  {
+   "default": 0.82999999999999996, 
+   "key": "fInventoryLightDiffuseColorB"
+  }, 
+  {
+   "default": 0.94999999999999996, 
+   "key": "fInventoryLightDiffuseColorG"
+  }, 
+  {
+   "default": 0.97999999999999998, 
+   "key": "fInventoryLightDiffuseColorR"
+  }, 
+  {
+   "default": 1.75, 
+   "key": "fInventoryLightDimmerValue"
+  }, 
+  {
+   "default": 400.0, 
+   "key": "fInventoryLightRadius"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fInventoryMenuLight2X"
+  }, 
+  {
+   "default": -350.0, 
+   "key": "fInventoryMenuLight2Y"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fInventoryMenuLight2Z"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fInventoryMenuLightX"
+  }, 
+  {
+   "default": -350.0, 
+   "key": "fInventoryMenuLightY"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fInventoryMenuLightZ"
+  }, 
+  {
+   "default": 0.20000000000000001, 
+   "key": "fJournalLongRepeatRate"
+  }, 
+  {
+   "default": 0.074999999999999997, 
+   "key": "fJournalShortRepeatRate"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fLargeActivatePickLength_G"
+  }, 
+  {
+   "default": 9.0, 
+   "key": "fLockCenterOffset"
+  }, 
+  {
+   "default": 90.0, 
+   "key": "fLockMaxAngle"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fLockPositionX"
+  }, 
+  {
+   "default": -1100.0, 
+   "key": "fLockPositionY"
+  }, 
+  {
+   "default": -1300.0, 
+   "key": "fLockPositionYWide"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fLockPositionZ"
+  }, 
+  {
+   "default": -14.5, 
+   "key": "fLockRotCenterOffsetX"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fLockRotCenterOffsetZ"
+  }, 
+  {
+   "default": 80.0, 
+   "key": "fLockRotationSpeed"
+  }, 
+  {
+   "default": 0.82999999999999996, 
+   "key": "fLockpickLightDiffuseColorB"
+  }, 
+  {
+   "default": 0.94999999999999996, 
+   "key": "fLockpickLightDiffuseColorG"
+  }, 
+  {
+   "default": 0.97999999999999998, 
+   "key": "fLockpickLightDiffuseColorR"
+  }, 
+  {
+   "default": 1.75, 
+   "key": "fLockpickLightDimmerValue"
+  }, 
+  {
+   "default": 400.0, 
+   "key": "fLockpickLightRadius"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fLockpickLightX"
+  }, 
+  {
+   "default": -1000.0, 
+   "key": "fLockpickLightY"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fLockpickLightZ"
+  }, 
+  {
+   "default": 1.8700000000000001, 
+   "key": "fMagic3DItemPosScale"
+  }, 
+  {
+   "default": 1.75, 
+   "key": "fMagic3DItemPosScaleWide"
+  }, 
+  {
+   "default": 29.0, 
+   "key": "fMagic3DItemPosX"
+  }, 
+  {
+   "default": 22.0, 
+   "key": "fMagic3DItemPosXWide"
+  }, 
+  {
+   "default": -500.0, 
+   "key": "fMagic3DItemPosY"
+  }, 
+  {
+   "default": -500.0, 
+   "key": "fMagic3DItemPosYWide"
+  }, 
+  {
+   "default": 8.0, 
+   "key": "fMagic3DItemPosZ"
+  }, 
+  {
+   "default": 6.0, 
+   "key": "fMagic3DItemPosZWide"
+  }, 
+  {
+   "default": 1250.0, 
+   "key": "fMaxSubtitleDistance"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fMenuKeyRepeatLong"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fMenuKeyRepeatShort"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fMinSecondsForLoadFadeIn"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fMouseCursorSpeed"
+  }, 
+  {
+   "default": 90.0, 
+   "key": "fNoteDistance"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fPackratRatio"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fPickMouseRotationSpeed"
+  }, 
+  {
+   "default": 400.0, 
+   "key": "fPickRotationSpeed"
+  }, 
+  {
+   "default": 175.0, 
+   "key": "fPlayerBodyEditDistance"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fPlayerFaceEditDistance"
+  }, 
+  {
+   "default": 30.0, 
+   "key": "fPlayerRotationAngle"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fPlayerZoomTime"
+  }, 
+  {
+   "default": 0.95499999999999996, 
+   "key": "fRSMCameraLookAtPercent"
+  }, 
+  {
+   "default": 0.059999999999999998, 
+   "key": "fRSMLookAtOnGain"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fSafeZoneX"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fSafeZoneXWide"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fSafeZoneY"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fSafeZoneYWide"
+  }, 
+  {
+   "default": 0.69999999999999996, 
+   "key": "fSleepFaderTime"
+  }, 
+  {
+   "default": 0.20000000000000001, 
+   "key": "fTweenLongRepeatRate"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fTweenShortRepeatRate"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fUIAltLogoModel_TranslateX_G"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fUIAltLogoModel_TranslateY_G"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fUIAltLogoModel_TranslateZ_G"
+  }, 
+  {
+   "default": 20480.0, 
+   "key": "fUICameraFarDistance"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fUICameraNearDistance"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fUILogoModel_AutoRotateSpeed"
+  }, 
+  {
+   "default": 0.0001, 
+   "key": "fUILogoModel_FadeSecs"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fUILogoModel_MouseThreshold"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fUILogoModel_MouseToPanSpeed"
+  }, 
+  {
+   "default": 0.02, 
+   "key": "fUILogoModel_MouseToRotateSpeed"
+  }, 
+  {
+   "default": 0.59999999999999998, 
+   "key": "fUILogoModel_MouseToZoomSpeed"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "fUILogoModel_RotationPauseDuration"
+  }, 
+  {
+   "default": 8.0, 
+   "key": "fUILogoModel_ThumbstickToPanSpeed"
+  }, 
+  {
+   "default": 0.45000000000000001, 
+   "key": "fUILogoModel_ThumbstickToRotateSpeed"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fUILogoModel_ThumbstickToZoomSpeed"
+  }, 
+  {
+   "default": 75.0, 
+   "key": "fUIMistMenu_CameraFOV_G"
+  }, 
+  {
+   "default": -50.0, 
+   "key": "fUIMistMenu_CameraLookAtX_G"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fUIMistMenu_CameraLookAtY_G"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fUIMistMenu_CameraLookAtZ_G"
+  }, 
+  {
+   "default": -50.0, 
+   "key": "fUIMistMenu_CameraX_G"
+  }, 
+  {
+   "default": 600.0, 
+   "key": "fUIMistMenu_CameraY_G"
+  }, 
+  {
+   "default": 80.0, 
+   "key": "fUIMistMenu_CameraZ_G"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fUIMistMenu_DefaultLogoNIFScale"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fUIMistMenu_LogoOnscreenPanThresholdX"
+  }, 
+  {
+   "default": 0.33000000000000002, 
+   "key": "fUIMistMenu_LogoOnscreenPanThresholdY"
+  }, 
+  {
+   "default": 95.0, 
+   "key": "fUIMistMenu_LogoOnscreenZoomMaxFOV"
+  }, 
+  {
+   "default": 60.0, 
+   "key": "fUIMistMenu_LogoOnscreenZoomMinFOV"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fUIMistMenu_LogoOnscreenZoomThresholdFar"
+  }, 
+  {
+   "default": 3.5, 
+   "key": "fUIMistMenu_LogoOnscreenZoomThresholdNear"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fUIMistModel_FadeOutTime"
+  }, 
+  {
+   "default": -180.0, 
+   "key": "fUIMistModel_RotateZ_G"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fUIMistModel_TranslateX_G"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fUIMistModel_TranslateY_G"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fUIMistModel_TranslateZ_G"
+  }, 
+  {
+   "default": 0.80000000000000004, 
+   "key": "fUIPlayerSceneLight2DiffuseColorB"
+  }, 
+  {
+   "default": 0.81000000000000005, 
+   "key": "fUIPlayerSceneLight2DiffuseColorG"
+  }, 
+  {
+   "default": 0.69999999999999996, 
+   "key": "fUIPlayerSceneLight2DiffuseColorR"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fUIPlayerSceneLight2DimmerValue"
+  }, 
+  {
+   "default": 1024.0, 
+   "key": "fUIPlayerSceneLight2Radius"
+  }, 
+  {
+   "default": 160.0, 
+   "key": "fUIPlayerSceneLight2X"
+  }, 
+  {
+   "default": -96.0, 
+   "key": "fUIPlayerSceneLight2Y"
+  }, 
+  {
+   "default": 160.0, 
+   "key": "fUIPlayerSceneLight2Z"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fUIPlayerSceneLight3DiffuseColorB"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fUIPlayerSceneLight3DiffuseColorG"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fUIPlayerSceneLight3DiffuseColorR"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fUIPlayerSceneLight3DimmerValue"
+  }, 
+  {
+   "default": 1024.0, 
+   "key": "fUIPlayerSceneLight3Radius"
+  }, 
+  {
+   "default": 128.0, 
+   "key": "fUIPlayerSceneLight3X"
+  }, 
+  {
+   "default": 160.0, 
+   "key": "fUIPlayerSceneLight3Y"
+  }, 
+  {
+   "default": -96.0, 
+   "key": "fUIPlayerSceneLight3Z"
+  }, 
+  {
+   "default": 0.81999999999999995, 
+   "key": "fUIPlayerSceneLightDiffuseColorB"
+  }, 
+  {
+   "default": 0.95999999999999996, 
+   "key": "fUIPlayerSceneLightDiffuseColorG"
+  }, 
+  {
+   "default": 0.95999999999999996, 
+   "key": "fUIPlayerSceneLightDiffuseColorR"
+  }, 
+  {
+   "default": 1.6000000000000001, 
+   "key": "fUIPlayerSceneLightDimmerValue"
+  }, 
+  {
+   "default": 1500.0, 
+   "key": "fUIPlayerSceneLightRadius"
+  }, 
+  {
+   "default": -160.0, 
+   "key": "fUIPlayerSceneLightX"
+  }, 
+  {
+   "default": 160.0, 
+   "key": "fUIPlayerSceneLightY"
+  }, 
+  {
+   "default": 128.0, 
+   "key": "fUIPlayerSceneLightZ"
+  }, 
+  {
+   "default": 0.82999999999999996, 
+   "key": "fUIRaceSexLight2DiffuseColorB"
+  }, 
+  {
+   "default": 0.94999999999999996, 
+   "key": "fUIRaceSexLight2DiffuseColorG"
+  }, 
+  {
+   "default": 0.97999999999999998, 
+   "key": "fUIRaceSexLight2DiffuseColorR"
+  }, 
+  {
+   "default": 1.75, 
+   "key": "fUIRaceSexLight2DimmerValue"
+  }, 
+  {
+   "default": 1400.0, 
+   "key": "fUIRaceSexLight2Radius"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fUIRaceSexLight2X"
+  }, 
+  {
+   "default": -150.0, 
+   "key": "fUIRaceSexLight2Y"
+  }, 
+  {
+   "default": 60.5, 
+   "key": "fUIRaceSexLight2Z"
+  }, 
+  {
+   "default": 0.82999999999999996, 
+   "key": "fUIRaceSexLightDiffuseColorB"
+  }, 
+  {
+   "default": 0.94999999999999996, 
+   "key": "fUIRaceSexLightDiffuseColorG"
+  }, 
+  {
+   "default": 0.97999999999999998, 
+   "key": "fUIRaceSexLightDiffuseColorR"
+  }, 
+  {
+   "default": 0.65000000000000002, 
+   "key": "fUIRaceSexLightDimmerValue"
+  }, 
+  {
+   "default": 1400.0, 
+   "key": "fUIRaceSexLightRadius"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fUIRaceSexLightX"
+  }, 
+  {
+   "default": -600.0, 
+   "key": "fUIRaceSexLightY"
+  }, 
+  {
+   "default": 60.5, 
+   "key": "fUIRaceSexLightZ"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fUnlockDoorDelay"
+  }, 
+  {
+   "default": false, 
+   "key": "iFavoriteItemQueueSize"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxViewCasterPicksFuzzy"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxViewCasterPicksGamebryo"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxViewCasterPicksHavok"
+  }, 
+  {
+   "default": false, 
+   "key": "iSubtitleSpeakerNameColor"
+  }, 
+  {
+   "default": "Interface/Credits.txt", 
+   "key": "sCreditsFile"
+  }, 
+  {
+   "default": "Interface/Credits_French.txt", 
+   "key": "sCreditsFileFrench"
+  }, 
+  {
+   "default": "", 
+   "key": "sForcedLoadScreenEditorID"
+  }, 
+  {
+   "default": "OffsetBoundStandingPlayerInstant", 
+   "key": "sPosePlayerRaceSexMenu"
+  }, 
+  {
+   "default": "", 
+   "key": "sUIMistMenu_DefaultLogoCameraPath"
+  }, 
+  {
+   "default": false, 
+   "key": "uMaxCustomItemNameLength"
+  }, 
+  {
+   "default": false, 
+   "key": "uTicksToWait"
+  }
+ ], 
+ "MapMenu": [
+  {
+   "default": false, 
+   "key": "bWorldMapNoSkyDepthBlur"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fGamepadCursorSensitivity"
+  }, 
+  {
+   "default": 2000.0, 
+   "key": "fMapLocalCursorPanSpeed"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fMapLocalGamepadPanSpeed"
+  }, 
+  {
+   "default": 0.029999999999999999, 
+   "key": "fMapLocalGamepadZoomSpeed"
+  }, 
+  {
+   "default": 40000.0, 
+   "key": "fMapLocalHeight"
+  }, 
+  {
+   "default": 0.029999999999999999, 
+   "key": "fMapLocalMarkerSelectionDist"
+  }, 
+  {
+   "default": 4000.0, 
+   "key": "fMapLocalMinFrustumWidth"
+  }, 
+  {
+   "default": 20.0, 
+   "key": "fMapLocalMousePanSpeed"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fMapLocalMouseZoomSpeed"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fMapLookGamepadSpeed"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fMapLookMouseSpeed"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fMapLoopFadeTimeSeconds"
+  }, 
+  {
+   "default": 128.0, 
+   "key": "fMapMenuNearClipPlane"
+  }, 
+  {
+   "default": 0.40000000000000002, 
+   "key": "fMapMenuOverlayNormalSnowStrength"
+  }, 
+  {
+   "default": 1.1000000000000001, 
+   "key": "fMapMenuOverlayNormalStrength"
+  }, 
+  {
+   "default": 3.4999999999999997e-05, 
+   "key": "fMapMenuOverlayScale"
+  }, 
+  {
+   "default": 4.5000000000000003e-05, 
+   "key": "fMapMenuOverlaySnowScale"
+  }, 
+  {
+   "default": 0.02, 
+   "key": "fMapMoveKeyboardSpeed"
+  }, 
+  {
+   "default": 0.75, 
+   "key": "fMapTransitionSpeed"
+  }, 
+  {
+   "default": 0.90000000000000002, 
+   "key": "fMapWorldCursorMoveArea"
+  }, 
+  {
+   "default": 4.0, 
+   "key": "fMapWorldHeightAdjustmentForce"
+  }, 
+  {
+   "default": 75000.0, 
+   "key": "fMapWorldMaxPanSpeed"
+  }, 
+  {
+   "default": 75.0, 
+   "key": "fMapWorldMaxPitch"
+  }, 
+  {
+   "default": 60000.0, 
+   "key": "fMapWorldMinPanSpeed"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fMapWorldMinPitch"
+  }, 
+  {
+   "default": 10000.0, 
+   "key": "fMapWorldTransitionHeight"
+  }, 
+  {
+   "default": 80.0, 
+   "key": "fMapWorldYawRange"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fMapWorldZoomSpeed"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fMapZoomMouseSpeed"
+  }, 
+  {
+   "default": 0.0030000000000000001, 
+   "key": "fMaxMarkerSelectionDist"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fWorldMapDepthBlurScale"
+  }, 
+  {
+   "default": 45000.0, 
+   "key": "fWorldMapFocalDepth"
+  }, 
+  {
+   "default": 0.45000000000000001, 
+   "key": "fWorldMapMaximumDepthBlur"
+  }, 
+  {
+   "default": 4.0, 
+   "key": "fWorldMapNearDepthBlurScale"
+  }, 
+  {
+   "default": false, 
+   "key": "iRightStickRepeatRate"
+  }, 
+  {
+   "default": "Tamriel", 
+   "key": "sMapWorldDefaultWorldSpace"
+  }, 
+  {
+   "default": "Data\\Textures\\Terrain\\WorldMapOverlaySnow_n.dds",
+   "key": "sWorldMapOverlayNormalSnowTexture"
+  }, 
+  {
+   "default": "Data\\Textures\\Terrain\\WorldMapOverlay_n.dds",
+   "key": "sWorldMapOverlayNormalTexture"
+  }, 
+  {
+   "default": false, 
+   "key": "uLockedObjectMapLOD"
+  }, 
+  {
+   "default": false, 
+   "key": "uLockedTerrainLOD"
+  }
+ ], 
+ "RagdollFeedback": [
+  {
+   "default": false, 
+   "key": "uiFeedbackTimeout"
+  }
+ ], 
+ "Gameplay": [
+  {
+   "default": false, 
+   "key": "bTargetLockIsToggle"
+  }, 
+  {
+   "default": 256.0, 
+   "key": "fMagicTargetLocationExtraLargeActorRadius"
+  }, 
+  {
+   "default": 32.0, 
+   "key": "fMagicTargetLocationNormalActorRadius"
+  }, 
+  {
+   "default": 0.98480800000000002, 
+   "key": "fPlayerSunGazeDelta"
+  }, 
+  {
+   "default": 7500.0, 
+   "key": "fTargetLockXYRange"
+  }
+ ], 
+ "Clouds": [
+  {
+   "default": 1.0, 
+   "key": "fCloudAtlasWidth"
+  }, 
+  {
+   "default": 16384.0, 
+   "key": "fCloudLevel0Distance"
+  }, 
+  {
+   "default": 32768.0, 
+   "key": "fCloudLevel1Distance"
+  }, 
+  {
+   "default": 262144.0, 
+   "key": "fCloudLevel2Distance"
+  }, 
+  {
+   "default": 9000.0, 
+   "key": "fCloudNearFadeDistance"
+  }, 
+  {
+   "default": "Meshes\\CloudInstance.NIF", 
+   "key": "sCloudInstanceMesh"
+  }
+ ], 
+ "bLightAttenuation": [
+  {
+   "default": false, 
+   "key": "bOutQuadInLin"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseConstant"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseLinear"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseQuadratic"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fConstantValue"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLinearRadiusMult"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fLinearValue"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fQuadraticRadiusMult"
+  }, 
+  {
+   "default": 16.0, 
+   "key": "fQuadraticValue"
+  }, 
+  {
+   "default": false, 
+   "key": "uLinearMethod"
+  }, 
+  {
+   "default": false, 
+   "key": "uQuadraticMethod"
+  }
+ ], 
+ "Light": [
+  {
+   "default": 1.0, 
+   "key": "fLightEnableDisableFadeTime"
+  }
+ ], 
+ "Fonts": [
+  {
+   "default": "Interface\\FontConfig.txt", 
+   "key": "sFontConfigFile"
+  }
+ ], 
+ "Papyrus": [
+  {
+   "default": false, 
+   "key": "bEnableLogging",
+   "description": "Check to enable logging of messages from scripts. This may decrease performance slightly."
+  }, 
+  {
+   "default": false, 
+   "key": "bEnableProfiling",
+   "description": "Check to collect profiling information for scripts. This may decreate performance."
+  }, 
+  {
+   "default": false,
+   "key": "bEnableTrace",
+   "description": "Check to write trace messages from scripts to the log files. No effect if bEnableLogging isnt also enabled."
+  }, 
+  {
+   "default": false,
+   "key": "bLoadDebugInformation",
+   "description": "Check to allow error messages from scripts to print more detailed information."
+  }, 
+  {
+   "default": 8.0, 
+   "key": "fArchiveInitBufferMB"
+  }, 
+  {
+   "default": 1.2, 
+   "key": "fExtraTaskletBudgetMS"
+  }, 
+  {
+   "default": 2000.0, 
+   "key": "fPostLoadUpdateTimeMS"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fPostLoadUpdateTimeMS"
+  }, 
+  {
+   "default": 1.2, 
+   "key": "fUpdateBudgetMS"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxAllocatedMemoryBytes"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxMemoryPageSize"
+  }, 
+  {
+   "default": false, 
+   "key": "iMinMemoryPageSize"
+  }, 
+  {
+   "default": 0,
+   "key": "uTraceStatusOfQuest",
+   "description": "Decimal form ID for a quest. All script changes for that quest are logged."
+  }
+ ], 
+ "SaveGame": [
+  {
+   "default": false, 
+   "key": "bAllowProfileTransfer"
+  }, 
+  {
+   "default": false, 
+   "key": "bAllowScriptedAutosave"
+  }, 
+  {
+   "default": false, 
+   "key": "bAllowScriptedForceSave"
+  }, 
+  {
+   "default": false, 
+   "key": "bCopySaveGameToHostOrMemStick"
+  }, 
+  {
+   "default": false, 
+   "key": "bDisableAutoSave"
+  }, 
+  {
+   "default": false, 
+   "key": "bDisplayMissingContentDialogue"
+  }, 
+  {
+   "default": false, 
+   "key": "bOutputSaveGameScreenshot"
+  }, 
+  {
+   "default": false, 
+   "key": "bUsePagedBuffers"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseSaveGameHistory"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fAutosaveEveryXMins"
+  }, 
+  {
+   "default": false, 
+   "key": "iAutoSaveCount"
+  }, 
+  {
+   "default": false, 
+   "key": "iSaveGameBackupCount"
+  }, 
+  {
+   "default": "This save game was created on a later version of Skyrim. Please download any updates.", 
+   "key": "sSaveGameGameVersionOutdated"
+  }, 
+  {
+   "default": "1DC0A", 
+   "key": "sSaveGameSafeMarkerID"
+  }
+ ], 
+ "Controls": [
+  {
+   "default": false, 
+   "key": "bAlwaysRunByDefault"
+  }, 
+  {
+   "default": false, 
+   "key": "bBackgroundMouse"
+  }, 
+  {
+   "default": false, 
+   "key": "bDampenPlayerControls"
+  }, 
+  {
+   "default": false, 
+   "key": "bFreezeDirectionOnLargeDelta"
+  }, 
+  {
+   "default": false, 
+   "key": "bGamePadRumble"
+  }, 
+  {
+   "default": false, 
+   "key": "bInvertMovementThumbstick"
+  }, 
+  {
+   "default": false, 
+   "key": "bInvertYValues"
+  }, 
+  {
+   "default": false, 
+   "key": "bPlayerGraphFeedback"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowKinectDebugInfo"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseKinect"
+  }, 
+  {
+   "default": 0.14000000000000001, 
+   "key": "fControllerBufferDepth"
+  }, 
+  {
+   "default": 0.17999999999999999, 
+   "key": "fControllerDampenTime"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fControllerSampleThreshold"
+  }, 
+  {
+   "default": 45.0, 
+   "key": "fDialogueHardStopAngle1P"
+  }, 
+  {
+   "default": 55.0, 
+   "key": "fDialogueHardStopAngle3P"
+  }, 
+  {
+   "default": 20.0, 
+   "key": "fDialogueSoftStopAngle1P"
+  }, 
+  {
+   "default": 25.0, 
+   "key": "fDialogueSoftStopAngle3P"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fDirectionalDeadzone"
+  }, 
+  {
+   "default": 0.050000000000000003, 
+   "key": "fDualCastChordTime"
+  }, 
+  {
+   "default": 60.0, 
+   "key": "fFreezeDirectionDefaultAngleThreshold"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fFreezeDirectionDefaultSpeedThreshold"
+  }, 
+  {
+   "default": 1.8999999999999999, 
+   "key": "fGamepadHeadingSensitivity"
+  }, 
+  {
+   "default": 3.5499999999999998, 
+   "key": "fGamepadHeadingSensitivityMax"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "fGamepadHeadingSensitivityMin"
+  }, 
+  {
+   "default": 0.90000000000000002, 
+   "key": "fGamepadHeadingXScale"
+  }, 
+  {
+   "default": 23.0, 
+   "key": "fGamepadHeadingYScale"
+  }, 
+  {
+   "default": 0.14999999999999999, 
+   "key": "fHeadingAxisDeadzone"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fHorseClampAngle"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fHorseControlsDampenTime"
+  }, 
+  {
+   "default": 0.75, 
+   "key": "fHorseHeadingMovementMult"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "fHotKeyDelay"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fInitialPowerAttackDelay"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fInitialPowerBashDelay"
+  }, 
+  {
+   "default": 0.23999999999999999, 
+   "key": "fLThumbDeadzone"
+  }, 
+  {
+   "default": 0.40000000000000002, 
+   "key": "fLookGraphX1"
+  }, 
+  {
+   "default": 0.59999999999999998, 
+   "key": "fLookGraphX2"
+  }, 
+  {
+   "default": 0.80000000000000004, 
+   "key": "fLookGraphX3"
+  }, 
+  {
+   "default": 0.90000000000000002, 
+   "key": "fLookGraphX4"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fLookGraphY1"
+  }, 
+  {
+   "default": 0.20000000000000001, 
+   "key": "fLookGraphY2"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fLookGraphY3"
+  }, 
+  {
+   "default": 0.59999999999999998, 
+   "key": "fLookGraphY4"
+  }, 
+  {
+   "default": 0.13, 
+   "key": "fMaxLookRampUpDelta"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fMaxMoveRampDownDelta"
+  }, 
+  {
+   "default": 0.012500000000000001, 
+   "key": "fMouseHeadingSensitivity"
+  }, 
+  {
+   "default": 0.050000000000000003, 
+   "key": "fMouseHeadingSensitivityMax"
+  }, 
+  {
+   "default": 0.01, 
+   "key": "fMouseHeadingSensitivityMin"
+  }, 
+  {
+   "default": 0.02, 
+   "key": "fMouseHeadingXScale"
+  }, 
+  {
+   "default": 0.84999999999999998, 
+   "key": "fMouseHeadingYScale"
+  }, 
+  {
+   "default": 0.20000000000000001, 
+   "key": "fMoveGraphX1"
+  }, 
+  {
+   "default": 0.69999999999999996, 
+   "key": "fMoveGraphX2"
+  }, 
+  {
+   "default": 0.90000000000000002, 
+   "key": "fMoveGraphX3"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fMoveGraphY1"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fMoveGraphY2"
+  }, 
+  {
+   "default": 0.90000000000000002, 
+   "key": "fMoveGraphY3"
+  }, 
+  {
+   "default": 0.14999999999999999, 
+   "key": "fMovementAxisDeadzone"
+  }, 
+  {
+   "default": 0.33000000000000002, 
+   "key": "fOutsideDialogueAngleRotationDampen"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fPCDialogueLookSpeed"
+  }, 
+  {
+   "default": 25.0, 
+   "key": "fPCDialogueLookStart"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "fPlayerThirdPersonDampenTime"
+  }, 
+  {
+   "default": 0.26500000000000001, 
+   "key": "fRThumbDeadzone"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fReverseDirThreshold"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fSprintStopThreshold"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fSubsequentPowerAttackDelay"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fSubsequentPowerBashDelay"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fTogglePOVDelay"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fTriggerDeadzone"
+  }, 
+  {
+   "default": 0.20000000000000001, 
+   "key": "fZKeyDelay"
+  }, 
+  {
+   "default": false, 
+   "key": "iNumHotkeys"
+  }, 
+  {
+   "default": false, 
+   "key": "iNumLookGraphSettings"
+  }, 
+  {
+   "default": false, 
+   "key": "iNumMoveGraphSettings"
+  }
+ ], 
+ "AudioMenu": [
+  {
+   "default": 1.0, 
+   "key": "fAudioMasterVolume"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fVal0"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fVal1"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fVal2"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fVal3"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fVal4"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fVal5"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fVal6"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fVal7"
+  }, 
+  {
+   "default": false, 
+   "key": "uID0"
+  }, 
+  {
+   "default": false, 
+   "key": "uID1"
+  }, 
+  {
+   "default": false, 
+   "key": "uID2"
+  }, 
+  {
+   "default": false, 
+   "key": "uID3"
+  }, 
+  {
+   "default": false, 
+   "key": "uID4"
+  }, 
+  {
+   "default": false, 
+   "key": "uID5"
+  }, 
+  {
+   "default": false, 
+   "key": "uID6"
+  }, 
+  {
+   "default": false, 
+   "key": "uID7"
+  }
+ ], 
+ "Debug": [
+  {
+   "default": false, 
+   "key": "bDebugFaceGenCriticalSection"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugFaceGenMultithreading"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugFlyingMountLeash"
+  }
+ ], 
+ "LightingShader": [
+  {
+   "default": 0.059999999999999998, 
+   "key": "fDecalLODFadeEnd"
+  }, 
+  {
+   "default": 0.050000000000000003, 
+   "key": "fDecalLODFadeStart"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fEnvmapLODFadeEnd"
+  }, 
+  {
+   "default": 0.089999999999999997, 
+   "key": "fEnvmapLODFadeStart"
+  }, 
+  {
+   "default": 0.050000000000000003, 
+   "key": "fEyeEnvmapLODEnd"
+  }, 
+  {
+   "default": 0.029999999999999999, 
+   "key": "fRefractionLODFadeEnd"
+  }, 
+  {
+   "default": 0.025000000000000001, 
+   "key": "fRefractionLODFadeStart"
+  }, 
+  {
+   "default": 0.10000000000000001, 
+   "key": "fSpecularLODFadeEnd"
+  }, 
+  {
+   "default": 0.089999999999999997, 
+   "key": "fSpecularLODFadeStart"
+  }
+ ], 
+ "Voice": [
+  {
+   "default": "wav", 
+   "key": "sFileTypeGame"
+  }, 
+  {
+   "default": "ltf", 
+   "key": "sFileTypeLTF"
+  }, 
+  {
+   "default": "lip", 
+   "key": "sFileTypeLip"
+  }, 
+  {
+   "default": "wav", 
+   "key": "sFileTypeSource"
+  }
+ ], 
+ "Audio": [
+  {
+   "default": false, 
+   "key": "bEnableAudio"
+  }, 
+  {
+   "default": false, 
+   "key": "bEnableAudioCache"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fASFadeInTime"
+  }, 
+  {
+   "default": 8.0, 
+   "key": "fASFadeOutTime"
+  }, 
+  {
+   "default": 160.0, 
+   "key": "fCollisionSoundHeavyThreshold"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fDefaultMasterVolume"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fDialogueHeadPitchExaggeration"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fDialogueHeadRollExaggeration"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fDialogueHeadYawExaggeration"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fHardLandingDamageThreshold"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fHighlightSpeechOverlap"
+  }, 
+  {
+   "default": 250.0, 
+   "key": "fMaxHighlightRadius"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fMenuModeFadeInTime"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fMenuModeFadeInTime"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fMenuModeFadeOutTime"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fMenuModeFadeOutTime"
+  }, 
+  {
+   "default": 60.0, 
+   "key": "fMinSoundVel"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fMusicDuckingSeconds"
+  }, 
+  {
+   "default": 6.0, 
+   "key": "fMusicDuckingSeconds"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fMusicFinaleCrossFadeTimeIn"
+  }, 
+  {
+   "default": 6.0, 
+   "key": "fMusicFinaleCrossFadeTimeOut"
+  }, 
+  {
+   "default": 4.0, 
+   "key": "fMusicUnDuckingSeconds"
+  }, 
+  {
+   "default": 8.0, 
+   "key": "fMusicUnDuckingSeconds"
+  }, 
+  {
+   "default": 9.0, 
+   "key": "fNonDialogVoiceDucking"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fNonDialogVoiceDuckingFadeIn"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fNonDialogVoiceDuckingFadeOut"
+  }, 
+  {
+   "default": 12.0, 
+   "key": "fNonHighlightSpeechAtten"
+  }, 
+  {
+   "default": 6.0, 
+   "key": "fRegionLoopFadeInTime"
+  }, 
+  {
+   "default": 8.0, 
+   "key": "fRegionLoopFadeOutTime"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fRegionRandomSoundPlacementBase"
+  }, 
+  {
+   "default": 650.0, 
+   "key": "fRegionSoundPlacementRandomOffset"
+  }, 
+  {
+   "default": 256.0, 
+   "key": "fRegionSoundPlacementZOffset"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fReverbTransitionTime"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fWaterAudioFadeInSeconds"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fWaterAudioFadeOutSeconds"
+  }, 
+  {
+   "default": false, 
+   "key": "iCollisionSoundTimeDelta"
+  }, 
+  {
+   "default": false, 
+   "key": "iHighlightSpeechOverlap"
+  }, 
+  {
+   "default": "XAudio2", 
+   "key": "sAudioAPI"
+  }, 
+  {
+   "default": "MAGShoutSlowTimeActiveLP", 
+   "key": "sDeathCameraEffect"
+  }, 
+  {
+   "default": "", 
+   "key": "sMissingAssetSoundFile"
+  }, 
+  {
+   "default": false, 
+   "key": "uAsyncReadPriorityThreshold"
+  }, 
+  {
+   "default": false, 
+   "key": "uAudioThreadSleepTimeGameMode"
+  }, 
+  {
+   "default": false, 
+   "key": "uAudioThreadSleepTimeMenuMode"
+  }, 
+  {
+   "default": false, 
+   "key": "uMaxSizeForCachedSound"
+  }, 
+  {
+   "default": false, 
+   "key": "uRegionSoundsAllowedPerUpdate"
+  }, 
+  {
+   "default": false, 
+   "key": "uStreamingThreshold"
+  }, 
+  {
+   "default": false, 
+   "key": "uWaterAudioAmbientAttenuation"
+  }, 
+  {
+   "default": false, 
+   "key": "uWaterAudioAxisSamplePoints"
+  }, 
+  {
+   "default": false, 
+   "key": "uWaterAudioSamplePointsToUse"
+  }, 
+  {
+   "default": false, 
+   "key": "uiAudioHWThread"
+  }, 
+  {
+   "default": false, 
+   "key": "uiInitialCacheSize"
+  }, 
+  {
+   "default": false, 
+   "key": "uiMaxAudioCacheSize"
+  }
+ ], 
+ "GamePlay": [
+  {
+   "default": false, 
+   "key": "bAllowDragonFlightLocationDiscovery"
+  }, 
+  {
+   "default": false, 
+   "key": "bAllowHavokGrabTheLiving"
+  }, 
+  {
+   "default": false, 
+   "key": "bEssentialTakeNoDamage"
+  }, 
+  {
+   "default": false, 
+   "key": "bHealthBarShowing"
+  }, 
+  {
+   "default": false, 
+   "key": "bInstantLevelUp"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowFloatingQuestMarkers"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowQuestMarkers"
+  }, 
+  {
+   "default": false, 
+   "key": "bTrackProgress"
+  }, 
+  {
+   "default": 1024.0, 
+   "key": "fFootIKDistance"
+  }, 
+  {
+   "default": 0.050000000000000003, 
+   "key": "fMapMarkerUpdateTime"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "fPlayerHealthSaveOnPauseLimit"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fPlayerSunGazeStartTimer"
+  }, 
+  {
+   "default": false, 
+   "key": "iActorsDismemberedPerFrame"
+  }, 
+  {
+   "default": false, 
+   "key": "iDetectionPicks"
+  }, 
+  {
+   "default": false, 
+   "key": "iDifficulty"
+  }, 
+  {
+   "default": "\\\\vault2\\Fallout\\LevelData\\", 
+   "key": "sTrackProgressPath"
+  }
+ ], 
+ "Display": [
+  {
+   "default": false, 
+   "key": "bActorSelfShadowing"
+  }, 
+  {
+   "default": false, 
+   "key": "bAllow20HairShader"
+  }, 
+  {
+   "default": false, 
+   "key": "bAllow30Shaders"
+  }, 
+  {
+   "default": false, 
+   "key": "bAllowPartialPrecision"
+  }, 
+  {
+   "default": false, 
+   "key": "bAllowScreenShot"
+  }, 
+  {
+   "default": false, 
+   "key": "bAutoViewDistance"
+  }, 
+  {
+   "default": false, 
+   "key": "bCompileOnRender"
+  }, 
+  {
+   "default": false, 
+   "key": "bDecalsOnSkinnedGeometry"
+  }, 
+  {
+   "default": false, 
+   "key": "bDeferredShadows"
+  }, 
+  {
+   "default": false, 
+   "key": "bDo30VFog"
+  }, 
+  {
+   "default": false, 
+   "key": "bDoAmbientPass"
+  }, 
+  {
+   "default": false, 
+   "key": "bDoDiffusePass"
+  }, 
+  {
+   "default": false, 
+   "key": "bDoSpecularPass"
+  }, 
+  {
+   "default": false, 
+   "key": "bDoTallGrassEffect"
+  }, 
+  {
+   "default": false, 
+   "key": "bDoTestHDR"
+  }, 
+  {
+   "default": false, 
+   "key": "bDoTexturePass"
+  }, 
+  {
+   "default": false, 
+   "key": "bDrawLandShadows"
+  }, 
+  {
+   "default": false, 
+   "key": "bDrawShadows"
+  }, 
+  {
+   "default": false, 
+   "key": "bDynamicWindowReflections"
+  }, 
+  {
+   "default": false, 
+   "key": "bEquippedTorchesCastShadows"
+  }, 
+  {
+   "default": false, 
+   "key": "bFXAAEnabled"
+  }, 
+  {
+   "default": false, 
+   "key": "bFloatPointRenderTarget"
+  }, 
+  {
+   "default": false, 
+   "key": "bForce1XShaders"
+  }, 
+  {
+   "default": false, 
+   "key": "bForceMultiPass"
+  }, 
+  {
+   "default": false, 
+   "key": "bForcePow2Textures"
+  }, 
+  {
+   "default": false, 
+   "key": "bFull Screen"
+  }, 
+  {
+   "default": false, 
+   "key": "bIgnoreResolutionCheck"
+  }, 
+  {
+   "default": false, 
+   "key": "bImageSpaceEffects"
+  }, 
+  {
+   "default": false, 
+   "key": "bLODNoiseAniso"
+  }, 
+  {
+   "default": false, 
+   "key": "bLoadMarkers"
+  }, 
+  {
+   "default": false, 
+   "key": "bLowHealthIModEnabled"
+  }, 
+  {
+   "default": false, 
+   "key": "bMTRendering"
+  }, 
+  {
+   "default": false, 
+   "key": "bMainZPrepass"
+  }, 
+  {
+   "default": false, 
+   "key": "bReportBadTangentSpace"
+  }, 
+  {
+   "default": false, 
+   "key": "bShadowMaskZPrepass"
+  }, 
+  {
+   "default": false, 
+   "key": "bShadowsOnGrass"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowMarkers"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowMenuTextureUse"
+  }, 
+  {
+   "default": false, 
+   "key": "bSimpleLighting"
+  }, 
+  {
+   "default": false, 
+   "key": "bStaticMenuBackground"
+  }, 
+  {
+   "default": false, 
+   "key": "bTransparencyMultisampling"
+  }, 
+  {
+   "default": false, 
+   "key": "bTreesReceiveShadows"
+  }, 
+  {
+   "default": false, 
+   "key": "bUse Shaders"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseFakeFullScreenMotionBlur"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseRefractionShader"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseSunbeams"
+  }, 
+  {
+   "default": 800.0, 
+   "key": "fDecalLOD0"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fDecalLOD1"
+  }, 
+  {
+   "default": 1500.0, 
+   "key": "fDecalLOD2"
+  }, 
+  {
+   "default": 30.0, 
+   "key": "fDecalLifetime"
+  }, 
+  {
+   "default": 65.0, 
+   "key": "fDefault1stPersonFOV"
+  }, 
+  {
+   "default": 65.0, 
+   "key": "fDefaultFOV"
+  }, 
+  {
+   "default": 65.0, 
+   "key": "fDefaultWorldFOV"
+  }, 
+  {
+   "default": 1500.0, 
+   "key": "fEnvMapLOD1"
+  }, 
+  {
+   "default": 1800.0, 
+   "key": "fEnvMapLOD2"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fEyeEnvMapLOD1"
+  }, 
+  {
+   "default": 800.0, 
+   "key": "fEyeEnvMapLOD2"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fGamma"
+  }, 
+  {
+   "default": 0.59999999999999998, 
+   "key": "fGammaMax"
+  }, 
+  {
+   "default": 1.3999999999999999, 
+   "key": "fGammaMin"
+  }, 
+  {
+   "default": 3000.0, 
+   "key": "fInteriorShadowDistance"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fLODNoiseMipBias"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fLandLOFadeSeconds"
+  }, 
+  {
+   "default": 4600.0, 
+   "key": "fLeafAnimDampenDistEnd"
+  }, 
+  {
+   "default": 3600.0, 
+   "key": "fLeafAnimDampenDistStart"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fLightLODDefaultStartFade"
+  }, 
+  {
+   "default": 1200.0, 
+   "key": "fLightLODMaxStartFade"
+  }, 
+  {
+   "default": 3500.0, 
+   "key": "fLightLODMaxStartFade"
+  }, 
+  {
+   "default": 200.0, 
+   "key": "fLightLODMinStartFade"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fLightLODRange"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fLightLODStartFade"
+  }, 
+  {
+   "default": 8.0, 
+   "key": "fLinePrimitiveWidth"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fLowHealthIModInterval"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fLowHealthIModStrengthMax"
+  }, 
+  {
+   "default": 0.80000000000000004, 
+   "key": "fLowHealthIModStrengthMin"
+  }, 
+  {
+   "default": 256.0, 
+   "key": "fMeshLODFadeBoundDefault"
+  }, 
+  {
+   "default": 1.2, 
+   "key": "fMeshLODFadePercentDefault"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fMeshLODFadeTime"
+  }, 
+  {
+   "default": 4096.0, 
+   "key": "fMeshLODLevel1FadeDist"
+  }, 
+  {
+   "default": 2844.0, 
+   "key": "fMeshLODLevel1FadeTreeDistance"
+  }, 
+  {
+   "default": 3072.0, 
+   "key": "fMeshLODLevel2FadeDist"
+  }, 
+  {
+   "default": 2048.0, 
+   "key": "fMeshLODLevel2FadeTreeDistance"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fMipBias"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fNear1stPersonDistance"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fNearDistance"
+  }, 
+  {
+   "default": 10240.0, 
+   "key": "fNoLODFarDistanceMax"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fNoLODFarDistanceMin"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fNoLODFarDistancePct"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fScopeScissorAmount"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fShadowBiasScale"
+  }, 
+  {
+   "default": 2500.0, 
+   "key": "fShadowDistance"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fShadowFadeTime"
+  }, 
+  {
+   "default": 200.0, 
+   "key": "fShadowLODDefaultStartFade"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fShadowLODMaxStartFade"
+  }, 
+  {
+   "default": 300.0, 
+   "key": "fShadowLODMaxStartFade"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fShadowLODMinStartFade"
+  }, 
+  {
+   "default": 200.0, 
+   "key": "fShadowLODRange"
+  }, 
+  {
+   "default": 200.0, 
+   "key": "fShadowLODStartFade"
+  }, 
+  {
+   "default": 300.0, 
+   "key": "fSkinnedDecalLOD0"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fSkinnedDecalLOD1"
+  }, 
+  {
+   "default": 800.0, 
+   "key": "fSkinnedDecalLOD2"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fSpecularLODDefaultStartFade"
+  }, 
+  {
+   "default": 2000.0, 
+   "key": "fSpecularLODMaxStartFade"
+  }, 
+  {
+   "default": 600.0, 
+   "key": "fSpecularLODMaxStartFade"
+  }, 
+  {
+   "default": 200.0, 
+   "key": "fSpecularLODMinStartFade"
+  }, 
+  {
+   "default": 300.0, 
+   "key": "fSpecularLODRange"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fSpecularLODStartFade"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fSunShadowUpdateTime"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fSunUpdateThreshold"
+  }, 
+  {
+   "default": 3600.0, 
+   "key": "fTreesMidLODSwitchDist"
+  }, 
+  {
+   "default": false, 
+   "key": "iAdapter"
+  }, 
+  {
+   "default": false, 
+   "key": "iAutoViewHiFrameRate"
+  }, 
+  {
+   "default": false, 
+   "key": "iAutoViewLowFrameRate"
+  }, 
+  {
+   "default": false, 
+   "key": "iAutoViewMinDistance"
+  }, 
+  {
+   "default": false, 
+   "key": "iBlurDeferredShadowMask"
+  }, 
+  {
+   "default": false, 
+   "key": "iDebugTextLeftRightOffset"
+  }, 
+  {
+   "default": false, 
+   "key": "iDebugTextSubPage"
+  }, 
+  {
+   "default": false, 
+   "key": "iDebugTextTopBottomOffset"
+  }, 
+  {
+   "default": 0, 
+   "key": "iLocation X"
+  }, 
+  {
+   "default": 0, 
+   "key": "iLocation Y"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxAnisotropy"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxDecalsPerFrame"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxSkinDecalsPerFrame"
+  }, 
+  {
+   "default": false, 
+   "key": "iMultiSample"
+  }, 
+  {
+   "default": false, 
+   "key": "iNPatchNOrder"
+  }, 
+  {
+   "default": false, 
+   "key": "iNPatchPOrder"
+  }, 
+  {
+   "default": false, 
+   "key": "iNPatches"
+  }, 
+  {
+   "default": false, 
+   "key": "iPresentInterval"
+  }, 
+  {
+   "default": false, 
+   "key": "iScreenShotIndex"
+  }, 
+  {
+   "default": false, 
+   "key": "iShaderPackageMemoryCap"
+  }, 
+  {
+   "default": false, 
+   "key": "iShadowFilter"
+  }, 
+  {
+   "default": false, 
+   "key": "iShadowMapResolution"
+  }, 
+  {
+   "default": false, 
+   "key": "iShadowMaskQuarter"
+  }, 
+  {
+   "default": false, 
+   "key": "iShadowMode"
+  }, 
+  {
+   "default": 1024, 
+   "key": "iSize H"
+  }, 
+  {
+   "default": 768, 
+   "key": "iSize W"
+  }, 
+  {
+   "default": false, 
+   "key": "iTexMipMapMinimum"
+  }, 
+  {
+   "default": false, 
+   "key": "iTexMipMapSkip"
+  }, 
+  {
+   "default": false, 
+   "key": "iTrilinearThreshold"
+  }, 
+  {
+   "default": false, 
+   "key": "iWaterMultiSamples"
+  }, 
+  {
+   "default": "VATS", 
+   "key": "sDebugText"
+  }, 
+  {
+   "default": "ScreenShot", 
+   "key": "sScreenShotBaseName"
+  }, 
+  {
+   "default": false, 
+   "key": "uVideoDeviceIdentifierPart1"
+  }, 
+  {
+   "default": false, 
+   "key": "uVideoDeviceIdentifierPart2"
+  }, 
+  {
+   "default": false, 
+   "key": "uVideoDeviceIdentifierPart3"
+  }, 
+  {
+   "default": false, 
+   "key": "uVideoDeviceIdentifierPart4"
+  }
+ ], 
+ "NavMeshGeneration": [
+  {
+   "default": false, 
+   "key": "bGlobalNavMeshCheck"
+  }, 
+  {
+   "default": false, 
+   "key": "bGlobalNavMeshCheckDeleteWarningTriangles"
+  }, 
+  {
+   "default": false, 
+   "key": "uNavmeshTriangleCountInteriorWarnThreshold"
+  }, 
+  {
+   "default": false, 
+   "key": "uNavmeshTriangleCountWarnThreshold"
+  }
+ ], 
+ "GethitShader": [
+  {
+   "default": 0.001, 
+   "key": "fBlockedTexOffset"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fBlurAmmount"
+  }, 
+  {
+   "default": 0.0050000000000000001, 
+   "key": "fHitTexOffset"
+  }
+ ], 
+ "Particles": [
+  {
+   "default": false, 
+   "key": "iMaxDesired"
+  }
+ ], 
+ "Weather": [
+  {
+   "default": false, 
+   "key": "bFogEnabled"
+  }, 
+  {
+   "default": false, 
+   "key": "bPrecipitation"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fAlphaReduce"
+  }, 
+  {
+   "default": 425.0, 
+   "key": "fSunBaseSize"
+  }, 
+  {
+   "default": 600.0, 
+   "key": "fSunGlareSize"
+  }, 
+  {
+   "default": "255,255,255,255", 
+   "key": "sBumpFadeColor"
+  }, 
+  {
+   "default": "255,255,255,255", 
+   "key": "sEnvReduceColor"
+  }, 
+  {
+   "default": "255,255,255,255", 
+   "key": "sLerpCloseColor"
+  }
+ ], 
+ "audio": [
+  {
+   "default": 0.5, 
+   "key": "fAudioRumbleBigExponent"
+  }, 
+  {
+   "default": 0.14999999999999999, 
+   "key": "fAudioRumblePowerAttackAdj"
+  }, 
+  {
+   "default": 0.40000000000000002, 
+   "key": "fAudioRumbleSmallExponent"
+  }
+ ], 
+ "LOD": [
+  {
+   "default": false, 
+   "key": "bDisplayLODLand"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fActorLODMax"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fActorLODMin"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fDistanceMultiplier"
+  }, 
+  {
+   "default": 0.69999999999999996, 
+   "key": "fFadeInThreshold"
+  }, 
+  {
+   "default": 1.2, 
+   "key": "fFadeInTime"
+  }, 
+  {
+   "default": 0.29999999999999999, 
+   "key": "fFadeOutThreshold"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fFadeOutTime"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fItemLODMax"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fItemLODMin"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fLODBoundRadiusMult"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLODFadeOutActorMultCity"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLODFadeOutActorMultComplex"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLODFadeOutActorMultInterior"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLODFadeOutItemMultCity"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLODFadeOutItemMultComplex"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLODFadeOutItemMultInterior"
+  }, 
+  {
+   "default": 6.0, 
+   "key": "fLODFadeOutMultActors"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fLODFadeOutMultItems"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fLODFadeOutMultObjects"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLODFadeOutMultSkyCell"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLODFadeOutObjectMultCity"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLODFadeOutObjectMultComplex"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLODFadeOutObjectMultInterior"
+  }, 
+  {
+   "default": 0.59999999999999998, 
+   "key": "fLODFadeOutPercent"
+  }, 
+  {
+   "default": 230.0, 
+   "key": "fLODLandDropAmount"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fLODLandVerticalBias"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fLODMultTrees"
+  }, 
+  {
+   "default": 500.0, 
+   "key": "fLodDistance"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fObjectLODMax"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fObjectLODMin"
+  }, 
+  {
+   "default": 2000.0, 
+   "key": "fTalkingDistance"
+  }, 
+  {
+   "default": false, 
+   "key": "iFadeNodeMinNearDistance"
+  }
+ ], 
+ "BSPathing": [
+  {
+   "default": 512.0, 
+   "key": "fFindClosestEdgesRadius"
+  }
+ ], 
+ "Trees": [
+  {
+   "default": false, 
+   "key": "bEnableTreeAnimations"
+  }, 
+  {
+   "default": false, 
+   "key": "bEnableTrees"
+  }, 
+  {
+   "default": false, 
+   "key": "bForceFullDetail"
+  }, 
+  {
+   "default": false, 
+   "key": "bPickSkinnedTrees"
+  }, 
+  {
+   "default": false, 
+   "key": "bRenderSkinnedTrees"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fUpdateBudget"
+  }, 
+  {
+   "default": false, 
+   "key": "uiMaxSkinnedTreesToRender"
+  }
+ ], 
+ "MESSAGES": [
+  {
+   "default": false, 
+   "key": "bAllowFileWrite"
+  }, 
+  {
+   "default": false, 
+   "key": "bAllowYesToAll"
+  }, 
+  {
+   "default": false, 
+   "key": "bBlockMessageBoxes"
+  }, 
+  {
+   "default": false, 
+   "key": "bDisableAssertQueuing"
+  }, 
+  {
+   "default": false, 
+   "key": "bFaceGenWarnings"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowMissingAudioWarnings"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowMissingLipWarnings"
+  }, 
+  {
+   "default": false, 
+   "key": "bSkipInitializationFlows"
+  }, 
+  {
+   "default": false, 
+   "key": "bSkipProgramFlows"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWindowsMessageBox"
+  }, 
+  {
+   "default": false, 
+   "key": "iFileLogging"
+  }
+ ], 
+ "General": [
+  {
+   "default": false, 
+   "key": "bAlwaysActive"
+  }, 
+  {
+   "default": false, 
+   "key": "bAnimateDoorPhysics"
+  }, 
+  {
+   "default": false, 
+   "key": "bBackgroundLoadVMData"
+  }, 
+  {
+   "default": true,
+   "key": "bBorderRegionsEnabled",
+   "description": "enables (true) or disables (false) the invisible wall around Skyrim"
+  }, 
+  {
+   "default": false, 
+   "key": "bCRTMemoryChecks"
+  }, 
+  {
+   "default": false, 
+   "key": "bCalculateArmorMeshAndTextureFileCounts"
+  }, 
+  {
+   "default": false, 
+   "key": "bChangeTimeMultSlowly"
+  }, 
+  {
+   "default": false, 
+   "key": "bCheckCellOffsetsOnInit"
+  }, 
+  {
+   "default": false, 
+   "key": "bCheckPurgedTextureList"
+  }, 
+  {
+   "default": false, 
+   "key": "bCreate Maps Enable"
+  }, 
+  {
+   "default": false, 
+   "key": "bDebugSpectatorThreats"
+  }, 
+  {
+   "default": false, 
+   "key": "bDefaultCOCPlacement"
+  }, 
+  {
+   "default": false, 
+   "key": "bDirectionalMaterial"
+  }, 
+  {
+   "default": true,
+   "key": "bDisableAllGore",
+   "description": "controls some blood/violence effects"
+  }, 
+  {
+   "default": false, 
+   "key": "bDisableDuplicateReferenceCheck"
+  }, 
+  {
+   "default": false, 
+   "key": "bDisableGearedUp"
+  }, 
+  {
+   "default": false, 
+   "key": "bDisplayBoundingVolumes"
+  }, 
+  {
+   "default": false, 
+   "key": "bEnableBoundingVolumeOcclusion"
+  }, 
+  {
+   "default": false, 
+   "key": "bEnableFileCaching"
+  }, 
+  {
+   "default": false, 
+   "key": "bEnableStoryManagerLogging"
+  }, 
+  {
+   "default": false, 
+   "key": "bExternalLODDataFiles"
+  }, 
+  {
+   "default": false, 
+   "key": "bFaceMipMaps"
+  }, 
+  {
+   "default": false, 
+   "key": "bFacegenDisableMorphs"
+  }, 
+  {
+   "default": false, 
+   "key": "bFixAIPackagesOnLoad"
+  }, 
+  {
+   "default": false, 
+   "key": "bHealthRegenFromRacePlayerOnly"
+  }, 
+  {
+   "default": false, 
+   "key": "bKeepDLStringBlocksLoaded"
+  }, 
+  {
+   "default": false, 
+   "key": "bKeepILStringBlocksLoaded"
+  }, 
+  {
+   "default": false, 
+   "key": "bKeepPluginWhenMerging"
+  }, 
+  {
+   "default": false, 
+   "key": "bMultiThreadMovement"
+  }, 
+  {
+   "default": false, 
+   "key": "bParallelAnimUpdate"
+  }, 
+  {
+   "default": false, 
+   "key": "bPreCullActors"
+  }, 
+  {
+   "default": false, 
+   "key": "bPreemptivelyUnloadCells"
+  }, 
+  {
+   "default": false, 
+   "key": "bPreloadIntroSequence"
+  }, 
+  {
+   "default": false, 
+   "key": "bQueueWarnings"
+  }, 
+  {
+   "default": false, 
+   "key": "bReconstructIDTags"
+  }, 
+  {
+   "default": false, 
+   "key": "bRunMiddleLowLevelProcess"
+  }, 
+  {
+   "default": false, 
+   "key": "bRunVTuneTest"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowCheckMemoryOutput"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowGunTarget"
+  }, 
+  {
+   "default": false, 
+   "key": "bShowLoadingAreaMessage"
+  }, 
+  {
+   "default": false, 
+   "key": "bTaskletActorSceneGraphUpdates"
+  }, 
+  {
+   "default": false, 
+   "key": "bTaskletCellTransformsUpdate"
+  }, 
+  {
+   "default": false, 
+   "key": "bTintMipMaps"
+  }, 
+  {
+   "default": false, 
+   "key": "bTrackAllDeaths"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseBodyMorphs"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseEyeEnvMapping"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseFaceGenPreprocessedHeads"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseHardDriveCache"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseMovementBlockedPackage"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseMultibounds"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseMyGamesDirectory"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseOptimizedTextureLoading"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseThreadedMorpher"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseThreadedParticleSystem"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseThreadedTempEffects"
+  }, 
+  {
+   "default": false, 
+   "key": "bWarnOnMaterialCollisions"
+  }, 
+  {
+   "default": false, 
+   "key": "bWarnOnMissingFileEntry"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fAutoDoorFadeSecs"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fBSTaskTime"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fBetaDeferredKillTimer"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fCloakEffectUpdateInterval"
+  }, 
+  {
+   "default": 30.0,
+   "key": "fEncumberedReminderTimer",
+   "description": "Frequency (in seconds) of Encumbrance messages"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fFastTravelFadeSecs"
+  }, 
+  {
+   "default": 1024.0, 
+   "key": "fFlickeringLightDistance"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fLoadGameFadeSecs"
+  }, 
+  {
+   "default": 40.0, 
+   "key": "fMasterFilePreLoadMB"
+  }, 
+  {
+   "default": 0.40000000000000002, 
+   "key": "fNormalDoorFadeSecs"
+  }, 
+  {
+   "default": 0.01, 
+   "key": "fNormalDoorFadeWait"
+  }, 
+  {
+   "default": 30.0, 
+   "key": "fProcessListsUpdateHighFrameRate"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fProcessListsUpdateLowFrameRate"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fProcessListsUpdateTimeMax"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fProcessListsUpdateTimeMin"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fStoryTellerQuestFindTime"
+  }, 
+  {
+   "default": false, 
+   "key": "iAIThread1HWThread"
+  }, 
+  {
+   "default": false, 
+   "key": "iAIThread2HWThread"
+  }, 
+  {
+   "default": false, 
+   "key": "iEnumRefsAllowedPerFrame"
+  }, 
+  {
+   "default": false, 
+   "key": "iFPSClamp"
+  }, 
+  {
+   "default": false, 
+   "key": "iHWThread1"
+  }, 
+  {
+   "default": false, 
+   "key": "iHWThread2"
+  }, 
+  {
+   "default": false, 
+   "key": "iHWThread3"
+  }, 
+  {
+   "default": false, 
+   "key": "iHWThread4"
+  }, 
+  {
+   "default": false, 
+   "key": "iHWThread5"
+  }, 
+  {
+   "default": false, 
+   "key": "iHWThread6"
+  }, 
+  {
+   "default": false, 
+   "key": "iIntroSequencePriority"
+  }, 
+  {
+   "default": false, 
+   "key": "iLargeIntRefCount"
+  }, 
+  {
+   "default": false, 
+   "key": "iLowProcessingMilliseconds"
+  }, 
+  {
+   "default": false, 
+   "key": "iNumBitsForFullySeen"
+  }, 
+  {
+   "default": false, 
+   "key": "iNumHWThreads"
+  }, 
+  {
+   "default": false, 
+   "key": "iPreloadSizeLimit"
+  }, 
+  {
+   "default": false, 
+   "key": "iRenderingThread1HWThread"
+  }, 
+  {
+   "default": false, 
+   "key": "iRenderingThread2HWThread"
+  }, 
+  {
+   "default": false, 
+   "key": "iStoryManagerLoggingEvent"
+  }, 
+  {
+   "default": false, 
+   "key": "iUpdateDetectionsAllowedPerFrame"
+  }, 
+  {
+   "default": "0003372b", 
+   "key": "sCharGenQuest"
+  }, 
+  {
+   "default": "", 
+   "key": "sEssentialFileCacheList"
+  }, 
+  {
+   "default": "", 
+   "key": "sIntroMovie"
+  }, 
+  {
+   "default": "BGS_LOGO.BIK",
+   "key": "sIntroSequence"
+  }, 
+  {
+   "default": "ENGLISH",
+   "key": "sLanguage"
+  }, 
+  {
+   "default": "Data\\", 
+   "key": "sLocalMasterPath"
+  }, 
+  {
+   "default": "Saves\\",
+   "key": "sLocalSavePath",
+   "description": "Directory where save games are stored. This value is ignored if you enabled profile-local save games in MO!"
+  }, 
+  {
+   "default": "", 
+   "key": "sMainMenuMovieIntro"
+  }, 
+  {
+   "default": "\\Data\\Music\\Special\\MUS_MainTheme.xwm", 
+   "key": "sMainMenuMusic"
+  }, 
+  {
+   "default": "", 
+   "key": "sStartingCell"
+  }, 
+  {
+   "default": "", 
+   "key": "sStartingCellX"
+  }, 
+  {
+   "default": "", 
+   "key": "sStartingCellY"
+  }, 
+  {
+   "default": "", 
+   "key": "sStartingWorld"
+  }, 
+  {
+   "default": "Skyrim.ESM", 
+   "key": "sTestFile1"
+  }, 
+  {
+   "default": "", 
+   "key": "sTestFile10"
+  }, 
+  {
+   "default": "", 
+   "key": "sTestFile2"
+  }, 
+  {
+   "default": "", 
+   "key": "sTestFile3"
+  }, 
+  {
+   "default": "", 
+   "key": "sTestFile4"
+  }, 
+  {
+   "default": "", 
+   "key": "sTestFile5"
+  }, 
+  {
+   "default": "", 
+   "key": "sTestFile6"
+  }, 
+  {
+   "default": "", 
+   "key": "sTestFile7"
+  }, 
+  {
+   "default": "", 
+   "key": "sTestFile8"
+  }, 
+  {
+   "default": "", 
+   "key": "sTestFile9"
+  }, 
+  {
+   "default": "", 
+   "key": "sUnessentialFileCacheList"
+  }, 
+  {
+   "default": false, 
+   "key": "uExterior Cell Buffer"
+  }, 
+  {
+   "default": false, 
+   "key": "uGridsToLoad"
+  }, 
+  {
+   "default": false, 
+   "key": "uInterior Cell Buffer"
+  }, 
+  {
+   "default": false, 
+   "key": "uMainMenuMusicAttnmB"
+  }, 
+  {
+   "default": false, 
+   "key": "uMainMenuMusicFadeTimeMS"
+  },
+  {
+   "default": false, 
+   "key": "bFlyingMountFastTravelCruiseEnabled"
+  }, 
+  {
+   "default": 250.0, 
+   "key": "fDragonLandingForPlayerNavMeshSize"
+  }, 
+  {
+   "default": 3000.0, 
+   "key": "fDragonLandingForPlayerSearchDist"
+  }, 
+  {
+   "default": 30.0, 
+   "key": "fFlyingMountDismountOffset"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fFlyingMountFastTravelArrivalHeight"
+  }, 
+  {
+   "default": 7000.0, 
+   "key": "fFlyingMountFastTravelDragonSpeed"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fFlyingMountLandingRequestTimer"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "fFlyingMountSlowestSpeedMult"
+  }, 
+  {
+   "default": 15.0, 
+   "key": "fFlyingMountTutorialMessageDelay"
+  }, 
+  {
+   "default": 700.0, 
+   "key": "fPlayerFlyingMountBaseTargetSpeed"
+  }, 
+  {
+   "default": 1400.0, 
+   "key": "fPlayerFlyingMountFastBaseTargetSpeed"
+  }, 
+  {
+   "default": 10.0, 
+   "key": "fPlayerFlyingMountNothingLoadingMult"
+  }, 
+  {
+   "default": 400.0, 
+   "key": "fPlayerFlyingMountTravelMaxHeight"
+  }, 
+  {
+   "default": 200.0, 
+   "key": "fPlayerFlyingMountTravelMinHeight"
+  }, 
+  {
+   "default": false, 
+   "key": "iFlyingMountSlowestQueuedRefCount"
+  }
+ ], 
+ "Decals": [
+  {
+   "default": false, 
+   "key": "bAllowDecalsOnAlpha"
+  }, 
+  {
+   "default": false, 
+   "key": "bBackgroundInitializeGeometryDecals"
+  }, 
+  {
+   "default": false, 
+   "key": "bDecalMultithreaded"
+  }, 
+  {
+   "default": false, 
+   "key": "bDecalOcclusionQuery"
+  }, 
+  {
+   "default": false, 
+   "key": "bDecals"
+  }, 
+  {
+   "default": false, 
+   "key": "bForceAllDecals"
+  }, 
+  {
+   "default": false, 
+   "key": "bSkinnedDecals"
+  }, 
+  {
+   "default": 0.0050000000000000001, 
+   "key": "fDebrisDecalTimer"
+  }, 
+  {
+   "default": false, 
+   "key": "uMaxDecals"
+  }, 
+  {
+   "default": false, 
+   "key": "uMaxSkinDecalPerActor"
+  }, 
+  {
+   "default": false, 
+   "key": "uMaxSkinDecals"
+  }
+ ], 
+ "Terrain": [
+  {
+   "default": 87.0, 
+   "key": "fHDLODSnowThresholdAngle"
+  }, 
+  {
+   "default": 100.0, 
+   "key": "fLODSnowThresholdAngle"
+  }
+ ], 
+ "Animation": [
+  {
+   "default": false, 
+   "key": "bAlwaysDriveRagdoll"
+  }, 
+  {
+   "default": false, 
+   "key": "bAlwaysSaveAllInfo"
+  }, 
+  {
+   "default": false, 
+   "key": "bAnimInterpEnable"
+  }, 
+  {
+   "default": false, 
+   "key": "bApplyPitchToExtractedMotion"
+  }, 
+  {
+   "default": false, 
+   "key": "bDisplayMarkWarning"
+  }, 
+  {
+   "default": false, 
+   "key": "bDriveRagdollWithGraph"
+  }, 
+  {
+   "default": false, 
+   "key": "bEnableHavokHit"
+  }, 
+  {
+   "default": false, 
+   "key": "bFeedbackToGraphFromCharacterController"
+  }, 
+  {
+   "default": false, 
+   "key": "bFootIK"
+  }, 
+  {
+   "default": false, 
+   "key": "bFootIKFeedback"
+  }, 
+  {
+   "default": false, 
+   "key": "bHumanoidFootIKEnable"
+  }, 
+  {
+   "default": false, 
+   "key": "bInitiallyLoadAllClips"
+  }, 
+  {
+   "default": false, 
+   "key": "bLoadCollatedAnimTextData"
+  }, 
+  {
+   "default": false, 
+   "key": "bMultiThreadBoneUpdate"
+  }, 
+  {
+   "default": false, 
+   "key": "bRandomizeGraphSeed"
+  }, 
+  {
+   "default": false, 
+   "key": "bSendNonVisibleBehaviorGraphsToSPU"
+  }, 
+  {
+   "default": false, 
+   "key": "bShouldProcessRequests"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseSPUGenerate"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseSpeedSampler"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseVariableCache"
+  }, 
+  {
+   "default": 800.0, 
+   "key": "fAnimInterpFarDist"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "fAnimInterpMaxTime"
+  }, 
+  {
+   "default": 0.080000000000000002, 
+   "key": "fAnimInterpMinTime"
+  }, 
+  {
+   "default": 400.0, 
+   "key": "fAnimInterpNearDist"
+  }, 
+  {
+   "default": 0.25, 
+   "key": "fAnimInterpSlop"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fBoneLODDistanceScale"
+  }, 
+  {
+   "default": 50.0, 
+   "key": "fHavokHitImpulseMult"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fHavokHitTimeSec"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fIdleChangeClearTime"
+  }, 
+  {
+   "default": 0.066667000000000004, 
+   "key": "fMaxFrameCounterDifferenceToConsiderVisible"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fMaxTimeToMarkSec"
+  }, 
+  {
+   "default": 20.0, 
+   "key": "fMotionFeedbackMinAngleDelta"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fMotionFeedbackMinSpeed"
+  }, 
+  {
+   "default": 25.0, 
+   "key": "fMotionFeedbackMinSpeedDelta"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fMotionFeedbackMinTime"
+  }, 
+  {
+   "default": 8.0, 
+   "key": "fMountDismountTimeout"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fPlayerCharacterAttackComboStartFraction"
+  }, 
+  {
+   "default": 0.0, 
+   "key": "fPlayerCharacterAttackIntroLength"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fPlayerCharacterDrawSheatheTimeout"
+  }, 
+  {
+   "default": 0.36666700000000002, 
+   "key": "fPlayerCharacterPowerAttackStartTime"
+  }, 
+  {
+   "default": 250.0, 
+   "key": "fSpecialIdlePickTime"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fWeaponChangeClearTime"
+  }, 
+  {
+   "default": false, 
+   "key": "iMinBonesToGenerateWhileSitting"
+  }, 
+  {
+   "default": false, 
+   "key": "iPlayerCharacterImagespaceModifierAnimCount"
+  }, 
+  {
+   "default": "meshes\\", 
+   "key": "sHkxDBNameContextPrefix"
+  }, 
+  {
+   "default": "Actors\\Character\\_1stPerson\\FirstPerson.hkx", 
+   "key": "strPlayerCharacterBehavior1stPGraph"
+  }, 
+  {
+   "default": false, 
+   "key": "uVariableCacheSize"
+  }, 
+  {
+   "default": false, 
+   "key": "uiMaxNumActorHit"
+  }, 
+  {
+   "default": false, 
+   "key": "uiMaxPermanentSetSize"
+  }
+ ], 
+ "GrabIK": [
+  {
+   "default": 0.25, 
+   "key": "fDriveGain"
+  }
+ ], 
+ "Imagespace": [
+  {
+   "default": false, 
+   "key": "bDoDepthOfField"
+  }, 
+  {
+   "default": false, 
+   "key": "bDoRadialBlur"
+  }, 
+  {
+   "default": 10000.0, 
+   "key": "fRenderDepthMaxDepth"
+  }, 
+  {
+   "default": false, 
+   "key": "iRadialBlurLevel"
+  }
+ ], 
+ "BackgroundLoad": [
+  {
+   "default": false, 
+   "key": "bBackgroundCellLoads"
+  }, 
+  {
+   "default": false, 
+   "key": "bBackgroundLoadLipFiles"
+  }, 
+  {
+   "default": false, 
+   "key": "bLoadBackgroundFaceGen"
+  }, 
+  {
+   "default": false, 
+   "key": "bLoadHelmetsInBackground"
+  }, 
+  {
+   "default": false, 
+   "key": "bSelectivePurgeUnusedOnFastTravel"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseBackgroundFileLoader"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseMultiThreadedFaceGen"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseMultiThreadedTrees"
+  }, 
+  {
+   "default": false, 
+   "key": "iPostProcessMilliseconds"
+  }, 
+  {
+   "default": false, 
+   "key": "iPostProcessMillisecondsEditor"
+  }, 
+  {
+   "default": false, 
+   "key": "iPostProcessMillisecondsLoadingQueuedPriority"
+  }, 
+  {
+   "default": false, 
+   "key": "iPostProcessTaskWarningMilliseconds"
+  }
+ ], 
+ "HeadTracking": [
+  {
+   "default": false, 
+   "key": "bDisableHeadTracking"
+  }, 
+  {
+   "default": 90.0, 
+   "key": "fHeadTrackingMaxAngle"
+  }, 
+  {
+   "default": 512.0, 
+   "key": "fMaxPathLookAtPointDist"
+  }, 
+  {
+   "default": 128.0, 
+   "key": "fMinPathLookAtPointDist"
+  }, 
+  {
+   "default": 2.0, 
+   "key": "fPathLookAtPointTime"
+  }, 
+  {
+   "default": 8.0, 
+   "key": "fUpdateDelayNewTargetSecondsMax"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fUpdateDelayNewTargetSecondsMin"
+  }, 
+  {
+   "default": 1.5, 
+   "key": "fUpdateDelaySecondsMax"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fUpdateDelaySecondsMin"
+  }, 
+  {
+   "default": false, 
+   "key": "iUpdateActorsPerFrame"
+  }
+ ], 
+ "FootIK": [
+  {
+   "default": false, 
+   "key": "bFootPlacementOn"
+  }, 
+  {
+   "default": false, 
+   "key": "bRigidBodyController"
+  }, 
+  {
+   "default": 0.20000000000000001, 
+   "key": "fAnkleOffset"
+  }, 
+  {
+   "default": 6.0, 
+   "key": "fControllerTetherLen"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fFootPlantedGain"
+  }, 
+  {
+   "default": 0.90000000000000002, 
+   "key": "fFootRaisedGain"
+  }, 
+  {
+   "default": 0.40000000000000002, 
+   "key": "fGroundAscendingGain"
+  }, 
+  {
+   "default": 0.40000000000000002, 
+   "key": "fGroundDescendingGain"
+  }, 
+  {
+   "default": 0.59999999999999998, 
+   "key": "fMaxFootCastMilliSec"
+  }, 
+  {
+   "default": 3.5, 
+   "key": "fMaxStepVertError"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fOnOffGain"
+  }, 
+  {
+   "default": -0.11, 
+   "key": "fOriginalGroundHeightMS"
+  }, 
+  {
+   "default": 0.20000000000000001, 
+   "key": "fPelvisOffsetDamping"
+  }, 
+  {
+   "default": 0.75, 
+   "key": "fPelvisUpDownBias"
+  }, 
+  {
+   "default": 0.69999999999999996, 
+   "key": "fRagdollFeedback"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fVertErrorGain"
+  }, 
+  {
+   "default": false, 
+   "key": "iNumFramesFootEaseOut"
+  }
+ ], 
+ "MAIN": [
+  {
+   "default": false, 
+   "key": "bCrosshairEnabled"
+  }, 
+  {
+   "default": false, 
+   "key": "bEnableLipLookup"
+  }, 
+  {
+   "default": false, 
+   "key": "bGamepadEnable"
+  }, 
+  {
+   "default": false, 
+   "key": "bPrimitivesOn"
+  }, 
+  {
+   "default": false, 
+   "key": "bSaveOnPause"
+  }, 
+  {
+   "default": false, 
+   "key": "bSaveOnRest"
+  }, 
+  {
+   "default": false, 
+   "key": "bSaveOnTravel"
+  }, 
+  {
+   "default": false, 
+   "key": "bSaveOnWait"
+  }, 
+  {
+   "default": false, 
+   "key": "bUseWaterHDR"
+  }, 
+  {
+   "default": 1.0, 
+   "key": "fHUDOpacity"
+  }, 
+  {
+   "default": 1000.0, 
+   "key": "fLowPerfCombatantVoiceDistance"
+  }, 
+  {
+   "default": 0.5, 
+   "key": "fMapWorldTargetTransitionTime"
+  }, 
+  {
+   "default": 5.0, 
+   "key": "fQuestScriptDelayTime"
+  }, 
+  {
+   "default": 150000.0, 
+   "key": "fSkyCellRefFadeDistance"
+  }, 
+  {
+   "default": false, 
+   "key": "iDetectionHighNumPicks"
+  }, 
+  {
+   "default": false, 
+   "key": "iLastHDRSetting"
+  }, 
+  {
+   "default": false, 
+   "key": "iMaxQuestObjectives"
+  }, 
+  {
+   "default": "Interface/Controls/PC/ControlMap.txt", 
+   "key": "sControlsDefinitionFile"
+  }, 
+  {
+   "default": "ControlMap_Custom.txt", 
+   "key": "sControlsRemapFile"
+  }, 
+  {
+   "default": "Interface/Controls/PC/Gamepad.txt", 
+   "key": "sGamepadDefinitionFile"
+  }, 
+  {
+   "default": "Interface/Controls/PC/Keyboard_", 
+   "key": "sKeyboardDefinitionFile"
+  }, 
+  {
+   "default": "Interface/Controls/PC/Mouse.txt", 
+   "key": "sMouseDefinitionFile"
+  }, 
+  {
+   "default": "BGSSaveLoadHeader_Screenshot", 
+   "key": "sSaveGameScreenshotName"
+  }
+ ], 
+ "Pathing": [
+  {
+   "default": 0.5, 
+   "key": "fINIDetectDoorsForPathingTime"
+  }
+ ], 
+ "Archive": [
+  {
+   "default": false, 
+   "key": "bCheckRuntimeCollisions"
+  }, 
+  {
+   "default": false, 
+   "key": "bInvalidateOlderFiles"
+  }, 
+  {
+   "default": false, 
+   "key": "bTrackFileLoading"
+  }, 
+  {
+   "default": true, 
+   "key": "bUseArchives"
+  }, 
+  {
+   "default": false, 
+   "key": "iRetainDirectoryStringTable"
+  }, 
+  {
+   "default": false, 
+   "key": "iRetainFilenameOffsetTable"
+  }, 
+  {
+   "default": false, 
+   "key": "iRetainFilenameStringTable"
+  }, 
+  {
+   "default": "Skyrim - Textures.bsa, Skyrim - Meshes.bsa, Skyrim - Voices.bsa", 
+   "key": "sArchiveList"
+  }, 
+  {
+   "default": "ArchiveInvalidation.txt", 
+   "key": "sInvalidationFile"
+  },
+  {
+   "default": "", 
+   "key": "sResourceArchiveRetainFileNameList"
+  }, 
+  {
+   "default": "TEXTURES\\, MESHES\\, FACEGEN\\, INTERFACE\\ , MUSIC\\, SOUND\\, SCRIPTS\\, MAXHEIGHTS\\, VIS\\, GRASS\\, STRINGS\\", 
+   "key": "sResourcePrefixList"
+  }
+ ], 
+ "Landscape": [
+  {
+   "default": false, 
+   "key": "bCurrentCellOnly"
+  }, 
+  {
+   "default": 2.5, 
+   "key": "fLandFriction"
+  }, 
+  {
+   "default": 3.0, 
+   "key": "fLandTextureTilingMult"
+  }, 
+  {
+   "default": false, 
+   "key": "iLandBorder1B"
+  }, 
+  {
+   "default": false, 
+   "key": "iLandBorder1G"
+  }, 
+  {
+   "default": false, 
+   "key": "iLandBorder1R"
+  }, 
+  {
+   "default": false, 
+   "key": "iLandBorder2B"
+  }, 
+  {
+   "default": false, 
+   "key": "iLandBorder2G"
+  }, 
+  {
+   "default": false, 
+   "key": "iLandBorder2R"
+  }, 
+  {
+   "default": "Dirt02.dds", 
+   "key": "sDefaultLandDiffuseTexture"
+  }, 
+  {
+   "default": "Dirt02_N.dds", 
+   "key": "sDefaultLandNormalTexture"
+  }
+ ], 
+ "TestAllCells": [
+  {
+   "default": false, 
+   "key": "bFileCheckModelCollision"
+  }, 
+  {
+   "default": false, 
+   "key": "bFileControllerOnRoot"
+  }, 
+  {
+   "default": false, 
+   "key": "bFileGoneMessage"
+  }, 
+  {
+   "default": false, 
+   "key": "bFileNeededMessage"
+  }, 
+  {
+   "default": false, 
+   "key": "bFileShowIcons"
+  }, 
+  {
+   "default": false, 
+   "key": "bFileShowTextures"
+  }, 
+  {
+   "default": false, 
+   "key": "bFileSkipIconChecks"
+  }, 
+  {
+   "default": false, 
+   "key": "bFileSkipModelChecks"
+  }, 
+  {
+   "default": false, 
+   "key": "bFileTestLoad"
+  }, 
+  {
+   "default": false, 
+   "key": "bFileUnusedObject"
+  }
+ ]
+}
