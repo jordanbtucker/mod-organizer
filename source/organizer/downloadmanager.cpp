@@ -218,8 +218,8 @@ void DownloadManager::setOutputDirectory(const QString &outputDirectory)
     m_DirWatcher.removePaths(directories);
   }
   m_OutputDirectory = QDir::fromNativeSeparators(outputDirectory);
-  m_DirWatcher.addPath(m_OutputDirectory);
   refreshList();
+  m_DirWatcher.addPath(m_OutputDirectory);
 }
 
 
@@ -243,6 +243,8 @@ void DownloadManager::setShowHidden(bool showHidden)
 
 void DownloadManager::refreshList()
 {
+  int downloadsBefore = m_ActiveDownloads.size();
+
   // remove finished downloads
   for (QVector<DownloadInfo*>::iterator Iter = m_ActiveDownloads.begin(); Iter != m_ActiveDownloads.end();) {
     if (((*Iter)->m_State == STATE_READY) || ((*Iter)->m_State == STATE_INSTALLED)) {
@@ -259,8 +261,21 @@ void DownloadManager::refreshList()
   }
 
   nameFilters.append(QString("*").append(UNFINISHED));
-
   QDir dir(QDir::fromNativeSeparators(m_OutputDirectory));
+
+  // find orphaned meta files and delete them (sounds cruel but it's better for everyone)
+  QStringList orphans;
+  QStringList metaFiles = dir.entryList(QStringList() << "*.meta");
+  foreach (const QString &metaFile, metaFiles) {
+    QString baseFile = metaFile.left(metaFile.length() - 5);
+    if (!QFile::exists(dir.absoluteFilePath(baseFile))) {
+      orphans.append(dir.absoluteFilePath(metaFile));
+    }
+  }
+  if (orphans.size() > 0) {
+    qDebug("%d orphaned meta files will be deleted", orphans.size());
+    shellDelete(orphans, true);
+  }
 
   // add existing downloads to list
   foreach (QString file, dir.entryList(nameFilters, QDir::Files, QDir::Time)) {
@@ -273,6 +288,7 @@ void DownloadManager::refreshList()
       }
     }
     if (Exists) {
+      qDebug("%s exists", qPrintable(file));
       continue;
     }
 
@@ -283,7 +299,10 @@ void DownloadManager::refreshList()
       m_ActiveDownloads.push_front(info);
     }
   }
-  qDebug("downloads after refresh: %d", m_ActiveDownloads.size());
+
+  if (m_ActiveDownloads.size() != downloadsBefore) {
+    qDebug("downloads after refresh: %d", m_ActiveDownloads.size());
+  }
   emit update(-1);
 }
 
@@ -323,6 +342,7 @@ bool DownloadManager::addDownload(QNetworkReply *reply, const QStringList &URLs,
       (QMessageBox::question(NULL, tr("Download again?"), tr("A file with the same name has already been downloaded. "
                              "Do you want to download it again? The new file will receive a different name."),
                              QMessageBox::Yes | QMessageBox::No) == QMessageBox::No)) {
+    removePending(modID, fileID);
     delete newDownload;
     return false;
   }
@@ -331,8 +351,21 @@ bool DownloadManager::addDownload(QNetworkReply *reply, const QStringList &URLs,
 
   startDownload(reply, newDownload, false);
 
-  emit update(-1);
+//  emit update(-1);
   return true;
+}
+
+
+void DownloadManager::removePending(int modID, int fileID)
+{
+  emit aboutToUpdate();
+  for (auto iter = m_PendingDownloads.begin(); iter != m_PendingDownloads.end(); ++iter) {
+    if ((iter->first == modID) && (iter->second == fileID)) {
+      m_PendingDownloads.erase(iter);
+      break;
+    }
+  }
+  emit update(-1);
 }
 
 
@@ -365,11 +398,14 @@ void DownloadManager::startDownload(QNetworkReply *reply, DownloadInfo *newDownl
   if (!resume) {
     newDownload->m_PreResumeSize = newDownload->m_Output.size();
 
+    removePending(newDownload->m_ModID, newDownload->m_FileID);
+
     emit aboutToUpdate();
 
     m_ActiveDownloads.append(newDownload);
 
     emit update(-1);
+    emit downloadAdded();
   }
 }
 
@@ -379,14 +415,21 @@ void DownloadManager::addNXMDownload(const QString &url)
   NXMUrl nxmInfo(url);
 
   QString managedGame = ToQString(MOShared::GameInfo::instance().getGameShortName());
-
+  qDebug("add nxm download", qPrintable(url));
   if (nxmInfo.game().compare(managedGame, Qt::CaseInsensitive) != 0) {
+    qDebug("download requested for wrong game (game: %s, url: %s)", qPrintable(managedGame), qPrintable(nxmInfo.game()));
     QMessageBox::information(NULL, tr("Wrong Game"), tr("The download link is for a mod for \"%1\" but this instance of MO "
     "has been set up for \"%2\".").arg(nxmInfo.game()).arg(managedGame), QMessageBox::Ok);
     return;
   }
 
-  m_RequestIDs.insert(m_NexusInterface->requestFileInfo(nxmInfo.getModId(), nxmInfo.getFileId(), this, QVariant()));
+  emit aboutToUpdate();
+
+  m_PendingDownloads.append(std::make_pair(nxmInfo.modId(), nxmInfo.fileId()));
+
+  emit update(-1);
+  emit downloadAdded();
+  m_RequestIDs.insert(m_NexusInterface->requestFileInfo(nxmInfo.modId(), nxmInfo.fileId(), this, QVariant()));
 }
 
 
@@ -628,6 +671,19 @@ int DownloadManager::numTotalDownloads() const
   return m_ActiveDownloads.size();
 }
 
+int DownloadManager::numPendingDownloads() const
+{
+  return m_PendingDownloads.size();
+}
+
+std::pair<int, int> DownloadManager::getPendingDownload(int index)
+{
+  if ((index < 0) || (index >= m_PendingDownloads.size())) {
+    throw MyException(tr("invalid index"));
+  }
+
+  return m_PendingDownloads.at(index);
+}
 
 QString DownloadManager::getFilePath(int index) const
 {
@@ -1025,8 +1081,8 @@ void DownloadManager::nxmFileInfoAvailable(int modID, int fileID, QVariant userD
   NexusInfo info;
 
   QVariantMap result = resultData.toMap();
-
   info.m_Name = result["name"].toString();
+  qDebug("file info received for %s", qPrintable(info.m_Name));
   info.m_Version = result["version"].toString();
   if (info.m_Version.isEmpty()) {
     info.m_Version = info.m_NewestVersion;
@@ -1121,9 +1177,12 @@ void DownloadManager::nxmDownloadURLsAvailable(int modID, int fileID, QVariant u
     m_RequestIDs.erase(idIter);
   }
 
+  qDebug("download urls received (modid %d, fileid %d)", modID, fileID);
+
   NexusInfo info = userData.value<NexusInfo>();
   QVariantList resultList = resultData.toList();
   if (resultList.length() == 0) {
+    removePending(modID, fileID);
     emit showMessage(tr("No download server available. Please try again later."));
     return;
   }
@@ -1282,3 +1341,4 @@ void DownloadManager::directoryChanged(const QString&)
 {
   refreshList();
 }
+
