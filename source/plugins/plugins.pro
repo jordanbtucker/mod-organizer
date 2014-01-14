@@ -13,5 +13,7 @@ SUBDIRS += \
     diagnoseBasic \
 		pyniEdit \
     installerBCF \
-    checkFNIS
+    checkFNIS \
+    previewDDS \
+    previewBase
 
