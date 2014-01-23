@@ -142,6 +142,14 @@ SectionGroup "Plugins" PluginsGroup
 		File "..\staging\ModOrganizer\plugins\data\pyCfg*.py"
 		File "..\staging\ModOrganizer\plugins\data\settings.json"
 	SectionEnd
+	Section "File Preview" PluginFilePreview
+		SetOutPath "$INSTDIR\plugins\"
+		File "..\staging\ModOrganizer\plugins\previewBase.dll"
+	SectionEnd
+	Section "DDS Preview" PluginDDSPreview
+		SetOutPath "$INSTDIR\plugins\"
+		File "..\staging\ModOrganizer\plugins\previewDDS.dll"
+	SectionEnd
 SectionGroupEnd
 
 Section "Translations" Section5
@@ -209,6 +217,8 @@ FunctionEnd
 	!insertmacro MUI_DESCRIPTION_TEXT ${PluginFNIS} "Checks whether FNIS needs to be run every time you start the game. Doesn't hurt, even if you don't use FNIS."
 	!insertmacro MUI_DESCRIPTION_TEXT ${PluginNMMImport} "Imports Mods from a Nexus Mod Manager installation."
 	!insertmacro MUI_DESCRIPTION_TEXT ${PluginConfigurator} "More sophisticated ini editor. Requires the python plugin."
+	!insertmacro MUI_DESCRIPTION_TEXT ${PluginFilePreview} "Provides File Preview capabilities for $\"simple$\" file types (images, text files)."
+	!insertmacro MUI_DESCRIPTION_TEXT ${PluginDDSPreview} "Provides File Preview capabilities for DDS textures."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;Uninstall section
