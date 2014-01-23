@@ -19,21 +19,7 @@ SOURCES += \
     boss-common/Common/Globals.cpp
 
 HEADERS  += \
-    boss-api/BOSS-API.h \
-#    boss-common/Updating/Updater.h \
-#    boss-common/Output/Output.h \
-#    boss-common/Parsing/Grammar.h \
-#    boss-common/Support/Helpers.h \
-#    boss-common/Support/Logger.h \
-#    boss-common/Support/ModFormat.h \
-#    boss-common/Support/Platform.h \
-#    boss-common/Support/Types.h \
-#    boss-common/Support/VersionRegex.h \
-#    boss-common/Common/Classes.h \
-#    boss-common/Common/DllDef.h \
-#    boss-common/Common/Error.h \
-#    boss-common/Common/Game.h \
-#    boss-common/Common/Globals.h
+    boss-api/BOSS-API.h
 
 
 INCLUDEPATH += "$$PWD" "$$PWD/boss-common" "$(BOOSTPATH)" "$(CURLPATH)/include" "$(UTF8CPPPATH)"
@@ -71,3 +57,4 @@ SRCDIR ~= s,/,$$QMAKE_DIR_SEP,g
 DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 
 QMAKE_POST_LINK += xcopy /y /I $$quote($$SRCDIR\\boss*.dll) $$quote($$DSTDIR\\dlls) $$escape_expand(\\n)
+QMAKE_POST_LINK += xcopy /y /I $$quote($$SRCDIR\\boss*.pdb) $$quote($$DSTDIR\\dlls) $$escape_expand(\\n)

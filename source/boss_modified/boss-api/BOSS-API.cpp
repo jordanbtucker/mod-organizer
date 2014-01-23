@@ -829,7 +829,7 @@ BOSS_API uint32_t SortCustomMods(boss_db db, uint8_t ** inputPlugins, size_t inp
 		uint8_t *** sortedPlugins,
 		size_t * sortedListLength,
 		uint8_t *** unrecognisedPlugins,
-		size_t * unrecListLength) {
+    size_t * unrecListLength) {
 	if (db == NULL || ((sortedPlugins == NULL || sortedListLength == NULL || unrecognisedPlugins == NULL || unrecListLength == NULL)))
 		return ReturnCode(BOSS_API_ERROR_INVALID_ARGS, "Null pointer passed.");
 
@@ -883,7 +883,7 @@ BOSS_API uint32_t SortCustomMods(boss_db db, uint8_t ** inputPlugins, size_t inp
 		//Before the master partition is applied in SortPlugins(), record recognised and unrecognised plugins.
 		items = db->game.modlist.Items();
 		if (db->game.modlist.LastRecognisedPos() > 0) {
-			recognised = vector<Item>(items.begin(), items.begin() + db->game.modlist.LastRecognisedPos());
+      recognised = vector<Item>(items.begin(), items.begin() + db->game.modlist.LastRecognisedPos() + 1);
 			unrecognised = vector<Item>(items.begin() + db->game.modlist.LastRecognisedPos() + 1, items.end());
 		}
 		db->game.SortPlugins();
@@ -917,7 +917,7 @@ BOSS_API uint32_t SortCustomMods(boss_db db, uint8_t ** inputPlugins, size_t inp
 	if (unrecListLength != NULL)
 		*unrecListLength = db->extStringArray2Size;
 
-	return ReturnCode(BOSS_API_OK);	
+  return ReturnCode(BOSS_API_OK);
 }
 
 
