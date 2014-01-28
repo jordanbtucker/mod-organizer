@@ -21,9 +21,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "previewdds.h"
 #include <boost/assign.hpp>
-#include <QGLPixelBuffer>
 #include <QLabel>
 #include <QtPlugin>
+#include <QtOpenGL/QGLFramebufferObject>
 
 // dependencies of gltexloaders
 #include <QModelIndex>
@@ -65,7 +65,7 @@ QString PreviewDDS::description() const
 
 MOBase::VersionInfo PreviewDDS::version() const
 {
-  return VersionInfo(0, 1, 0, VersionInfo::RELEASE_BETA);
+  return VersionInfo(0, 1, 1, VersionInfo::RELEASE_BETA);
 }
 
 bool PreviewDDS::isActive() const
@@ -78,10 +78,10 @@ QList<MOBase::PluginSetting> PreviewDDS::settings() const
   return QList<MOBase::PluginSetting>();
 }
 
-
 QWidget *PreviewDDS::genFilePreview(const QString &fileName, const QSize &maxSize) const
 {
   m_GLWidget.makeCurrent();
+
 
   GLuint width, height, mipmaps;
   width = height = mipmaps = 0;
@@ -95,21 +95,28 @@ QWidget *PreviewDDS::genFilePreview(const QString &fileName, const QSize &maxSiz
     return nullptr;
   }
 
-  QGLPixelBuffer pbuffer(QSize(width, height), m_GLWidget.format(), &m_GLWidget);
-  if (!pbuffer.makeCurrent()) {
-    qWarning("failed to activate pixel buffer");
-    return nullptr;
+  // scale to fit
+  if (width > static_cast<unsigned int>(maxSize.width())) {
+    float factor = static_cast<float>(maxSize.width()) / static_cast<float>(width);
+    width = static_cast<int>(static_cast<float>(width) * factor);
+    height = static_cast<int>(static_cast<float>(height) * factor);
   }
+  if (height > static_cast<unsigned int>(maxSize.height())) {
+    float factor = static_cast<float>(maxSize.height()) / static_cast<float>(height);
+    width = static_cast<int>(static_cast<float>(width) * factor);
+    height = static_cast<int>(static_cast<float>(height) * factor);
+  }
+  QGLFramebufferObject fbuffer(QSize(width, height), QGLFramebufferObject::NoAttachment, GL_TEXTURE_2D, GL_RGB);
 
-  pbuffer.drawTexture(QRectF(-1, -1, 2, 2), m_Id);
+  fbuffer.bind();
+  glClear(GL_COLOR_BUFFER_BIT);
+  glViewport(0, 0, width, height);
+  fbuffer.drawTexture(QRectF(-1, -1, 2, 2), m_Id);
+  fbuffer.release();
+
+  QImage image = fbuffer.toImage();
 
   QLabel *label = new QLabel();
-  QImage image = pbuffer.toImage();
-  if ((image.size().width() > maxSize.width()) ||
-      (image.size().height() > maxSize.height())) {
-    image = image.scaled(maxSize, Qt::KeepAspectRatio);
-  }
-
   label->setPixmap(QPixmap::fromImage(image));
   return label;
 }
