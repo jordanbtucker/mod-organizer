@@ -729,6 +729,11 @@ namespace boss {
 		//Store installed mods in a hashset. Case insensitivity not required as regex itself is case-insensitive.
 		boost::unordered_set<string> hashset;
 		boost::unordered_set<string>::iterator setPos;
+
+    std::vector<Item> activePlugins = parentGame.modlist.Items();
+    for (auto iter = activePlugins.begin(); iter != activePlugins.end(); ++iter) {
+      hashset.insert(iter->Name());
+    }
 		for (fs::directory_iterator itr(parentGame.DataFolder()); itr!=fs::directory_iterator(); ++itr) {
 			if (fs::is_regular_file(itr->status())) {
 				fs::path filename = itr->path().filename();
@@ -764,7 +769,7 @@ namespace boss {
 				//Now start looking.
 				setPos = FindRegexMatch(hashset, reg, hashset.begin());
 				while (setPos != hashset.end()) {  //Now insert the current found mod in the position of the regex mod.
-					itemIter = items.insert(itemIter, Item(*setPos, MOD, messages));
+          itemIter = items.insert(itemIter, Item(*setPos, MOD, messages));
 					setPos = FindRegexMatch(hashset, reg, ++setPos);
 					++itemIter;
 				}
