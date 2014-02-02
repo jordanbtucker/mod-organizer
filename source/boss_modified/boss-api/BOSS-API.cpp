@@ -1047,8 +1047,7 @@ BOSS_API uint32_t GetActivePlugins(boss_db db, uint8_t *** plugins, size_t * num
 	return ReturnCode(BOSS_API_OK);
 }
 
-// Edits plugins.txt so that it lists the given plugins in load order.
-// Encoding is handled by the saving code and doesn't need to be explicitly catered for here.
+// manually set a list of active plugins, overwriting the list looked up from the fs
 BOSS_API uint32_t SetActivePluginsDumb(boss_db db, uint8_t ** plugins, const size_t numPlugins) {
 	if (db == NULL || plugins == NULL)
 		return ReturnCode(BOSS_API_ERROR_INVALID_ARGS, "Null pointer passed.");
