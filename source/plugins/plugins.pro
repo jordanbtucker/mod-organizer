@@ -11,8 +11,7 @@ SUBDIRS += \
 		installerBundle \
 		proxyPython \
     diagnoseBasic \
-		pyniEdit \
-    installerBCF \
+    pyniEdit \
     checkFNIS \
     previewDDS \
     previewBase
