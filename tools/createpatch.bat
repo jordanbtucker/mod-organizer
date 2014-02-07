@@ -36,3 +36,5 @@ pushd .
 cd ..\staging\ModOrganizer_patch
 e:\7-zip\7z.exe a -mx9 -r ..\ModOrganizer_v%version%_update.7z *
 popd
+
+echo %REFERENCE_VERSION% >> ..\staging\version.txt
