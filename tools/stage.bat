@@ -87,3 +87,5 @@ xcopy /y /s /I static_data\* ..\staging\ModOrganizer
 xcopy /y /I ..\output\dlls\archive.dll ..\staging\ModOrganizer\dlls
 xcopy /y /I ..\output\dlls\boss.dll ..\staging\ModOrganizer\dlls
 xcopy /y /I ..\output\dlls\dlls.manifest ..\staging\ModOrganizer\dlls
+
+for /F "tokens=1-3* delims=." %%a in ('cscript.exe //nologo filever.vbs ..\output\ModOrganizer.exe') do echo %%a.%%b.%%c > ..\staging\version.txt
