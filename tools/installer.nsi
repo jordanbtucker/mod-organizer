@@ -248,6 +248,7 @@ Section Uninstall
 	Delete "$INSTDIR\license\*.txt"
 	Delete "$INSTDIR\DLLs\7z.dll"
 	Delete "$INSTDIR\DLLs\archive.dll"
+	Delete "$INSTDIR\DLLs\boss.dll"
 	Delete "$INSTDIR\DLLs\boost_python-vc100-mt-1_??.dll"
 	
 	; Clean up cache of integrated browser
@@ -256,6 +257,10 @@ Section Uninstall
 	; Clean up generated logs and dumps
 	Delete "$INSTDIR\logs\*"
 	Delete "$INSTDIR\ModOrganizer.exe.dmp"
+	
+	; Clean up boss data
+	Delete "$INSTDIR\boss\masterlist.txt"
+	Delete "$INSTDIR\boss\userlist.txt"
 
 	; Clean up qt dll option
 	Delete "$INSTDIR\DLLs\Qt*.dll"
@@ -325,6 +330,7 @@ Section Uninstall
 	RMDir "$INSTDIR\imageformats\"
 	RMDir "$INSTDIR\license\"
 	RMDir "$INSTDIR\DLLs\"
+	RMDir "$INSTDIR\boss\"
 	RMDir "$INSTDIR\translations\"
 	RMDir "$INSTDIR\tutorials\"
 	RMDir "$INSTDIR\"
