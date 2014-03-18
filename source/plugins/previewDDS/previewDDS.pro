@@ -29,3 +29,6 @@ HEADERS += previewdds.h
 INCLUDEPATH += "$(BOOSTPATH)"
 
 include(../plugin_template.pri)
+
+OTHER_FILES += \
+    previewdds.json
