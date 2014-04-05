@@ -58,11 +58,15 @@ bool PagesDescending(QGroupBox *LHS, QGroupBox *RHS)
 }
 
 
-FomodInstallerDialog::FomodInstallerDialog(const GuessedValue<QString> &modName, const QString &fomodPath, QWidget *parent)
+FomodInstallerDialog::FomodInstallerDialog(const GuessedValue<QString> &modName, const QString &fomodPath,
+                                           const std::function<MOBase::IPluginList::PluginState(const QString &)> fileCheck,
+                                           QWidget *parent)
   : QDialog(parent), ui(new Ui::FomodInstallerDialog), m_ModName(modName), m_ModID(-1),
-    m_FomodPath(fomodPath), m_Manual(false)
+    m_FomodPath(fomodPath), m_Manual(false), m_FileCheck(fileCheck)
 {
   ui->setupUi(this);
+
+  setWindowTitle(modName);
 
   updateNameEdit();
 }
@@ -70,6 +74,12 @@ FomodInstallerDialog::FomodInstallerDialog(const GuessedValue<QString> &modName,
 FomodInstallerDialog::~FomodInstallerDialog()
 {
   delete ui;
+}
+
+
+bool FomodInstallerDialog::hasOptions()
+{
+  return ui->stepsStack->count() > 0;
 }
 
 
@@ -119,9 +129,6 @@ void FomodInstallerDialog::initData()
 
   QImage screenshot(QDir::tempPath() + "/" + m_FomodPath + "/fomod/screenshot.png");
   if (!screenshot.isNull()) {
-/*    if (screenshot.width() > ui->screenshotLabel->maximumWidth()) {
-      screenshot = screenshot.scaledToWidth(ui->screenshotLabel->maximumWidth());
-    }*/
     ui->screenshotLabel->setScalablePixmap(QPixmap::fromImage(screenshot));
   }
 
@@ -145,7 +152,6 @@ void FomodInstallerDialog::initData()
   }
 }
 
-
 QString FomodInstallerDialog::getName() const
 {
   return ui->nameCombo->currentText();
@@ -160,7 +166,6 @@ int FomodInstallerDialog::getModID() const
 {
   return m_ModID;
 }
-
 
 void FomodInstallerDialog::moveTree(DirectoryTree::Node *target, DirectoryTree::Node *source)
 {
@@ -182,7 +187,6 @@ DirectoryTree::Node *FomodInstallerDialog::findNode(DirectoryTree::Node *node, c
     return node;
   }
 
-//  static QRegExp pathSeparator("[/\\]");
   int pos = path.indexOf('\\');
   if (pos == -1) {
     pos = path.indexOf('/');
@@ -259,7 +263,6 @@ void FomodInstallerDialog::copyLeaf(DirectoryTree::Node *sourceTree, const QStri
   }
 }
 
-
 void dumpTree(DirectoryTree::Node *node, int indent)
 {
   for (DirectoryTree::const_leaf_reverse_iterator iter = node->leafsRBegin();
@@ -319,16 +322,37 @@ bool FomodInstallerDialog::testCondition(int maxIndex, const SubCondition *condi
   return match;
 }
 
+
+QString FomodInstallerDialog::toString(IPluginList::PluginState state)
+{
+  switch (state) {
+    case IPluginList::STATE_MISSING: return "Missing";
+    case IPluginList::STATE_INACTIVE: return "Inactive";
+    case IPluginList::STATE_ACTIVE: return "Active";
+  }
+  throw MyException(tr("invalid plugin state %1").arg(state));
+}
+
+
+bool FomodInstallerDialog::testCondition(int, const FileCondition *condition) const
+{
+  return toString(m_FileCheck(condition->m_File)) == condition->m_State;
+}
+
+
+
 //#error "incomplete support for nested conditions. heap-allocated conditions aren't cleaned up yet"
 
 DirectoryTree *FomodInstallerDialog::updateTree(DirectoryTree *tree)
 {
   DirectoryTree *newTree = new DirectoryTree;
 
+  // enable all required files
   for (std::vector<FileDescriptor*>::iterator iter = m_RequiredFiles.begin(); iter != m_RequiredFiles.end(); ++iter) {
     copyFileIterator(tree, newTree, *iter);
   }
 
+  // enable all conditional file installs (files programatically selected by conditions instead of a user selection. usually dependencies)
   for (std::vector<ConditionalInstall>::iterator installIter = m_ConditionalInstalls.begin();
        installIter != m_ConditionalInstalls.end(); ++installIter) {
     SubCondition *condition = &installIter->m_Condition;
@@ -340,12 +364,17 @@ DirectoryTree *FomodInstallerDialog::updateTree(DirectoryTree *tree)
     }
   }
 
-  QList<QAbstractButton*> choices = ui->stepsStack->findChildren<QAbstractButton*>("choice");
-  foreach (QAbstractButton* choice, choices) {
-    if (choice->isChecked()) {
-      QVariantList fileList = choice->property("files").toList();
-      foreach (QVariant fileVariant, fileList) {
-        copyFileIterator(tree, newTree, fileVariant.value<FileDescriptor*>());
+  // enable all user-enabled choices
+  for (int i = 0; i < ui->stepsStack->count(); ++i) {
+    if (testVisible(i)) {
+      QList<QAbstractButton*> choices = ui->stepsStack->widget(i)->findChildren<QAbstractButton*>("choice");
+      foreach (QAbstractButton* choice, choices) {
+        if (choice->isChecked()) {
+          QVariantList fileList = choice->property("files").toList();
+          foreach (QVariant fileVariant, fileList) {
+            copyFileIterator(tree, newTree, fileVariant.value<FileDescriptor*>());
+          }
+        }
       }
     }
   }
@@ -363,7 +392,7 @@ void FomodInstallerDialog::highlightControl(QAbstractButton *button)
     QString screenshotFileName = screenshotName.toString();
     if (!screenshotFileName.isEmpty()) {
       QString temp = QFileInfo(screenshotFileName).fileName();
-      temp = QDir::tempPath() + "/" + m_FomodPath + "/" + screenshotFileName;
+      temp = QDir::tempPath() + "/" + m_FomodPath + "/" + QDir::fromNativeSeparators(screenshotFileName);
       QImage screenshot(temp);
       if (screenshot.isNull()) {
         qWarning(">%s< is a null image", temp.toUtf8().constData());
@@ -399,6 +428,19 @@ QString FomodInstallerDialog::readContent(QXmlStreamReader &reader)
 }
 
 
+QString FomodInstallerDialog::readContentUntil(QXmlStreamReader &reader, const QString &endTag)
+{
+  QString result;
+  while (!((reader.readNext() == QXmlStreamReader::EndElement) &&
+           (reader.name().compare(endTag) == 0))) {
+    if (reader.tokenType() == QXmlStreamReader::Characters) {
+      result += reader.text().toString();
+    }
+  }
+  return result;
+}
+
+
 void FomodInstallerDialog::parseInfo(const QByteArray &data)
 {
   QXmlStreamReader reader(data);
@@ -408,7 +450,6 @@ void FomodInstallerDialog::parseInfo(const QByteArray &data)
       case QXmlStreamReader::StartElement: {
         if (reader.name() == "Name") {
           m_ModName.update(readContent(reader), GUESS_META);
-//          m_ModName.update(m_ModName.update(readContent(reader), GUESS_META));
           updateNameEdit();
         } else if (reader.name() == "Author") {
           ui->authorLabel->setText(readContent(reader));
@@ -557,11 +598,9 @@ FomodInstallerDialog::Plugin FomodInstallerDialog::readPlugin(QXmlStreamReader &
 
   while (!((reader.readNext() == QXmlStreamReader::EndElement) &&
            (reader.name() == "plugin"))) {
-//    QXmlStreamReader::TokenType type = reader.tokenType();
-//    QString name = reader.name().toUtf8();
     if (reader.tokenType() == QXmlStreamReader::StartElement) {
       if (reader.name() == "description") {
-        result.m_Description = readContent(reader).trimmed();
+        result.m_Description = readContentUntil(reader, "description").trimmed();
       } else if (reader.name() == "image") {
         result.m_ImagePath = reader.attributes().value("path").toString();
       } else if (reader.name() == "typeDescriptor") {
@@ -616,6 +655,8 @@ void FomodInstallerDialog::readPlugins(QXmlStreamReader &reader, GroupType group
           } break;
         }
         newControl->setObjectName("choice");
+        newControl->setAttribute(Qt::WA_Hover);
+
         switch (plugin.m_Type) {
           case TYPE_REQUIRED: {
             newControl->setChecked(true);
@@ -840,6 +881,9 @@ void FomodInstallerDialog::readConditionalDependency(QXmlStreamReader &reader, S
         SubCondition *nested = new SubCondition();
         readConditionalDependency(reader, *nested);
         conditional.m_Conditions.push_back(nested);
+      } else if (reader.name() == "fileDependency") {
+        conditional.m_Conditions.push_back(new FileCondition(reader.attributes().value("file").toString(),
+                                                             reader.attributes().value("state").toString()));
       }
     }
   }
@@ -942,8 +986,10 @@ bool FomodInstallerDialog::testCondition(int maxIndex, const QString &flag, cons
   if (iter != m_ConditionCache.end()) {
     return iter->second == value;
   }
+  // unset and set conditions are stored separately since the unset conditions need to be flushed when we move to the next page (condition
+  // could be set there) while the set conditions need to be flushed when we move back in in the installer
   if (m_ConditionsUnset.find(flag) != m_ConditionsUnset.end()) {
-    return false;
+    return value.isEmpty();
   }
 
   // iterate through all enabled condition flags on all activated controls on all visible pages if one of them matches the condition
@@ -968,9 +1014,8 @@ bool FomodInstallerDialog::testCondition(int maxIndex, const QString &flag, cons
       }
     }
   }
-
   m_ConditionsUnset.insert(flag);
-  return false;
+  return value.isEmpty();
 }
 
 

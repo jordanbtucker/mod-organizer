@@ -52,6 +52,7 @@ public:
   void addModDirectory(const std::wstring &modPath);
   void addModFile(const std::wstring &fileName);
   void addOverwriteFile(const std::wstring &fileName);
+  void addModFile(LPCWSTR originName, const std::wstring &fileName);
 
   /**
    * removes the specified file from the directory structure
@@ -60,9 +61,6 @@ public:
   void removeModFile(const std::wstring &fileName);
 
   bool modExists(const std::wstring& modName);
-
-  void rewriteModList();
-  void appendMod(LPCWSTR modName);
 
   HANDLE findStart(LPCWSTR lpFileName,
                    FINDEX_INFO_LEVELS fInfoLevelId,
@@ -90,9 +88,6 @@ public:
 
   const std::wstring &getModPathW() const { return m_ModsPath; }
 
-  // get the part of path that is valid within any of the mod directories
-//  std::wstring getValidPath(LPCWSTR path, size_t offset);
-
   void dumpDirectoryStructure(const MOShared::DirectoryEntry *directory, int indent);
 
   std::wstring getCurrentDirectory();
@@ -104,6 +99,9 @@ public:
   std::wstring getRemovedLocation(const std::wstring &fileName);
 
   std::wstring reverseReroute(const std::wstring &path, bool *rerouted = NULL);
+
+  const std::vector<std::wstring> &modNames() const { return m_ModList; }
+
 private:
 
   struct _LessThanName {
@@ -168,7 +166,9 @@ private:
 
   SearchesMap m_Searches;
 
-  HANDLE m_UpdateNotification;
+//  HANDLE m_UpdateNotification;
+  std::vector<int> m_UpdateOriginIDs;
+  std::vector<HANDLE> m_UpdateHandles;
 
   int m_DataOrigin;
 

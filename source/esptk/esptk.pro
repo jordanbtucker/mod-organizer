@@ -17,12 +17,7 @@ SOURCES += espfile.cpp \
 HEADERS += espfile.h \
     record.h \
     subrecord.h \
-    esptypes.h
-unix:!symbian {
-    maemo5 {
-        target.path = /opt/usr/lib
-    } else {
-        target.path = /usr/lib
-    }
-    INSTALLS += target
-}
+    esptypes.h \
+		espexceptions.h
+
+INCLUDEPATH += "$(BOOSTPATH)"

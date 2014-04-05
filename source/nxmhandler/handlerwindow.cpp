@@ -11,6 +11,7 @@ HandlerWindow::HandlerWindow(QWidget *parent)
 {
   ui->setupUi(this);
 
+
   connect(ui->actionAdd, SIGNAL(triggered()), this, SLOT(addBinaryDialog()));
   connect(ui->actionRemove, SIGNAL(triggered()), this, SLOT(removeBinary()));
 }
@@ -50,7 +51,7 @@ void HandlerWindow::closeEvent(QCloseEvent *event)
   m_Storage->clear();
   for (int i = 0; i < ui->handlersWidget->topLevelItemCount(); ++i) {
     QTreeWidgetItem *item = ui->handlersWidget->topLevelItem(i);
-    m_Storage->registerHandler(item->text(0).split(","), item->text(1), false);
+    m_Storage->registerHandler(item->text(0).split(","), item->text(1), false, false);
   }
   QMainWindow::closeEvent(event);
 }
@@ -59,9 +60,23 @@ void HandlerWindow::addBinaryDialog()
 {
   AddBinaryDialog dialog(m_Storage->knownGames());
   if (dialog.exec() == QDialog::Accepted) {
-    QTreeWidgetItem *newItem = new QTreeWidgetItem(QStringList() << dialog.gameIDs().join(",") << dialog.executable());
-    newItem->setFlags(newItem->flags() | Qt::ItemIsEditable);
-    ui->handlersWidget->insertTopLevelItem(0, newItem);
+    bool executableKnown = false;
+    for (int i = 0; i < ui->handlersWidget->topLevelItemCount(); ++i) {
+      QTreeWidgetItem *iterItem = ui->handlersWidget->topLevelItem(i);
+      if (QFileInfo(iterItem->text(1)) == QFileInfo(dialog.executable())) {
+        QStringList games = iterItem->text(0).split(",");
+        games.append(dialog.gameIDs());
+        games = games.toSet().toList();
+        iterItem->setText(0, games.join(","));
+        executableKnown = true;
+      }
+    }
+
+    if (!executableKnown) {
+      QTreeWidgetItem *newItem = new QTreeWidgetItem(QStringList() << dialog.gameIDs().join(",") << dialog.executable());
+      newItem->setFlags(newItem->flags() | Qt::ItemIsEditable);
+      ui->handlersWidget->insertTopLevelItem(0, newItem);
+    }
   }
 }
 

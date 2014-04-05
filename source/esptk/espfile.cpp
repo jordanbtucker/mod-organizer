@@ -1,5 +1,6 @@
 #include "espfile.h"
 #include "subrecord.h"
+#include "espexceptions.h"
 #include <sstream>
 
 
@@ -30,29 +31,40 @@ public:
 void ESP::File::init()
 {
   if (!m_File.is_open()) {
-    throw std::runtime_error("file not found");
+    throw ESP::InvalidFileException("file not found");
   }
   m_File.exceptions(std::ios_base::badbit);
 
   uint8_t type[4];
-  m_File.read(reinterpret_cast<char*>(type), 4);
+  if (!m_File.read(reinterpret_cast<char*>(type), 4)) {
+    throw ESP::InvalidFileException("file incomplete");
+  }
   if (memcmp(type, "TES4", 4) != 0) {
-    throw std::runtime_error("invalid file type");
+    throw ESP::InvalidFileException("invalid file type");
   }
   m_File.seekg(0);
 
   m_MainRecord = readRecord();
 
   const std::vector<uint8_t> &data = m_MainRecord.data();
-
   membuf buf(reinterpret_cast<const char*>(&data[0]), data.size());
 
   std::istream stream(&buf);
   while (!stream.eof()) {
     SubRecord rec;
-    rec.readFrom(stream);
-    if (rec.type() == SubRecord::TYPE_MAST) {
-      m_Masters.insert(reinterpret_cast<const char*>(&rec.data()[0]));
+    bool success = rec.readFrom(stream);
+    if (success) {
+      if (rec.type() == SubRecord::TYPE_HEDR) {
+        if (rec.data().size() != sizeof(m_Header)) {
+          printf("invalid header size\n");
+          m_Header.version = 0.0f;
+          m_Header.numRecords = 1; // prevent this esp appear like a dummy
+        } else {
+          memcpy(&m_Header, &rec.data()[0], sizeof(m_Header));
+        }
+      } else if ((rec.type() == SubRecord::TYPE_MAST) && (rec.data().size() > 0)) {
+        m_Masters.insert(reinterpret_cast<const char*>(&rec.data()[0]));
+      }
     }
   }
 }
@@ -68,4 +80,9 @@ ESP::Record ESP::File::readRecord()
 bool ESP::File::isMaster() const
 {
   return m_MainRecord.flagSet(Record::FLAG_MASTER);
+}
+
+bool ESP::File::isDummy() const
+{
+  return m_Header.numRecords == 0;
 }

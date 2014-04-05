@@ -9,8 +9,11 @@ SUBDIRS += \
 		installerFomod \
 		installerQuick \
 		installerBundle \
-		proxyPython \
+#		proxyPython \
     diagnoseBasic \
-		pyniEdit \
-    installerBCF \
-    pageTESAlliance
+#    pyniEdit \
+    checkFNIS \
+    previewDDS \
+    previewBase \
+   pageTESAlliance
+

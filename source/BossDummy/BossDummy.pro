@@ -29,5 +29,4 @@ DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 
 
 QMAKE_POST_LINK += $$quote($$PWD\\..\\NCC\\publish.bat) $$escape_expand(\\n)
-QMAKE_POST_LINK += copy $$quote($$SRCDIR\\BossDummy.dll) $$quote($$DSTDIR\\NCC\\GameModes\\data\\boss32.dll) $$escape_expand(\\n)
-QMAKE_POST_LINK += copy $$quote($$SRCDIR\\BossDummy.dll) $$quote($$DSTDIR\\NCC\\GameModes\\data\\boss64.dll) $$escape_expand(\\n)
+QMAKE_POST_LINK += copy $$quote($$SRCDIR\\BossDummy.dll) $$quote($$DSTDIR\\NCC\\GameModes\\data\\boss.dll) $$escape_expand(\\n)
