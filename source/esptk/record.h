@@ -22,7 +22,7 @@ public:
 public:
   Record();
 
-  void readFrom(std::istream &stream);
+  bool readFrom(std::istream &stream);
 
   bool flagSet(EFlag flag) const;
 
@@ -35,11 +35,12 @@ private:
     uint32_t flags;
     uint32_t id;
     uint32_t revision;
-    uint16_t version;
-    uint16_t padding;
   } m_Header;
 
   std::vector<uint8_t> m_Data;
+
+  bool m_OblivionStyle;
+
 };
 
 }

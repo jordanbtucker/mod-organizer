@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <boost/interprocess/sync/scoped_lock.hpp>
 #include <boost/interprocess/sync/interprocess_semaphore.hpp>
 #include <zlib.h>
+#include <sys/stat.h>
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 
@@ -109,7 +110,13 @@ EErrorCode Archive::read(const char* fileName)
   m_File.exceptions(std::ios_base::badbit);
 
   try {
-    Header header = readHeader(m_File);
+    Header header;
+    try {
+      header = readHeader(m_File);
+    } catch (const data_invalid_exception &e) {
+      throw data_invalid_exception(makeString("%s (filename: %s)", e.what(), fileName));
+    }
+
     m_Type = header.type;
     m_ArchiveFlags = header.archiveFlags;
 
@@ -513,11 +520,19 @@ void Archive::readFiles(std::queue<FileInfo> &queue, boost::mutex &mutex,
 }
 
 
+inline bool fileExists(const std::string &name) {
+  struct stat buffer;
+  return stat(name.c_str(), &buffer) != -1;
+}
+
+
 void Archive::extractFiles(const std::string &targetDirectory,
                            std::queue<FileInfo> &queue, boost::mutex &mutex,
                            boost::interprocess::interprocess_semaphore &bufferCount,
                            boost::interprocess::interprocess_semaphore &queueFree,
-                           int totalFiles, int &filesDone)
+                           int totalFiles,
+                           bool overwrite,
+                           int &filesDone)
 {
   for (int i = 0; i < totalFiles; ++i) {
     bufferCount.wait();
@@ -538,6 +553,10 @@ void Archive::extractFiles(const std::string &targetDirectory,
     DataBuffer dataBuffer = fileInfo.data;
 
     std::string fileName = makeString("%s\\%s", targetDirectory.c_str(), fileInfo.file->getFilePath().c_str());
+    if (!overwrite && fileExists(fileName)) {
+      continue;
+    }
+
     std::ofstream outputFile(fileName.c_str(), fstream::out | fstream::binary | fstream::trunc);
 
     if (compressed(fileInfo.file)) {
@@ -548,10 +567,10 @@ void Archive::extractFiles(const std::string &targetDirectory,
       }
 
       EErrorCode result = ERROR_NONE;
-      unsigned long length = 0;
+      BSAULong length = 0UL;
       try {
         boost::shared_array<unsigned char> buffer = decompress(dataBuffer.first.get(), dataBuffer.second + sizeof(BSAULong),
-                                                                     result, length);
+                                                               result, length);
         if (buffer.get() != NULL) {
           outputFile.write(reinterpret_cast<char*>(buffer.get()), length);
         }
@@ -577,7 +596,9 @@ void Archive::createFolders(const std::string &targetDirectory, Folder::Ptr fold
 }
 
 
-EErrorCode Archive::extractAll(const char *outputDirectory, const boost::function<bool (int value, std::string fileName)> &progress)
+EErrorCode Archive::extractAll(const char *outputDirectory,
+                               const boost::function<bool (int value, std::string fileName)> &progress,
+                               bool overwrite)
 {
 #pragma message("report errors")
   createFolders(outputDirectory, m_RootFolder);
@@ -602,7 +623,7 @@ EErrorCode Archive::extractAll(const char *outputDirectory, const boost::functio
                               outputDirectory,
                               boost::ref(buffers), boost::ref(queueMutex),
                               boost::ref(bufferCount), boost::ref(queueFree),
-                              fileList.size(), boost::ref(filesDone)));
+                              fileList.size(), overwrite, boost::ref(filesDone)));
 
   bool readerDone  = false;
   bool extractDone = false;

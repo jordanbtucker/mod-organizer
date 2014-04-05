@@ -65,7 +65,7 @@ QString InstallerNCC::description() const
 
 VersionInfo InstallerNCC::version() const
 {
-  return VersionInfo(1, 0, 0, VersionInfo::RELEASE_FINAL);
+  return VersionInfo(1, 0, 1, VersionInfo::RELEASE_FINAL);
 }
 
 bool InstallerNCC::isActive() const
@@ -146,8 +146,7 @@ static BOOL CALLBACK BringToFront(HWND hwnd, LPARAM lParam)
   DWORD procid;
 
   GetWindowThreadProcessId(hwnd, &procid);
-
-  if (procid == static_cast<DWORD>(lParam)) {
+  if ((procid == static_cast<DWORD>(lParam)) && IsWindowVisible(hwnd)) {
     ::SetForegroundWindow(hwnd);
     ::SetLastError(NOERROR);
     return FALSE;
@@ -221,18 +220,18 @@ IPluginInstaller::EInstallResult InstallerNCC::invokeNCC(IModInterface *modInter
   bool finished = false;
   DWORD procid = ::GetProcessId(execInfo.hProcess);
   bool inFront = false;
-  while (true) {
+  while (!finished) {
     QCoreApplication::processEvents();
     if (!inFront) {
       if (!::EnumWindows(BringToFront, procid) && (::GetLastError() == NOERROR)) {
+        qDebug("brought window to front");
         inFront = true;
       }
     }
     DWORD res = ::WaitForSingleObject(execInfo.hProcess, 100);
     if (res == WAIT_OBJECT_0) {
       finished = true;
-      break;
-    } else if ((busyDialog.wasCanceled()) || (res != WAIT_TIMEOUT)) {
+    } else if (busyDialog.wasCanceled() || (res != WAIT_TIMEOUT)) {
       if (!confirmCancel) {
         confirmCancel = true;
         busyDialog.hide();
@@ -430,7 +429,7 @@ QString InstallerNCC::fullDescription(unsigned int key) const
   switch (key) {
     case PROBLEM_NCCMISSING:
       return tr("NCC is not installed. You won't be able to install some scripted mod-installers. "
-                "Get NCC from <a href=\"http://skyrim.nexusmods.com/downloads/file.php?id=1334\">the MO page on nexus</a>.");
+                "Get NCC from <a href=\"http://www.nexusmods.com/skyrim/mods/1334\">the MO page on nexus</a>.");
     case PROBLEM_NCCINCOMPATIBLE:
       return tr("NCC version may be incompatible, expected version 0.%1.x.x.").arg(COMPATIBLE_MAJOR_VERSION);
     case PROBLEM_DOTNETINSTALLED: {

@@ -12,12 +12,10 @@ DEFINES += UIBASE_LIBRARY _WINDLL
 CONFIG += dll
 
 contains(QT_VERSION, "^5.*") {
-	QT += widgets
+	QT += widgets qml quick script
+} else {
+	QT += declarative script
 }
-
-INCLUDEPATH += "$(BOOSTPATH)"
-
-QT += declarative script
 
 SOURCES += \
     utility.cpp \
@@ -40,7 +38,10 @@ SOURCES += \
     json.cpp \
     imodrepositorybridge.cpp \
     nxmurl.cpp \
-    modrepositoryfileinfo.cpp
+    taskprogressmanager.cpp \
+    questionboxmemory.cpp \
+    modrepositoryfileinfo.cpp \
+    sortabletreewidget.cpp
 
 HEADERS +=\
     utility.h \
@@ -75,12 +76,19 @@ HEADERS +=\
     imodrepositorybridge.h \
     idownloadmanager.h \
     nxmurl.h \
+    taskprogressmanager.h \
+    ipluginlist.h \
     ipluginmodpage.h \
-    modrepositoryfileinfo.h
+    questionboxmemory.h \
+    sortabletreewidget.h \
+    imodlist.h \
+    modrepositoryfileinfo.h \
+    ipluginpreview.h
 
 FORMS += \
     textviewer.ui \
-		finddialog.ui
+    finddialog.ui \
+    questionboxmemory.ui
 
 
 CONFIG(debug, debug|release) {
@@ -89,12 +97,16 @@ CONFIG(debug, debug|release) {
 } else {
 	OUTDIR = $$OUT_PWD/release
 	DSTDIR = $$PWD/../../output
+
+  QMAKE_CXXFLAGS += /Zi /GL
+  QMAKE_LFLAGS += /LTCG /LARGEADDRESSAWARE /OPT:REF /OPT:ICF
 }
 
 OUTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 
+INCLUDEPATH += "$(BOOSTPATH)"
 
-LIBS += -luser32 -lshell32
+LIBS += -luser32 -lshell32 -lole32
 
 QMAKE_POST_LINK += xcopy /y /s /I $$quote($$OUTDIR\\uibase.dll*) $$quote($$DSTDIR) $$escape_expand(\\n)

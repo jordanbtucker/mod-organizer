@@ -4,14 +4,14 @@ import json
 import ConfigParser
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtCore import Qt, pyqtWrapperType, pyqtSlot, pyqtSignal
-from PyQt4.QtGui import QDialog, QHeaderView, QMessageBox, QColorDialog, QPalette, QTreeWidgetItem,\
+from PyQt4.QtGui import QDialog, QHeaderView, QMessageBox, QColor, QColorDialog, QPalette, QTreeWidgetItem,\
 QComboBox, QPushButton, QDoubleSpinBox, QHBoxLayout, QWidget, QSlider, QSpinBox, QLineEdit
 pyqt5 = False
 
 # qt5
 #from PyQt5 import QtCore, QtGui, QtWidgets
 #from PyQt5.QtCore import Qt, pyqtWrapperType, pyqtSlot, pyqtSignal
-#from PyQt5.QtWidget import QDialog, QHeaderView, QMessageBox, QColorDialog, QPalette, QTreeWidgetItem,\
+#from PyQt5.QtWidget import QDialog, QHeaderView, QMessageBox, QColor, QColorDialog, QPalette, QTreeWidgetItem,\
 #QComboBox, QPushButton, QDoubleSpinBox, QHBoxLayout, QWidget, QSlider, QSpinBox, QLineEdit
 #pyqt5 = True
 
@@ -362,6 +362,27 @@ class MainWindow(QDialog):
         self.__updateTree()
 
 
+
+class MagicFile(file):
+    def __init__(self, filename, mode):
+        super(MagicFile, self).__init__(filename, mode)
+
+    def readline(self, size=-1):
+        temp = super(MagicFile, self).readline(size)
+        if len(temp) == 0:
+            return temp
+
+        esidx = temp.find('=')
+        # comment
+        if temp[0] == ';' or temp[0] == '#' or temp[0] == '[':
+            return temp
+        # no equals sign
+        if esidx == -1:
+            return "  " + temp
+        else:
+          return temp
+
+
 class IniEdit(mobase.IPluginTool):
     def init(self, organizer):
         import pyCfgResource_rc
@@ -439,10 +460,11 @@ class IniEdit(mobase.IPluginTool):
                 newSettings[sectionKey] = filteredSection
         return newSettings
 
-    def updateSettings(self,  settings,  file):
-        parser = ConfigParser.SafeConfigParser()
+    def updateSettings(self,  settings,  fileName):
+        parser = ConfigParser.SafeConfigParser(allow_no_value=True)
         parser.optionxform = str
-        parser.read(self.__organizer.profilePath() + "/" + file)
+        file = MagicFile(self.__organizer.profilePath() + "/" + fileName, 'r')
+        parser.readfp(file)
         for section in parser.sections():
             if not section in settings:
                 settings[section] = CaselessDict()
@@ -451,7 +473,7 @@ class IniEdit(mobase.IPluginTool):
 
             for setting in parser.items(section, True):
                 newData = settings[section].get(setting[0],  {})
-                value = setting[1]
+                value = setting[1].split('//')[0].strip()
                 if setting[0][0] == 'b':
                     value = True if value == "1" else False
                 elif setting[0][0] == 'i' or setting[0][0] == 'u':
@@ -460,44 +482,47 @@ class IniEdit(mobase.IPluginTool):
                     value = float(value)
                 newData["value"] = value
                 newData["saved"] = value
-                newData["file"] = file
+                newData["file"] = fileName
                 if not "default" in newData:
                     newData["default"] = value
                 settings[section][str(setting[0])] = newData
 
     def __save(self,  settings):
-        iniFiles = {}
-        for fileName in self.__iniFiles():
-            parser = ConfigParser.SafeConfigParser()
-            parser.optionxform = str
-            parser.read(self.__organizer.profilePath() + "/" + fileName)
-            iniFiles[fileName]  = parser
+        try:
+          iniFiles = {}
+          for fileName in self.__iniFiles():
+              parser = ConfigParser.SafeConfigParser(allow_no_value=True)
+              parser.optionxform = str
+              file = MagicFile(self.__organizer.profilePath() + "/" + fileName, 'r')
+              parser.readfp(file)
+              iniFiles[fileName] = parser
+          count = 0
+          for sectionkey, section in settings.iteritems():
+              count += 1
+              for settingkey, setting in section.iteritems():
+                  if setting["value"] != setting.get("saved",  setting["default"]):
+                      print("changed " + sectionkey)
+                      try:
+                          iniFiles[setting["file"]].add_section(sectionkey)
+                      except ConfigParser.DuplicateSectionError:
+                          pass
 
-        count = 0
-        for sectionkey, section in settings.iteritems():
-            count += 1
-            for settingkey,  setting in section.iteritems():
-                if setting["value"] != setting.get("saved",  setting["default"]):
-                    try:
-                        iniFiles[setting["file"]].add_section(sectionkey)
-                    except ConfigParser.DuplicateSectionError:
-                        pass
-
-                    if type(setting["value"]) == bool:
-                        iniFiles[setting["file"]].set(sectionkey,  settingkey,  '1' if setting["value"] else '0')
-                    else:
-                        iniFiles[setting["file"]].set(sectionkey,  settingkey,  str(setting["value"]))
-                    setting["saved"] = setting["value"]
-
-        for fileName,  data in iniFiles.iteritems():
-            out = open(self.__organizer.profilePath() + "/" + fileName,  'w')
-            data.write(out)
-            out.close()
+                      if type(setting["value"]) == bool:
+                          iniFiles[setting["file"]].set(sectionkey,  settingkey,  '1' if setting["value"] else '0')
+                      else:
+                          iniFiles[setting["file"]].set(sectionkey,  settingkey,  str(setting["value"]))
+                      setting["saved"] = setting["value"]
+          for fileName,  data in iniFiles.iteritems():
+              out = open(self.__organizer.profilePath() + "/" + fileName,  'w')
+              data.write(out)
+              out.close()
+        except Exception, e:
+            print e
 
     def display(self):
         settings = self.__filteredSettings()
         for iniFile in self.__iniFiles():
-            self.updateSettings(settings,  iniFile)
+            self.updateSettings(settings, iniFile)
 
         win = MainWindow(settings)
         win.saveSettings.connect(self.__save)

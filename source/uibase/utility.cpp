@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <QBuffer>
 #include <QDesktopWidget>
 #include <QApplication>
+#include <QTextCodec>
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #include <ShlObj.h>
@@ -85,7 +86,7 @@ bool removeDir(const QString &dirName)
       }
     }
 
-    if (!dir.rmdir(".")) {
+    if (!dir.rmdir(dirName)) {
       reportError(QObject::tr("removal of \"%1\" failed").arg(dir.absolutePath()));
       return false;
     }
@@ -162,7 +163,7 @@ static DWORD TranslateError(int error)
 }
 
 
-static bool shellOp(const QStringList &sourceNames, const QStringList &destinationNames, QWidget *dialog, UINT operation)
+static bool shellOp(const QStringList &sourceNames, const QStringList &destinationNames, QWidget *dialog, UINT operation, bool yesToAll)
 {
   std::vector<wchar_t> fromBuffer;
   std::vector<wchar_t> toBuffer;
@@ -209,7 +210,7 @@ static bool shellOp(const QStringList &sourceNames, const QStringList &destinati
   op.pFrom = &fromBuffer[0];
   op.pTo = &toBuffer[0];
 
-  if (operation == FO_DELETE) {
+  if ((operation == FO_DELETE) || yesToAll) {
     op.fFlags = FOF_NOCONFIRMATION;
     if (recycle) {
       op.fFlags |= FOF_ALLOWUNDO;
@@ -235,22 +236,27 @@ static bool shellOp(const QStringList &sourceNames, const QStringList &destinati
 
 bool shellCopy(const QStringList &sourceNames, const QStringList &destinationNames, QWidget *dialog)
 {
-  return shellOp(sourceNames, destinationNames, dialog, FO_COPY);
+  return shellOp(sourceNames, destinationNames, dialog, FO_COPY, false);
+}
+
+bool shellCopy(const QString &sourceNames, const QString &destinationNames, bool yesToAll, QWidget *dialog)
+{
+  return shellOp(QStringList() << sourceNames, QStringList() << destinationNames, dialog, FO_COPY, yesToAll);
 }
 
 bool shellMove(const QStringList &sourceNames, const QStringList &destinationNames, QWidget *dialog)
 {
-  return shellOp(sourceNames, destinationNames, dialog, FO_MOVE);
+  return shellOp(sourceNames, destinationNames, dialog, FO_MOVE, false);
 }
 
-bool shellRename(const QString &oldName, const QString &newName, QWidget *dialog)
+bool shellRename(const QString &oldName, const QString &newName, QWidget *dialog, bool yesToAll)
 {
-  return shellOp(QStringList(oldName), QStringList(newName), dialog, FO_RENAME);
+  return shellOp(QStringList(oldName), QStringList(newName), dialog, FO_RENAME, yesToAll);
 }
 
 bool shellDelete(const QStringList &fileNames, bool recycle, QWidget *dialog)
 {
-  return shellOp(fileNames, QStringList(), dialog, recycle ? FO_RECYCLE : FO_DELETE);
+  return shellOp(fileNames, QStringList(), dialog, recycle ? FO_RECYCLE : FO_DELETE, false);
 }
 
 bool moveFileRecursive(const QString &source, const QString &baseDir, const QString &destination)
@@ -321,6 +327,11 @@ std::string ToString(const QString &source, bool utf8)
   return std::string(array8bit.constData());
 }
 
+QString ToQString(const std::string &source)
+{
+  return QString::fromUtf8(source.c_str());
+}
+
 QString ToQString(const std::wstring &source)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
@@ -329,7 +340,6 @@ QString ToQString(const std::wstring &source)
   return QString::fromUtf16(source.c_str());
 #endif
 }
-
 
 QString ToString(const SYSTEMTIME &time)
 {
@@ -386,6 +396,60 @@ QString getStartMenuDirectory()
 #else
   return QString::fromUtf16(desktop);
 #endif
+}
+
+bool shellDeleteQuiet(const QString &fileName, QWidget *dialog)
+{
+  if (!QFile::remove(fileName)) {
+    return shellDelete(QStringList(fileName), false, dialog);
+  }
+  return true;
+}
+
+QString readFileText(const QString &fileName, QString *encoding)
+{
+  // the functions from QTextCodec we use are supposed to be reentrant so it's
+  // safe to use statics for that
+  static QTextCodec *utf8Codec = QTextCodec::codecForName("utf-8");
+
+  QFile textFile(fileName);
+  if (!textFile.open(QIODevice::ReadOnly)) {
+    return QString();
+  }
+
+  QByteArray buffer = textFile.readAll();
+  QTextCodec *codec = QTextCodec::codecForUtfText(buffer, utf8Codec);
+  QString text = codec->toUnicode(buffer);
+
+  // check reverse conversion. If this was unicode text there can't be data loss
+  // this assumes QString doesn't normalize the data in any way so this is a bit unsafe
+  if (codec->fromUnicode(text) != buffer) {
+    qDebug("conversion failed assuming local encoding");
+    codec = QTextCodec::codecForLocale();
+    text = codec->toUnicode(buffer);
+  }
+
+  if (encoding != nullptr) {
+    *encoding = codec->name();
+  }
+
+  return text;
+}
+
+void removeOldFiles(const QString &path, const QString &pattern, int numToKeep, QDir::SortFlags sorting)
+{
+  QFileInfoList files = QDir(path).entryInfoList(QStringList(pattern), QDir::Files, sorting);
+
+  if (files.count() > numToKeep) {
+    QStringList deleteFiles;
+    for (int i = 0; i < files.count() - numToKeep; ++i) {
+      deleteFiles.append(files.at(i).absoluteFilePath());
+    }
+
+    if (!shellDelete(deleteFiles)) {
+      qWarning("failed to remove log files: %s", qPrintable(windowsErrorString(::GetLastError())));
+    }
+  }
 }
 
 } // namespace MOBase

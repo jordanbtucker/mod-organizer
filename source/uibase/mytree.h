@@ -102,9 +102,17 @@ public:
    * @brief add a new leaf to this node
    *
    * @param leaf the leaf data to attach
+   * @param overwrite if true, the new leaf will overwrite an existing one that compares as "equal"
    * @return true if the leaf was added, false if it already exists
    **/
-  bool addLeaf(const LeafT &leaf) { return m_Leafs.insert(leaf).second; }
+  bool addLeaf(const LeafT &leaf, bool overwrite = true) {
+    auto res = m_Leafs.insert(leaf);
+    if (!res.second && overwrite) {
+      m_Leafs.erase(res.first);
+      res = m_Leafs.insert(leaf);
+    }
+    return res.second;
+  }
 
   /**
    * @brief add a new node to the tree
@@ -212,8 +220,10 @@ public:
    * @brief erase the node at the specfied iterator. its content is deleted!
    * @return an iterator to the following node
    **/
-  const_node_reverse_iterator erase(const_node_reverse_iterator iter) { const_node_iterator next = m_Nodes.erase((++iter).base());
-                                                                        return const_node_reverse_iterator(next); }
+  const_node_reverse_iterator erase(const_node_reverse_iterator iter) {
+    delete *iter;
+    const_node_iterator next = m_Nodes.erase((++iter).base());
+    return const_node_reverse_iterator(next); }
 
   /**
    * @brief remove the node at the specfied iterator but don't delete the content

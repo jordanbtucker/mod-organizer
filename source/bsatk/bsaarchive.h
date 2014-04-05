@@ -32,8 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <boost/function.hpp>
 #endif // Q_MOC_RUN
 #include <boost/shared_array.hpp>
-//#include <boost/thread.hpp>
-//#include <boost/interprocess/sync/interprocess_semaphore.hpp>
 
 
 namespace boost {
@@ -123,9 +121,13 @@ public:
    * extracting each
    * @param outputDirectory name of the directory to extract to.
    *                        may be absolute or relative
+   * @param progress callback function called on progress
+   * @param overwrite if true (default) files are overwritten if they exist
    * @return ERROR_NONE on success or an error code
    */
-  EErrorCode extractAll(const char *outputDirectory, const boost::function<bool (int value, std::string fileName)> &progress);
+  EErrorCode extractAll(const char *outputDirectory,
+                        const boost::function<bool (int value, std::string fileName)> &progress,
+                        bool overwrite = true);
 
   /**
    * @param file the file to check
@@ -211,7 +213,7 @@ private:
                     std::queue<FileInfo> &queue, boost::mutex &mutex,
                     boost::interprocess::interprocess_semaphore &bufferCount,
                     boost::interprocess::interprocess_semaphore &queueFree,
-                    int totalFiles, int &filesDone);
+                    int totalFiles, bool overwrite, int &filesDone);
 private:
 
   mutable std::fstream m_File;

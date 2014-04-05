@@ -50,12 +50,16 @@ public:
    * @brief retrieve a set of enabled mods
    * @return the keys of mods that were checked by the user
    */
-  std::set<QString> getEnabledMods() const;
+  std::vector<QString> getEnabledMods() const;
 
 private slots:
   void on_cancelButton_clicked();
 
   void on_continueButton_clicked();
+
+  void on_selectAllButton_clicked();
+
+  void on_deselectAllButton_clicked();
 
 private:
   Ui::ModSelectionDialog *ui;
