@@ -14,6 +14,4 @@ SUBDIRS += \
     pyniEdit \
     checkFNIS \
     previewDDS \
-    previewBase \
-   pageTESAlliance
-
+    previewBase
