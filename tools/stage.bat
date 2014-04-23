@@ -10,13 +10,14 @@ set OLDDIR=%CD%
 rmdir /s /q ..\staging_prepare
 mkdir ..\staging_prepare
 call "E:\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86
-set BOOSTPATH=E:\boost\boost_1_49_0
-set PYTHONPATH=E:\Python27_32bit
+set BOOSTPATH=E:\boost\boost_1_55_0
+set PYTHONPATH=E:\Python276
 set PATH=%PATH%;E:\Qt\qtcreator2.8.1\bin\;%PYTHONPATH%
 set ZLIBPATH=D:\Tannin_Documents\Projects\zlib-1.2.7
 set CURLPATH=D:\Tannin_Documents\Projects\curl
 set SEVENZIPPATH=D:\Tannin_Documents\Projects\7zip
 set UTF8CPPPATH=D:\Tannin_Documents\Projects\utf8
+set LOOTPATH=D:\Tannin_Documents\Projects\loot_src
 
 cd ..\staging_prepare
 qmake.exe ..\source\ModOrganizer.pro -r -spec win32-msvc2010
