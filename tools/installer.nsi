@@ -76,7 +76,6 @@ Section "!Mod Organizer" Section1
 	SetOutPath "$INSTDIR\DLLs\"
 	File "..\staging\ModOrganizer\DLLs\7z.dll"
 	File "..\staging\ModOrganizer\DLLs\archive.dll"
-	File "..\staging\ModOrganizer\DLLs\boss.dll"
 	File "..\staging\ModOrganizer\DLLs\boost_python-vc100-mt-1_??.dll"
 SectionEnd
 
