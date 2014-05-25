@@ -14,4 +14,5 @@ SUBDIRS += \
     pyniEdit \
     checkFNIS \
     previewDDS \
-    previewBase
+    previewBase \
+    bsaExtractor
