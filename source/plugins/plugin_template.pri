@@ -27,5 +27,9 @@ DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 
 LIBS += -luibase -lshell32 -luser32
 
+load(moc)
+include(../common.pri)
+QMAKE_MOC += $$MOCDEFINES
+
 QMAKE_POST_LINK += xcopy /y /s /i $$quote($$SRCDIR\\$${TARGET}*.dll) $$quote($$DSTDIR)\\plugins $$escape_expand(\\n)
 QMAKE_POST_LINK += xcopy /y /I $$quote($$SRCDIR\\$${TARGET}*.pdb) $$quote($$DSTDIR)\\plugins $$escape_expand(\\n)
