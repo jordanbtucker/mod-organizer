@@ -9,7 +9,7 @@ SUBDIRS += \
 		installerFomod \
 		installerQuick \
 		installerBundle \
-#		proxyPython \
+		proxyPython \
     diagnoseBasic \
 #    pyniEdit \
     checkFNIS \
