@@ -1,6 +1,6 @@
 echo "Compiling everything"
 
-call "E:\Qt\4.8.5\bin\qtvars.bat" vsvars
+call "E:\Qt\4.8.6\bin\qtvars.bat" vsvars
 
 set /p REBUILD="Rebuild? (y/n)" %=%
 
@@ -20,7 +20,7 @@ set UTF8CPPPATH=E:\Documents\Projects\utf8
 set LOOTPATH=E:\Documents\Projects\loot_src
 
 cd ..\staging_prepare
-qmake.exe ..\source\ModOrganizer.pro -r -spec win32-msvc2010
+qmake.exe ..\source\ModOrganizer.pro -r -spec win32-msvc2010 CONFIG+=release CONFIG-=debug
 jom.exe
 chdir /d %OLDDIR%
 
