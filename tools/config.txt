@@ -1,0 +1,7 @@
+﻿;!@Install@!UTF-8!
+InstallPath="%Programfiles%\\ModOrganizer"
+GUIMode="0"
+GUIFlags="128"
+ExtractPathText="Install Mod Organizer to"
+RunProgram="ModOrganizer.exe"
+;!@InstallEnd@!

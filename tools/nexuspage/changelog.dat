@@ -1,0 +1,158 @@
+[0.10.3]
+* file-system junctions as created by steam mover are no longer resolved
+* bugfix: after check-for-updates the progress bar wouldn't go away if one of the mods was no longer available on nexus
+* bugfix: mod-info-dialog didn't work for disabled mods
+* bugfix: files from mods weren't loaded under certain circumstances
+
+[0.10.2]
+* conflicts view
+
+[0.10.1]
+* bugfix: hang when starting CK
+* bugfix: crash when switching profiles 
+* bugfix: duplicate display of esp 
+* bugfix: categories getting lost 
+
+[0.10.0]
+* support for new skyrim load order management (compatible to BOSS)
+* support for installation order management in the presence of BSAs
+* files newly created inside the virtual data folder are placed in special "overwrite" folder (highest priority) instead of "data" (lowest priority)
+* pause/resume support for downloads
+* fullscreen state is now saved
+* conflicts view
+- bugfixes
+
+[0.9.13]
+* the categories of a mod are now displayed as a tooltip
+* bugfixes: download problems, creation kit crashing
+
+[0.9.12]
+* the categories of a mod are now displayed as a tooltip
+* bugfixes: download problems, creation kit crashing
+- bugfix: list of downloads was duplicated if the MO was minimized when the download was started 
+- bugfix: downloads from some nexus mirrors failed if user wasn't logged in. MO will now log in before starting a download via nxm-protocol 
+- bugfix: the construction kit crashed when compiling scripts (when started through MO of course) 
+- bugfix: when starting TESV.exe through a MO link, the launcher was started instead. 
+- bugfix: bbcodes written in upper-case were not interpreted in the modinfo dialog 
+- bugfix: mod-list wasn't scrolled to the correct position if the mod was overwriting an existing mod 
+- the categories of a mod are now displayed as a tooltip 
+
+[0.9.10]
+* size of MO main- and nexus-window are now saved between sessions
+* bugfixes: crashes caused by incorrectly handled download results
+- bugfix: manual downloads failed if nexus was configured to display the mirror selection on a seperate page
+- bugfix: the modlist was not automatically saved before installing a new mod
+- bugfix: the self updater could crash or create invalid archives if the download mirror is invalid
+- bugfix: archive files with two dots in their name (.xyz.zip) were not installable
+- bugfix: MO could crash if nexus returned invalid json objects
+- size of the main- and nexus-window of MO are now saved between sessions
+
+[0.9.9]
+* better compatibility with Construction Kit and Script Dragon
+- bugfix: MO could crash if a download link didn't work (Qt reported download progress 0/0 bytes)
+- bugfix: invalid download urls could lead to invalid archives
+- steam appid can now be set per-executable
+- data/asi (script dragon) directory is now treated as a "useful" directory
+
+[0.9.8]
+* bugfixes: problems with the installation dialog, ads on nexus were sometimes downloaded instead of being displayed
+- bugfix: catching more errors that might cause a crash if not handled
+- bugfix: partially selected paths were not installed at all
+- bugfix: some ads on the nexus page were automatically downloaded
+- bugfix: some archives were incorrectly treated as bain installers
+
+[0.9.7]
+* installation dialog improvements
+* bugfixes: no profile created on first use, incorrect handling of non-ascii characters in categories and mod names
+- bugfix: after a new installation, creation of a profiles wasn't enforced
+- bugfix: categories were not stored as utf-8
+- bugfix: crash when deleting a category that was still in use
+- bugfix: wrong sorting of mods when a filter was active
+- ui log is now created in case of errors
+- directories in the installation dialog are now tri-state
+- files can now be previewed during installation
+
+[0.9.6]
+* ui improvements
+* profile can now be set on the command line
+- bugfix: crashes in Oblivion when Script Extender was selected as load mechanism and game was started from the gui
+- bugfix: sorting by mod index didn't work
+- bugfix: after moving a mod the data tree sometimes displayed the mod conflicting with itself
+- bugfix: "remove all downloads" didn't work
+- middle-click on link in browser opens new tab
+- better support for SkyrimLauncher
+- compact view for downloads
+- profile can now be set on the commandline
+- added a filter for mods without a category 
+- progressbar for "check for update"
+
+[0.9.5]
+- chinese translation thanks to Scythe1912 
+- partial compatibility with skyrimlauncher 
+- filter to display only mods that have no category assigned 
+- download list now color codes downloads that have were installed at least once 
+- compact download list 
+- confirmation dialog before removing an executable 
+- profile can now be selected from the command line 
+- progress bar is displayed while checking for mod updates 
+- nexus browser can now be maximized 
+- more compact list of conflicting mods in the data tree 
+- bugfix: "access denied" error when creating the log file (fix unconfirmed) 
+- bugfix: removing a download didn't actually delete anything 
+- bugfix: some download urls from nexus were not supported 
+- bugfix: the mod index didn't reflect what the game actually did (now, it does. as a result, it is no longer possible to give an esp lower priority than an esm because afaik the game always loads esms first) 
+- bugfix: another attempt to fix the problem where MO doesn't find the ini files on some systems
+
+[0.9.4]
+- french translation thanks to Alyndiar
+- packages with bain and fomod compatibility should now be installed with the bain installer 
+- fixes the problem with the "SHM Error" when clicking on download manager links 
+- a few more bugfixes 
+
+[0.9.3]
+- bugfix release
+
+[0.9.2]
+- bugfix: categories going missing
+- bugfix: MO crashing after manually changing the modid
+- bugfix: error messages after installing an update via self updater
+
+[0.9.1]
+- bugfix: archives couldn't be installed from the download tab
+
+[0.9.0]
+- support for bain installers
+- ini tweaks
+- customizable categories
+- self-updater
+- MO can now handle nxm links in external browsers
+
+
+[0.8.3]
+- more options to modify mods (rename, delete individual files, ...)
+- version information for manual downloads
+- bugfixes
+
+[0.8.2]
+- nexus browser now supports tabs and navigating to mods directly
+- installation dialog will warn if a mod doesn't seem to be installed correctly
+- bugfixes
+
+[0.8.1]
+- bugfixes
+
+[0.8]
+- Nexus browser
+- download manager
+- update check
+- german translation
+
+[0.7.1]
+- bugfix
+
+[0.7]
+- initial release with Skyrim support
+- UI cleaned up
+- save game filter
+- additional load mechanisms
+- performance improvements
