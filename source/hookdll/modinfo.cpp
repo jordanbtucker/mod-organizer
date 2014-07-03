@@ -155,14 +155,14 @@ ModInfo::ModInfo(const std::wstring &profileName, const std::wstring &modDirecto
     if (buffer[0] == '\0') {
       continue;
     }
-    if ((buffer[0] != '#') && (buffer[0] != '-') && (buffer[0] != '*')) {
+    if ((buffer[0] != '#') && (buffer[0] != '-')) {
       char *bufferPtr = buffer;
       if (*bufferPtr == '+') {
         ++bufferPtr;
-      }
+      } // leave * for now to identify foreign mods, it can't be part of a valid file name anyway
       temp.str(L""); temp.clear();
       temp << m_ModsPath << L"\\" << ToWString(bufferPtr, true);
-      if (!FileExists(temp.str())) {
+      if ((buffer[0] != '*') && !FileExists(temp.str())) {
         Logger::Instance().error("mod \"%ls\" doesn't exist, maybe there is a typo?", temp.str().c_str());
       } else {
         Logger::Instance().info("using mod \"%s\"", bufferPtr);
@@ -173,34 +173,43 @@ ModInfo::ModInfo(const std::wstring &profileName, const std::wstring &modDirecto
   file.close();
   int index = 1;
 
+  time_t start = time(NULL);
+
+  m_DirectoryStructure.addFromOrigin(L"data", GameInfo::instance().getGameDirectory() + L"\\data", 0);
+
   // mod list is sorted by priority descending, hence the reverse iterator
   for (std::vector<std::wstring>::reverse_iterator modIter = m_ModList.rbegin(); modIter != m_ModList.rend(); ++modIter, ++index) {
-    temp.str(L""); temp.clear();
-    temp << m_ModsPath << "\\" << *modIter;
-    m_DirectoryStructure.addFromOrigin(*modIter, temp.str(), index);
-
+    std::wstring modName = *modIter;
+    std::wstring modPath;
     WIN32_FIND_DATAW findData;
-    std::wstring bsaSearch = temp.str().append(L"\\*.bsa");
-    HANDLE search = ::FindFirstFileW(bsaSearch.c_str(), &findData);
-    BOOL success = search != INVALID_HANDLE_VALUE;
+    HANDLE bsaSearch = INVALID_HANDLE_VALUE;
+    if (modIter->at(0) == L'*') {
+      modName = modName.substr(1);
+      modPath = GameInfo::instance().getGameDirectory() + L"\\data";
+      m_DirectoryStructure.createOrigin(modName, modPath, index);
+      bsaSearch = ::FindFirstFileW((modPath + L"\\" + modName + L"*.bsa").c_str(), &findData);
+    } else {
+      modPath = m_ModsPath + L"\\" + modName;
+      m_DirectoryStructure.addFromOrigin(modName, modPath, index);
+      m_UpdateHandles.push_back(::FindFirstChangeNotificationW(modPath.c_str(), TRUE, FILE_NOTIFY_CHANGE_FILE_NAME));
+      m_UpdateOriginIDs.push_back(m_DirectoryStructure.getOriginByName(modName).getID());
+
+      bsaSearch = ::FindFirstFileW((modPath + L"\\*.bsa").c_str(), &findData);
+    }
+    BOOL success = bsaSearch != INVALID_HANDLE_VALUE;
     while (success) {
-      std::wstring tempStr = temp.str();
-      m_DirectoryStructure.addFromBSA(*modIter,
-                                      tempStr,
-                                      tempStr.append(L"\\").append(findData.cFileName),
+      m_DirectoryStructure.addFromBSA(modName,
+                                      modPath,
+                                      modPath + L"\\" + findData.cFileName,
                                       index);
-      success = ::FindNextFileW(search, &findData);
+      success = ::FindNextFileW(bsaSearch, &findData);
     }
 
-    m_UpdateOriginIDs.push_back(m_DirectoryStructure.getOriginByName(*modIter).getID());
-    m_UpdateHandles.push_back(::FindFirstChangeNotificationW(temp.str().c_str(), TRUE, FILE_NOTIFY_CHANGE_FILE_NAME));
   }
 
   m_DirectoryStructure.addFromOrigin(L"overwrite", GameInfo::instance().getOverwriteDir(), index);
 
-  temp.str(L""); temp.clear();
-  temp << GameInfo::instance().getGameDirectory() << "\\data";
-  m_DirectoryStructure.addFromOrigin(L"data", temp.str(), 0);
+  LOGDEBUG("update vfs took %ld seconds", time(NULL) - start);
 
   m_DataOrigin = m_DirectoryStructure.getOriginByName(L"data").getID();
 
@@ -406,17 +415,6 @@ void ModInfo::loadDeleters(const std::string &listFileName)
 }
 
 
-void ModInfo::addModDirectory(const std::wstring& modPath)
-{
-  std::wstring name;
-  size_t namePos = modPath.find_last_of(L"/\\");
-  // TODO this fails if modPath ends with a backslash. How does the offset in find_last_of work?
-  if (namePos != std::string::npos) {
-    name = modPath.substr(namePos + 1);
-  }
-  m_DirectoryStructure.addFromOrigin(name, modPath, static_cast<int>(m_ModList.size()));
-}
-
 
 void ModInfo::addModFile(const std::wstring &fileName)
 {
@@ -617,6 +615,9 @@ HANDLE ModInfo::dataSearch(LPCWSTR absoluteFileName,
 
   // add elements from the mod directories
   for (std::vector<std::wstring>::iterator iter = m_ModList.begin(); iter != m_ModList.end(); ++iter) {
+    if (iter->at(0) == L'*') {
+      continue;
+    }
     std::wostringstream fullPath;
     fullPath << m_ModsPath << "\\" << *iter << (absoluteFileName + filenameOffset);
     if ((relativePath[0] != '\0') &&

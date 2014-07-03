@@ -221,9 +221,9 @@ CONFIG(debug, debug|release) {
   LIBS += -L$$OUT_PWD/../bsatk/release
 	LIBS += -L$$OUT_PWD/../uibase/release
   LIBS += -L$$OUT_PWD/../boss_modified/release
-  QMAKE_CXXFLAGS += /Zi# /GL
+  QMAKE_CXXFLAGS += /Zi /GL
 #  QMAKE_CXXFLAGS -= -O2
-  QMAKE_LFLAGS += /DEBUG# /LTCG /OPT:REF /OPT:ICF
+  QMAKE_LFLAGS += /DEBUG /LTCG /OPT:REF /OPT:ICF
 }
 
 #QMAKE_CXXFLAGS_WARN_ON -= -W3
@@ -333,7 +333,8 @@ OTHER_FILES += \
     dark.qss \
     stylesheets/dark.qss \
     tutorials/tutorial_window_installer.js \
-    tutorials/tutorials_installdialog.qml
+    tutorials/tutorials_installdialog.qml \
+    tutorials/tutorial_firststeps_settings.js
 
 
 # leak detection with vld
