@@ -1,4 +1,5 @@
 echo "Compiling everything"
+@echo off
 
 call "E:\Qt\4.8.6\bin\qtvars.bat" vsvars
 
@@ -43,15 +44,21 @@ call config_translations.cmd
 
 del /Q ..\staging_trans\*
 FOR %%F IN (%TRANSLATIONS%) DO (
-	wget -P ..\staging_trans http://translate.tannin.eu/%%F/mo/export/zip
+	wget -q -P ..\staging_trans http://translate.tannin.eu/%%F/mo/export/zip
 	e:\7-zip\7z.exe x -o..\staging_trans ..\staging_trans\mo-%%F.zip
 	chdir ..\staging_trans
+  FOR %%T IN (*.ts) DO (
+    set FILENAME=%%T
+    set LANG=%%F
+    Call :UpdateTranslation
+  )
 	ren *.ts ????????????????????_%%F.ts.x
+  copy *.ts.x ..\source\%PROJNAME%\*. >nul
 	chdir %OLDDIR%
 )
 chdir ..\staging_trans
 ren *.ts.x *.
-for %%F IN (*.ts) DO lrelease %%F
+for %%F IN (*.ts) DO lrelease %%F >nul
 chdir %OLDDIR%
 
 :skiptrans
@@ -91,3 +98,19 @@ xcopy /y /I ..\output\dlls\boss.dll ..\staging\ModOrganizer\dlls
 xcopy /y /I ..\output\dlls\dlls.manifest ..\staging\ModOrganizer\dlls
 
 for /F "tokens=1-3* delims=." %%a in ('cscript.exe //nologo filever.vbs ..\output\ModOrganizer.exe') do echo %%a.%%b.%%c > ..\staging\version.txt
+exit /B
+
+
+:UpdateTranslation
+FOR /F "delims=" %%A in ("%FILENAME%") DO (
+  set PROJNAME=%%~nA
+)
+
+if exist ..\source\%PROJNAME% (
+  copy %FILENAME% ..\source\%PROJNAME%\%PROJNAME%_%LANG%.ts
+) else (
+  copy %FILENAME% ..\source\plugins\%PROJNAME%\%PROJNAME%_%LANG%.ts
+)
+
+
+exit /B

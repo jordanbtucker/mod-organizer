@@ -163,7 +163,7 @@ MainWindow::MainWindow(const QString &exeName, QSettings &initSettings, QWidget 
     m_DownloadManager(NexusInterface::instance(), this), m_InstallationManager(this),
     m_Updater(NexusInterface::instance(), this), m_CategoryFactory(CategoryFactory::instance()),
     m_CurrentProfile(NULL), m_AskForNexusPW(false),
-    m_ArchivesInit(false), m_ContextItem(NULL), m_ContextAction(NULL), m_CurrentSaveView(NULL),
+    m_ArchivesInit(false), m_DirectoryUpdate(false), m_ContextItem(NULL), m_ContextAction(NULL), m_CurrentSaveView(NULL),
     m_GameInfo(new GameInfoImpl()), m_AboutToRun(), m_ModInstalled(), m_DidUpdateMasterList(false)
 {
   ui->setupUi(this);
@@ -1365,8 +1365,6 @@ HANDLE MainWindow::spawnBinaryDirect(const QFileInfo &binary, const QString &arg
 
 void MainWindow::spawnBinary(const QFileInfo &binary, const QString &arguments, const QDir &currentDirectory, bool closeAfterStart, const QString &steamAppID)
 {
-  storeSettings();
-
   LockedDialog *dialog = new LockedDialog(this);
   dialog->show();
   ON_BLOCK_EXIT([&] () { dialog->hide(); dialog->deleteLater(); });
@@ -1888,10 +1886,6 @@ void MainWindow::refreshBSAList()
     QString extension = filename.right(3).toLower();
 
     if (extension == "bsa") {
-      if (filename.compare("update.bsa", Qt::CaseInsensitive) == 0) {
-        // hack: ignore update.bsa because it confuses people
-        continue;
-      }
       int index = m_ActiveArchives.indexOf(filename);
       if (index == -1) {
         index = 0xFFFF;
@@ -2059,6 +2053,10 @@ void MainWindow::readSettings()
     ui->splitter->restoreState(settings.value("window_split").toByteArray());
   }
 
+  if (settings.contains("log_split")) {
+    ui->topLevelSplitter->restoreState(settings.value("log_split").toByteArray());
+  }
+
   bool filtersVisible = settings.value("filters_visible", false).toBool();
   setCategoryListVisible(filtersVisible);
   ui->displayCategoriesBtn->setChecked(filtersVisible);
@@ -2070,6 +2068,10 @@ void MainWindow::readSettings()
   if (settings.value("Settings/use_proxy", false).toBool()) {
     activateProxy(true);
   }
+
+  ui->manageArchivesBox->blockSignals(true);
+  ui->manageArchivesBox->setChecked(settings.value("manage_bsas", true).toBool());
+  ui->manageArchivesBox->blockSignals(false);
 }
 
 
@@ -2104,10 +2106,12 @@ void MainWindow::storeSettings()
 
     settings.setValue("window_geometry", saveGeometry());
     settings.setValue("window_split", ui->splitter->saveState());
+    settings.setValue("log_split", ui->topLevelSplitter->saveState());
 
     settings.setValue("browser_geometry", m_IntegratedBrowser.saveGeometry());
 
     settings.setValue("filters_visible", ui->displayCategoriesBtn->isChecked());
+    settings.setValue("manage_bsas", ui->manageArchivesBox->isChecked());
 
     settings.remove("customExecutables");
     settings.beginWriteArray("customExecutables");
@@ -2353,8 +2357,6 @@ QList<IOrganizer::FileInfo> MainWindow::findFileInfos(const QString &path, const
         result.append(info);
       }
     }
-  } else {
-    qDebug("directory %s not found", qPrintable(path));
   }
   return result;
 }
@@ -2684,6 +2686,8 @@ void MainWindow::modStatusChanged(unsigned int index)
     if (m_CurrentProfile->modEnabled(index)) {
       updateModInDirectoryStructure(index, modInfo);
     } else {
+      updateModActiveState(index, false);
+      refreshESPList();
       if (m_DirectoryStructure->originExists(ToWString(modInfo->name()))) {
         FilesOrigin &origin = m_DirectoryStructure->getOriginByName(ToWString(modInfo->name()));
         origin.enable(false);
@@ -2727,6 +2731,7 @@ void MainWindow::modorder_changed()
     }
   }
   refreshBSAList();
+  m_CurrentProfile->writeModlist();
   saveArchiveList();
   m_DirectoryStructure->getFileRegister()->sortOrigins();
 }
@@ -3004,7 +3009,7 @@ void MainWindow::updateModActiveState(int index, bool active)
   int enabled = 0;
   QStringList esps = dir.entryList(QStringList("*.esp"), QDir::Files);
   foreach (const QString &esp, esps) {
-    if (active && !m_PluginList.isEnabled(esp)) {
+    if (active != m_PluginList.isEnabled(esp)) {
       m_PluginList.enableESP(esp, active);
       ++enabled;
     }
@@ -3020,9 +3025,7 @@ void MainWindow::updateModActiveState(int index, bool active)
 
 void MainWindow::modlistChanged(const QModelIndex&, int)
 {
-/*  if (role == Qt::CheckStateRole) {
-    updateModActiveState(index.row(), index.data(Qt::CheckStateRole).toBool());
-  }*/
+  m_CurrentProfile->writeModlist();
 }
 
 void MainWindow::removeMod_clicked()
@@ -4010,6 +4013,7 @@ void MainWindow::linkToolbar()
   const Executable &selectedExecutable = ui->executablesListBox->itemData(ui->executablesListBox->currentIndex()).value<Executable>();
   Executable &exe = m_ExecutablesList.find(selectedExecutable.m_Title);
   exe.m_Toolbar = !exe.m_Toolbar;
+  ui->linkButton->menu()->actions().at(2)->setIcon(exe.m_Toolbar ? QIcon(":/MO/gui/remove") : QIcon(":/MO/gui/link"));
   updateToolBar();
 }
 
@@ -4727,6 +4731,18 @@ void MainWindow::nxmUpdatesAvailable(const std::vector<int> &modIDs, QVariant us
   }
 }
 
+void MainWindow::nxmEndorsementToggled(int, QVariant, QVariant resultData, int)
+{
+  if (resultData.toBool()) {
+    ui->actionEndorseMO->setVisible(false);
+    QMessageBox::question(this, tr("Thank you!"), tr("Thank you for your endorsement!"));
+  }
+
+  if (!disconnect(sender(), SIGNAL(nxmEndorsementToggled(int, QVariant, QVariant, int)),
+             this, SLOT(nxmEndorsementToggled(int, QVariant, QVariant, int)))) {
+    qCritical("failed to disconnect endorsement slot");
+  }
+}
 
 void MainWindow::nxmDownloadURLs(int, int, QVariant, QVariant resultData, int)
 {
