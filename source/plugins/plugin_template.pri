@@ -1,16 +1,19 @@
 INCLUDEPATH += ../../uibase
 
 CONFIG(debug, debug|release) {
-	SRCDIR = $$OUT_PWD/debug
-	DSTDIR = $$PWD/../../outputd
-	LIBS += -L$$OUT_PWD/../../uibase/debug
+  SRCDIR = $$OUT_PWD/debug
+  DSTDIR = $$PWD/../../outputd
+  LIBS += -L$$OUT_PWD/../../uibase/debug
 } else {
-	SRCDIR = $$OUT_PWD/release
-	DSTDIR = $$PWD/../../output
-	LIBS += -L$$OUT_PWD/../../uibase/release
+  SRCDIR = $$OUT_PWD/release
+  DSTDIR = $$PWD/../../output
+  LIBS += -L$$OUT_PWD/../../uibase/release
   QMAKE_CXXFLAGS += /Zi
   QMAKE_LFLAGS += /DEBUG
 }
+
+SRCDIR ~= s,/,$$QMAKE_DIR_SEP,g
+DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 
 TRANSLATIONS = $${TARGET}_en.ts \
                $${TARGET}_de.ts \
@@ -21,9 +24,6 @@ TRANSLATIONS = $${TARGET}_en.ts \
                $${TARGET}_cs.ts \
                $${TARGET}_tr.ts \
                $${TARGET}_ru.ts
-
-SRCDIR ~= s,/,$$QMAKE_DIR_SEP,g
-DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 
 LIBS += -luibase -lshell32 -luser32
 
