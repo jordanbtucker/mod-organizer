@@ -27,6 +27,10 @@ CONFIG(debug, debug|release) {
 SRCDIR ~= s,/,$$QMAKE_DIR_SEP,g
 DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 
+PUBLISHSCRIPT = $$quote(powershell.exe -executionpolicy bypass -command $$PWD\\..\\NCC\\publish.ps1)
+Debug:    PUBLISHCMD = $$quote($$PUBLISHSCRIPT -debug)
+Release:  PUBLISHCMD = $$quote($$PUBLISHSCRIPT -release)
 
-QMAKE_POST_LINK += $$quote($$PWD\\..\\NCC\\publish.bat) $$escape_expand(\\n)
+QMAKE_POST_LINK += $$quote($$PUBLISHCMD) $$escape_expand(\\n)
 QMAKE_POST_LINK += copy $$quote($$SRCDIR\\BossDummy.dll) $$quote($$DSTDIR\\NCC\\GameModes\\data\\boss32.dll) $$escape_expand(\\n)
+
