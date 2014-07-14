@@ -9,6 +9,6 @@
     <file name="QtSqld4.dll"/>
     <file name="QtSvgd4.dll"/>
     <file name="QtXmld4.dll"/>
-    <file name="QtWebkit4d.dll"/>
+    <file name="QtWebkitd4.dll"/>
     <file name="QtXmlPatternsd4.dll"/>
 </assembly>

@@ -53,7 +53,6 @@ FOR %%F IN (%TRANSLATIONS%) DO (
     Call :UpdateTranslation
   )
 	ren *.ts ????????????????????_%%F.ts.x
-  copy *.ts.x ..\source\%PROJNAME%\*. >nul
 	chdir %OLDDIR%
 )
 chdir ..\staging_trans

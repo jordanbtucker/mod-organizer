@@ -20,6 +20,7 @@ TRANSLATIONS = $${TARGET}_en.ts \
                $${TARGET}_zh_CN.ts \
                $${TARGET}_cs.ts \
                $${TARGET}_tr.ts \
+               $${TARGET}_ko.ts \
                $${TARGET}_ru.ts
 
 SRCDIR ~= s,/,$$QMAKE_DIR_SEP,g
