@@ -24,7 +24,8 @@ SOURCES += pagetesalliance.cpp
 
 HEADERS += pagetesalliance.h
 
-OTHER_FILES +=
+OTHER_FILES += \
+    pageTesAlliance.json
 
 include(../plugin_template.pri)
 

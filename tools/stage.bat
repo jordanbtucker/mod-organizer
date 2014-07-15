@@ -15,9 +15,7 @@ set BOOSTPATH=E:\boost\boost_1_55_0
 set PYTHONPATH=E:\Python276
 set PATH=%PATH%;E:\Qt\qtcreator2.8.1\bin\;%PYTHONPATH%
 set ZLIBPATH=E:\Documents\Projects\zlib-1.2.7
-set CURLPATH=E:\Documents\Projects\curl
 set SEVENZIPPATH=E:\Documents\Projects\7zip
-set UTF8CPPPATH=E:\Documents\Projects\utf8
 set LOOTPATH=E:\Documents\Projects\loot_src
 
 cd ..\staging_prepare
