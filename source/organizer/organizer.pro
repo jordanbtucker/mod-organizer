@@ -338,9 +338,21 @@ QMAKE_POST_LINK += xcopy /y /s /I $$quote($$SRCDIR\\tutorials) $$quote($$DSTDIR)
 QMAKE_POST_LINK += xcopy /y /s /I $$quote($$SRCDIR\\*.qm) $$quote($$DSTDIR)\\translations $$escape_expand(\\n)
 
 CONFIG(debug, debug|release) {
-  QMAKE_POST_LINK += xcopy /y /s /I $$quote($$SRCDIR\\..\\dlls.*manifest.debug) $$quote($$DSTDIR)\\dlls $$escape_expand(\\n)
-  QMAKE_POST_LINK += copy /y $$quote($$DSTDIR)\\dlls\\dlls.manifest.debug $$quote($$DSTDIR)\\dlls\\dlls.manifest $$escape_expand(\\n)
-  QMAKE_POST_LINK += del $$quote($$DSTDIR)\\dlls\\dlls.manifest.debug $$escape_expand(\\n)
+  greaterThan(QT_MAJOR_VERSION, 4) {
+    QMAKE_POST_LINK += xcopy /y /s /I $$quote($$SRCDIR\\..\\dlls.*manifest.debug.qt5) $$quote($$DSTDIR)\\dlls $$escape_expand(\\n)
+    QMAKE_POST_LINK += copy /y $$quote($$DSTDIR\\dlls\\dlls.manifest.debug.qt5) $$quote($$DSTDIR\\dlls\\dlls.manifest) $$escape_expand(\\n)
+    QMAKE_POST_LINK += del $$quote($$DSTDIR)\\dlls\\dlls.manifest.debug.qt5 $$escape_expand(\\n)
+  } else {
+    QMAKE_POST_LINK += xcopy /y /s /I $$quote($$SRCDIR\\..\\dlls.*manifest.debug) $$quote($$DSTDIR)\\dlls $$escape_expand(\\n)
+    QMAKE_POST_LINK += copy /y $$quote($$DSTDIR)\\dlls\\dlls.manifest.debug $$quote($$DSTDIR)\\dlls\\dlls.manifest $$escape_expand(\\n)
+    QMAKE_POST_LINK += del $$quote($$DSTDIR)\\dlls\\dlls.manifest.debug $$escape_expand(\\n)
+  }
 } else {
-  QMAKE_POST_LINK += xcopy /y /s /I $$quote($$SRCDIR\\..\\dlls.*manifest) $$quote($$DSTDIR)\\dlls $$escape_expand(\\n)
+  greaterThan(QT_MAJOR_VERSION, 4) {
+    QMAKE_POST_LINK += xcopy /y /s /I $$quote($$SRCDIR\\..\\dlls.*manifest.qt5) $$quote($$DSTDIR)\\dlls $$escape_expand(\\n)
+    QMAKE_POST_LINK += copy /y $$quote($$DSTDIR\\dlls\\dlls.manifest.qt5) $$quote($$DSTDIR\\dlls\\dlls.manifest) $$escape_expand(\\n)
+    QMAKE_POST_LINK += del $$quote($$DSTDIR)\\dlls\\dlls.manifest.qt5 $$escape_expand(\\n)
+  } else {
+    QMAKE_POST_LINK += xcopy /y /s /I $$quote($$SRCDIR\\..\\dlls.*manifest) $$quote($$DSTDIR)\\dlls $$escape_expand(\\n)
+  }
 }
