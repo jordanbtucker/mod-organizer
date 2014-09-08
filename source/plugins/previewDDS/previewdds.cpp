@@ -50,7 +50,7 @@ bool PreviewDDS::init(MOBase::IOrganizer*)
 
 QString PreviewDDS::name() const
 {
-  return tr("DDS Preview");
+  return "DDS Preview";
 }
 
 QString PreviewDDS::author() const
@@ -81,7 +81,6 @@ QList<MOBase::PluginSetting> PreviewDDS::settings() const
 QWidget *PreviewDDS::genFilePreview(const QString &fileName, const QSize &maxSize) const
 {
   m_GLWidget.makeCurrent();
-
 
   GLuint width, height, mipmaps;
   width = height = mipmaps = 0;

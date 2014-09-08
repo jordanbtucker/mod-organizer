@@ -72,6 +72,7 @@ mkdir ..\pdbs\plugins_%version%
 
 copy /y ..\output\ModOrganizer.pdb ..\pdbs\ModOrganizer_%version%.pdb
 copy /y ..\output\hook.pdb ..\pdbs\hook_%version%.pdb
+copy /y ..\output\uibase.pdb ..\pdbs\uibase_%version%.pdb
 copy /y ..\output\dlls\boss.pdb ..\pdbs\boss_%version%.pdb
 copy /y ..\output\plugins\*.pdb ..\pdbs\plugins_%version%
 
