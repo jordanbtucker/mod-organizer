@@ -26,9 +26,9 @@ SOURCES += previewdds.cpp \
 
 HEADERS += previewdds.h
 
-INCLUDEPATH += "$(BOOSTPATH)"
-
 include(../plugin_template.pri)
+
+INCLUDEPATH += "$${BOOSTPATH}"
 
 OTHER_FILES += \
     previewdds.json

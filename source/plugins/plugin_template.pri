@@ -1,5 +1,3 @@
-INCLUDEPATH += ../../uibase
-
 CONFIG(debug, debug|release) {
   SRCDIR = $$OUT_PWD/debug
   DSTDIR = $$PWD/../../outputd
@@ -10,6 +8,11 @@ CONFIG(debug, debug|release) {
   LIBS += -L$$OUT_PWD/../../uibase/release
   QMAKE_CXXFLAGS += /Zi
   QMAKE_LFLAGS += /DEBUG
+}
+
+
+!include(../LocalPaths.pri) {
+  message("paths to required libraries need to be set up in LocalPaths.pri")
 }
 
 SRCDIR ~= s,/,$$QMAKE_DIR_SEP,g
@@ -26,6 +29,7 @@ TRANSLATIONS = $${TARGET}_en.ts \
                $${TARGET}_ko.ts \
                $${TARGET}_ru.ts
 
+INCLUDEPATH += $${PWD}/../uibase
 LIBS += -luibase -lshell32 -luser32
 
 QMAKE_POST_LINK += xcopy /y /s /i $$quote($$SRCDIR\\$${TARGET}*.dll) $$quote($$DSTDIR)\\plugins $$escape_expand(\\n)

@@ -16,8 +16,6 @@ CONFIG += dll
 #  QMAKE_LFLAGS += /DEBUG
 #}
 
-INCLUDEPATH += "$(BOOSTPATH)"
-
 DEFINES += PAGETESALLIANCE_LIBRARY
 
 SOURCES += pagetesalliance.cpp
@@ -29,3 +27,4 @@ OTHER_FILES += \
 
 include(../plugin_template.pri)
 
+INCLUDEPATH += "$${BOOSTPATH}"
