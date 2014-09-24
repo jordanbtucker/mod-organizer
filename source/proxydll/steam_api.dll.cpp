@@ -80,6 +80,7 @@ BOOL WINAPI DllMain(HINSTANCE hInst,DWORD reason,LPVOID)
       fclose(hintFile);
     } // the else case will most likely lead to an error, but lets try anyway
     _snprintf(dllPath + pathLen, MAX_PATH - pathLen, "\\hook.dll");
+    dllPath[MAX_PATH - 1] = '\0';
 
     HINSTANCE hookdll = ::LoadLibrary(dllPath);
     if (!hookdll) {
