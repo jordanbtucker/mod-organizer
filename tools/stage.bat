@@ -13,7 +13,7 @@ mkdir ..\staging_prepare
 call "E:\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86
 set BOOSTPATH=E:\boost\boost_1_55_0
 set PYTHONPATH=E:\Python276
-set PATH=%PATH%;E:\Qt\qtcreator2.8.1\bin\;%PYTHONPATH%
+set PATH=%PATH%;E:\Qt\qtcreator2.8.1\bin\;%PYTHONPATH%;%PYTHONPATH%\Lib\site-packages\PyQt4
 set ZLIBPATH=E:\Documents\Projects\zlib-1.2.7
 set SEVENZIPPATH=E:\Documents\Projects\7zip
 set LOOTPATH=E:\Documents\Projects\loot_src

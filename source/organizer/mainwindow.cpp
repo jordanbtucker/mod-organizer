@@ -1414,6 +1414,15 @@ HANDLE MainWindow::spawnBinaryDirect(const QFileInfo &binary, const QString &arg
   }
 }
 
+std::wstring getProcessName(DWORD processId)
+{
+  HANDLE process = ::OpenProcess(PROCESS_QUERY_INFORMATION, false, processId);
+
+  DWORD value = MAX_PATH;
+  wchar_t buffer[MAX_PATH];
+  ::QueryFullProcessImageNameW(process, 0, buffer, &value);
+  return buffer;
+}
 
 void MainWindow::spawnBinary(const QFileInfo &binary, const QString &arguments, const QDir &currentDirectory, bool closeAfterStart, const QString &steamAppID)
 {
@@ -1436,6 +1445,7 @@ void MainWindow::spawnBinary(const QFileInfo &binary, const QString &arguments, 
       JOBOBJECT_BASIC_PROCESS_ID_LIST info;
 
       {
+        DWORD currentProcess = 0UL;
         bool isJobHandle = true;
 
         DWORD res = ::MsgWaitForMultipleObjects(1, &processHandle, false, 1000, QS_KEY | QS_MOUSE);
@@ -1443,6 +1453,11 @@ void MainWindow::spawnBinary(const QFileInfo &binary, const QString &arguments, 
           if (isJobHandle) {
             if (::QueryInformationJobObject(processHandle, JobObjectBasicProcessIdList, &info, sizeof(info), &retLen) > 0) {
               if (info.NumberOfProcessIdsInList == 0) {
+              } else {
+                if (info.ProcessIdList[0] != currentProcess) {
+                  currentProcess = info.ProcessIdList[0];
+                  dialog->setProcessName(ToQString(getProcessName(currentProcess)));
+                }
                 break;
               }
             } else {
