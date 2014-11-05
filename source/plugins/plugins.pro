@@ -14,6 +14,5 @@ SUBDIRS += \
 		pageTESAlliance \
     pyniEdit \
     checkFNIS \
-		previewDDS \
     previewBase \
     bsaExtractor
