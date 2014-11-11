@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+    <assemblyIdentity type="win32" name="dlls" version="1.0.0.0" processorArchitecture="x86"/>
+    <file name="QtCore4.dll"/>
+    <file name="QtDeclarative4.dll"/>
+    <file name="QtGui4.dll"/>
+    <file name="QtNetwork4.dll"/>
+    <file name="QtScript4.dll"/>
+    <file name="QtOpenGL4.dll"/>
+    <file name="QtSql4.dll"/>
+    <file name="QtSvg4.dll"/>
+    <file name="QtXml4.dll"/>
+    <file name="QtWebkit4.dll"/>
+    <file name="QtXmlPatterns4.dll"/>
+</assembly>
