@@ -1,9 +1,7 @@
 BOOSTPATH=E:/boost/boost_1_56_0
-CURLPATH=E:/Documents/Projects/curl
 LOOTPATH=C:/Users/Tannin/Documents/Projects/loot_api
 PYTHONPATH=E:/Python278
 SEVENZIPPATH=E:/Documents/Projects/7zip
-UTF8CPPPATH=E:/Documents/Projects/utf8
 ZLIBPATH=E:/Documents/Projects/zlib-1.2.7
 
 
