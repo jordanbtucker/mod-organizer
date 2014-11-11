@@ -176,9 +176,11 @@ void Canonicalize(LPWSTR destination, LPCWSTR source, size_t bufferSize)
   bool wasBSlash = false;
   for (int i = 0; i < sourceLen && destinationLength < bufferSize -1; ++i) {
     if (source[i] == L'/') {
-      destination[destinationLength] = L'\\';
-      ++destinationLength;
-      wasBSlash = true;
+      if (!wasBSlash) {
+        destination[destinationLength] = L'\\';
+        ++destinationLength;
+        wasBSlash = true;
+      }
     } else if (source[i] != L'\\') {
       destination[destinationLength] = source[i];
       ++destinationLength;
