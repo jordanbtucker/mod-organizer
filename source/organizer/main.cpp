@@ -309,16 +309,17 @@ int main(int argc, char *argv[])
   QFile instanceFile(application.applicationDirPath() + "/INSTANCE");
   if (instanceFile.open(QIODevice::ReadOnly)) {
     instanceID = instanceFile.readAll().trimmed();
-  }
+  }  
 
-  QString dataPath = instanceID.isEmpty() ? application.applicationDirPath()
-                                          : QDir::fromNativeSeparators(
+  QString dataPath =
+      instanceID.isEmpty() ? application.applicationDirPath()
+                           : QDir::fromNativeSeparators(
 #if QT_VERSION >= 0x050000
-                                              QStandardPaths::writableLocation(QStandardPaths::DataLocation)
+                           QStandardPaths::writableLocation(QStandardPaths::DataLocation)
 #else
-                                              QDesktopServices::storageLocation(QDesktopServices::DataLocation)
+                           QDesktopServices::storageLocation(QDesktopServices::DataLocation)
 #endif
-                                              ) + "/" + instanceID;
+                             );
   application.setProperty("dataPath", dataPath);
 
 #if QT_VERSION >= 0x050000
