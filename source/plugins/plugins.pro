@@ -15,4 +15,8 @@ SUBDIRS += \
     pyniEdit \
     checkFNIS \
     previewBase \
-    bsaExtractor
+    bsaExtractor \
+    gameSkyrim
+
+
+plugins.depends = gameSkyrim
