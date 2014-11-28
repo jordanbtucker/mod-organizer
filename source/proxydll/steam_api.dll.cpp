@@ -74,7 +74,7 @@ BOOL WINAPI DllMain(HINSTANCE hInst,DWORD reason,LPVOID)
     char dllPath[MAX_PATH];
     FILE *hintFile = fopen("mo_path.txt", "r");
     int pathLen = 0;
-    if (hintFile != NULL) {
+    if (hintFile != nullptr) {
       memset(dllPath, L'\0', MAX_PATH);
       pathLen = fread(dllPath, 1, MAX_PATH, hintFile);
       fclose(hintFile);
