@@ -1,6 +1,8 @@
 echo "Compiling everything"
 @echo off
 
+set OLDDIR=%CD%
+
 call "E:\Qt\4.8.6\bin\qtvars.bat" vsvars
 
 set /p REBUILD="Rebuild? (y/n)" %=%
@@ -9,16 +11,20 @@ if /i {%REBUILD%}=={n} (goto :skipbuild)
 
 rmdir /s /q ..\staging_prepare
 mkdir ..\staging_prepare
-call "E:\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86
-set BOOSTPATH=E:\boost\boost_1_56_0
+rmdir /s /q ..\translations
+mkdir ..\translations
+
+
+call "E:\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86
+set BOOSTPATH=E:\boost\boost_1_55_0
 set PYTHONPATH=E:\Python278
-set PATH=%PATH%;%QTDIR%\Tools\QtCreator\bin;%PYTHONPATH%;%PYTHONPATH%\Lib\site-packages\PyQt5
+set PATH=%PATH%;%QTDIR%\Tools\QtCreator\bin;%PYTHONPATH%;%PYTHONPATH%\Lib\site-packages\PyQt4
 set ZLIBPATH=E:\Documents\Projects\zlib-1.2.7
 set SEVENZIPPATH=E:\Documents\Projects\7zip
 set LOOTPATH=C:\Users\Tannin\Documents\Projects\loot_api
 
 cd ..\staging_prepare
-qmake.exe ..\source\ModOrganizer.pro -r -spec win32-msvc2013 CONFIG+=release CONFIG-=debug
+qmake.exe ..\source\ModOrganizer.pro -r -spec win32-msvc2010 CONFIG+=release CONFIG-=debug
 jom.exe
 
 cd ..\source
@@ -41,7 +47,7 @@ mkdir ..\pdbs\plugins_%version%
 copy /y ..\output\ModOrganizer.pdb ..\pdbs\ModOrganizer_%version%.pdb
 copy /y ..\output\hook.pdb ..\pdbs\hook_%version%.pdb
 copy /y ..\output\uibase.pdb ..\pdbs\uibase_%version%.pdb
-copy /y ..\output\dlls\boss.pdb ..\pdbs\boss_%version%.pdb
+rem copy /y ..\output\dlls\boss.pdb ..\pdbs\boss_%version%.pdb
 copy /y ..\output\plugins\*.pdb ..\pdbs\plugins_%version%
 
 xcopy /y /I ..\output\ModOrganizer.exe ..\staging\ModOrganizer\
@@ -61,14 +67,14 @@ xcopy /y /s /I ..\output\NCC ..\staging\ModOrganizer\NCC
 xcopy /y /s /I ..\output\loot ..\staging\ModOrganizer\loot
 xcopy /y /s /I static_data\* ..\staging\ModOrganizer
 xcopy /y /I ..\output\dlls\archive.dll ..\staging\ModOrganizer\dlls
-xcopy /y /I ..\output\dlls\boss.dll ..\staging\ModOrganizer\dlls
+rem xcopy /y /I ..\output\dlls\boss.dll ..\staging\ModOrganizer\dlls
 xcopy /y /I ..\output\dlls\dlls.manifest ..\staging\ModOrganizer\dlls
 xcopy /y /s /I ..\translations\*.qm ..\staging\ModOrganizer\translations
 
 cd ..\staging\ModOrganizer
 
-windeployqt ModOrganizer.exe --no-translations --no-plugins --libdir dlls --release
-windeployqt uibase.dll --no-translations --no-plugins --libdir dlls --release
+rem windeployqt ModOrganizer.exe --no-translations --no-plugins --libdir dlls --release
+rem windeployqt uibase.dll --no-translations --no-plugins --libdir dlls --release
 
 chdir /d %OLDDIR%
 
