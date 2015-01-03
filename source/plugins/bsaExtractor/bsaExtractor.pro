@@ -24,14 +24,18 @@ OTHER_FILES += \
 
 include(../plugin_template.pri)
 
-INCLUDEPATH += ../../bsatk "$(BOOSTPATH)"
-
 CONFIG(debug, debug|release) {
-  LIBS += -L"$(BOOSTPATH)/stage/lib" -L$$OUT_PWD/../../bsatk/debug -lbsatk
+  LIBS += -L$$OUT_PWD/../../bsatk/debug
   PRE_TARGETDEPS +=  $$OUT_PWD/../../bsatk/debug/bsatk.lib
 } else {
-  LIBS += -L"$(BOOSTPATH)/stage/lib" -L$$OUT_PWD/../../bsatk/release -lbsatk
+  LIBS += -L$$OUT_PWD/../../bsatk/release
   PRE_TARGETDEPS +=  $$OUT_PWD/../../bsatk/release/bsatk.lib
 }
 
-LIBS += -L"$(ZLIBPATH)/build" -lzlibstatic
+
+INCLUDEPATH += ../../bsatk "$${BOOSTPATH}"
+
+LIBS += -L"$${BOOSTPATH}/stage/lib" -lbsatk
+LIBS += -L"$${ZLIBPATH}/build" -lzlibstatic
+OTHER_FILES += \
+    bsaextractor.json

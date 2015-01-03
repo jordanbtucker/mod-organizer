@@ -1,4 +1,4 @@
-BOOSTPATH=E:/boost/boost_1_55_0
+BOOSTPATH=E:/boost/boost_1_56_0
 LOOTPATH=C:/Users/Tannin/Documents/Projects/loot_api
 PYTHONPATH=E:/Python278
 SEVENZIPPATH=E:/Documents/Projects/7zip
