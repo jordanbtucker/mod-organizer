@@ -11,8 +11,8 @@ SUBDIRS += \
     installerBundle \
     proxyPython \
     diagnoseBasic \
-		pageTESAlliance \
     pyniEdit \
     checkFNIS \
     previewBase \
+    previewDDS \
     bsaExtractor

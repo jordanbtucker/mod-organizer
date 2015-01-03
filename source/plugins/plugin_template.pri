@@ -18,15 +18,7 @@ CONFIG(debug, debug|release) {
 SRCDIR ~= s,/,$$QMAKE_DIR_SEP,g
 DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g
 
-TRANSLATIONS = $${TARGET}_en.ts \
-               $${TARGET}_de.ts \
-               $${TARGET}_es.ts \
-               $${TARGET}_fr.ts \
-               $${TARGET}_zh_TW.ts \
-               $${TARGET}_zh_CN.ts \
-               $${TARGET}_cs.ts \
-               $${TARGET}_tr.ts \
-               $${TARGET}_ru.ts
+TRANSLATIONS = $${TARGET}_en.ts
 
 INCLUDEPATH += $${PWD}/../uibase
 LIBS += -luibase -lshell32 -luser32
