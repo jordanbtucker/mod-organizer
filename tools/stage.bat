@@ -3,19 +3,6 @@ echo "Compiling everything"
 
 set OLDDIR=%CD%
 
-call "E:\Qt\4.8.6\bin\qtvars.bat" vsvars
-
-set /p REBUILD="Rebuild? (y/n)" %=%
-
-if /i {%REBUILD%}=={n} (goto :skipbuild)
-
-rmdir /s /q ..\staging_prepare
-mkdir ..\staging_prepare
-rmdir /s /q ..\translations
-mkdir ..\translations
-
-
-call "E:\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86
 set BOOSTPATH=E:\boost\boost_1_55_0
 set PYTHONPATH=E:\Python278
 set PATH=%PATH%;%QTDIR%\Tools\QtCreator\bin;%PYTHONPATH%;%PYTHONPATH%\Lib\site-packages\PyQt4
@@ -23,19 +10,39 @@ set ZLIBPATH=E:\Documents\Projects\zlib-1.2.7
 set SEVENZIPPATH=E:\Documents\Projects\7zip
 set LOOTPATH=C:\Users\Tannin\Documents\Projects\loot_api
 
+
+set /p REBUILD="Rebuild? (y/n)" %=%
+
+if /i {%REBUILD%}=={n} (goto :skipbuild)
+
+rmdir /s /q ..\staging_prepare
+mkdir ..\staging_prepare
+
+call "E:\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86
+call "E:\Qt\4.8.6\bin\qtvars.bat" vsvars
+
 cd ..\staging_prepare
 qmake.exe ..\source\ModOrganizer.pro -r -spec win32-msvc2010 CONFIG+=release CONFIG-=debug
 jom.exe
 
+:skipbuild
+
+set /p REBUILD="Fetch Translations? (y/n)" %=%
+if /i {%REBUILD%}=={n} (goto :skipfetch)
+
+rmdir /s /q ..\translations
+mkdir ..\translations
+
 cd ..\source
-..\tools\tx -q pull -a
+..\tools\tx -q pull -a --minimum-perc=20
 for /r %%f in (*.ts) do copy %%f ..\translations
 cd ..\translations
+del *_en.ts
 for %%f in (*.ts) do lrelease %%f
 
 chdir /d %OLDDIR%
 
-:skipbuild
+:skipfetch
 
 rmdir /s /q ..\staging\ModOrganizer
 mkdir ..\staging\ModOrganizer
