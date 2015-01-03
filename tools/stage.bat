@@ -3,9 +3,10 @@ echo "Compiling everything"
 
 set OLDDIR=%CD%
 
-set BOOSTPATH=E:\boost\boost_1_55_0
+set QTDIR=E:\Qt\5.4.0
+set BOOSTPATH=E:\boost\boost_1_56_0
 set PYTHONPATH=E:\Python278
-set PATH=%PATH%;%QTDIR%\Tools\QtCreator\bin;%PYTHONPATH%;%PYTHONPATH%\Lib\site-packages\PyQt4
+set PATH=%PATH%;%QTDIR%\Tools\QtCreator\bin;%PYTHONPATH%;%PYTHONPATH%\Lib\site-packages\PyQt5
 set ZLIBPATH=E:\Documents\Projects\zlib-1.2.7
 set SEVENZIPPATH=E:\Documents\Projects\7zip
 set LOOTPATH=C:\Users\Tannin\Documents\Projects\loot_api
@@ -18,12 +19,14 @@ if /i {%REBUILD%}=={n} (goto :skipbuild)
 rmdir /s /q ..\staging_prepare
 mkdir ..\staging_prepare
 
-call "E:\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86
-call "E:\Qt\4.8.6\bin\qtvars.bat" vsvars
+call "E:\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86
+call "%QTDIR%\5.4\msvc2013_opengl\bin\qtenv2.bat" vsvars
 
 cd ..\staging_prepare
-qmake.exe ..\source\ModOrganizer.pro -r -spec win32-msvc2010 CONFIG+=release CONFIG-=debug
+qmake.exe ..\source\ModOrganizer.pro -r -spec win32-msvc2013 CONFIG+=release CONFIG-=debug
 jom.exe
+
+
 
 :skipbuild
 
@@ -80,8 +83,8 @@ xcopy /y /s /I ..\translations\*.qm ..\staging\ModOrganizer\translations
 
 cd ..\staging\ModOrganizer
 
-rem windeployqt ModOrganizer.exe --no-translations --no-plugins --libdir dlls --release
-rem windeployqt uibase.dll --no-translations --no-plugins --libdir dlls --release
+windeployqt ModOrganizer.exe --no-translations --no-plugins --libdir dlls --release
+windeployqt uibase.dll --no-translations --no-plugins --libdir dlls --release
 
 chdir /d %OLDDIR%
 

@@ -108,7 +108,7 @@ QList<PluginSetting> DiagnoseBasic::settings() const
 
 bool DiagnoseBasic::errorReported() const
 {
-  QDir dir(QCoreApplication::applicationDirPath() + "/logs");
+  QDir dir(qApp->property("dataPath").toString() + "/logs");
   QFileInfoList files = dir.entryInfoList(QStringList("ModOrganizer_??_??_??_??_??.log"),
                                           QDir::Files, QDir::Name | QDir::Reversed);
 
@@ -157,7 +157,7 @@ bool DiagnoseBasic::errorReported() const
 
 bool DiagnoseBasic::overwriteFiles() const
 {
-  QDir dir(QCoreApplication::applicationDirPath() + "/overwrite");
+  QDir dir(qApp->property("dataPath").toString() + "/overwrite");
 
   return dir.count() != 2; // account for . and ..
 }
@@ -395,13 +395,16 @@ bool DiagnoseBasic::assetOrder() const
   std::sort(distinctModList.begin(), distinctModList.end(),
             [] (const ListElement &lhs, const ListElement &rhs) -> bool { return lhs.pluginPriority < rhs.pluginPriority; });
 
-  topoSort(distinctModList);
+  if (distinctModList.size() > 0) {
+    topoSort(distinctModList);
 
-  // now determine the moves necessary to bring the mod list into this order
-  minSorter(distinctModList);
-  m_SuggestedMoves = minSorter.moves;
-
-  return m_SuggestedMoves.size() > 0;
+    // now determine the moves necessary to bring the mod list into this order
+    minSorter(distinctModList);
+    m_SuggestedMoves = minSorter.moves;
+    return m_SuggestedMoves.size() > 0;
+  } else {
+    return false;
+  }
 }
 
 bool DiagnoseBasic::missingMasters() const
