@@ -83,7 +83,7 @@ public:
   virtual void cancel() = 0;
 
   void operator delete(void *ptr) {
-    if (ptr != NULL) {
+    if (ptr != nullptr) {
       Archive *object = static_cast<Archive*>(ptr);
       object->destroy();
     }
