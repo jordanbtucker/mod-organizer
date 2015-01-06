@@ -10,10 +10,13 @@ CONFIG(debug, debug|release) {
   QMAKE_LFLAGS += /DEBUG
 }
 
+QMAKE_CXXFLAGS += /wd4100
 
 !include(../LocalPaths.pri) {
   message("paths to required libraries need to be set up in LocalPaths.pri")
 }
+
+DEFINES += QT_MESSAGELOGCONTEXT
 
 SRCDIR ~= s,/,$$QMAKE_DIR_SEP,g
 DSTDIR ~= s,/,$$QMAKE_DIR_SEP,g

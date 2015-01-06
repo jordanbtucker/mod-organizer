@@ -3,7 +3,7 @@ echo "Compiling everything"
 
 set OLDDIR=%CD%
 
-set QTDIR=E:\Qt\5.4.0
+set QTDIR=E:\Qt\5.4
 set BOOSTPATH=E:\boost\boost_1_56_0
 set PYTHONPATH=E:\Python278
 set PATH=%PATH%;%QTDIR%\Tools\QtCreator\bin;%PYTHONPATH%;%PYTHONPATH%\Lib\site-packages\PyQt5
@@ -18,11 +18,10 @@ if /i {%REBUILD%}=={n} (goto :skipbuild)
 
 rmdir /s /q ..\staging_prepare
 mkdir ..\staging_prepare
-
 call "E:\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86
 call "%QTDIR%\5.4\msvc2013_opengl\bin\qtenv2.bat" vsvars
-
-cd ..\staging_prepare
+rem stupid qtenv-script changes the current working directory...
+cd /D %OLDDIR%\..\staging_prepare
 qmake.exe ..\source\ModOrganizer.pro -r -spec win32-msvc2013 CONFIG+=release CONFIG-=debug
 jom.exe
 
@@ -85,6 +84,8 @@ cd ..\staging\ModOrganizer
 
 windeployqt ModOrganizer.exe --no-translations --no-plugins --libdir dlls --release
 windeployqt uibase.dll --no-translations --no-plugins --libdir dlls --release
+
+rmdir qt
 
 chdir /d %OLDDIR%
 
