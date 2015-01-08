@@ -38,6 +38,8 @@ cd ..\source
 for /r %%f in (*.ts) do copy %%f ..\translations
 cd ..\translations
 del *_en.ts
+rem hack, the translation files for pycfg are named incorrectly
+..\tools\BRC32.exe /PATTERN:pyniEdit* /REPLACECI:pyniEdit:pyCfg /execute
 for %%f in (*.ts) do lrelease %%f
 
 chdir /d %OLDDIR%
